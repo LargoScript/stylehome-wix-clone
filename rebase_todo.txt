@@ -1,0 +1,9 @@
+pick fd39296 Add animations (AOS, Anime.js), improve header animations, fix service cards alignment, add services section darkening on scroll, make carousel buttons transparent
+drop c0221bf Update README.md
+pick 2e12892 Fix navigation: add smooth scroll, fix menu closing, update nav order, add section IDs
+pick 82e43b3 Fix navigation: add smooth scroll, fix menu closing, update nav order, add section IDs
+drop c71d961 Resolve README.md merge conflict
+pick ba464a4 Migrate project to TypeScript with Vite, fix active nav link highlighting
+drop 21d64e0 Update README with TypeScript and Vite information
+pick 12f6f3f Add GitHub Actions workflow for deployment
+pick 000f488 Add .gitignore for node_modules and build files
