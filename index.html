@@ -5,41 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style Homes - Kitchen & Bath Remodeling | Portland OR & Vancouver WA</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/libs/aos.css">
 </head>
 <body>
     <header class="header">
         <div class="header__container">
-            <!-- LOGO -->
-            <div class="header__logo">
-                <img src="img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img">
-            </div>
-
-            <!-- BURGER MENU BUTTON (Mobile) -->
+            <a href="#" class="header__logo">
+                <img src="img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
+            </a>
+            <nav class="header__nav">
+                <button class="header__nav-close" aria-label="Close menu">
+                    <span class="header__nav-close-line"></span>
+                    <span class="header__nav-close-line"></span>
+                </button>
+                <ul class="header__nav-list">
+                    <li><a href="#" class="header__nav-link active">Home</a></li>
+                    <li><a href="#services" class="header__nav-link">Services</a></li>
+                    <li><a href="#projects" class="header__nav-link">Projects</a></li>
+                    <li><a href="#testimonials" class="header__nav-link">Testimonials</a></li>
+                    <li><a href="#about" class="header__nav-link">About</a></li>
+                </ul>
+            </nav>
             <button class="header__burger" aria-label="Toggle menu" aria-expanded="false">
                 <span class="header__burger-line"></span>
                 <span class="header__burger-line"></span>
                 <span class="header__burger-line"></span>
             </button>
-
-            <!-- NAV -->
-            <nav class="header__nav">
-                <ul class="header__nav-list">
-                    <li><a href="#" class="header__nav-link active">Home</a></li>
-                    <li><a href="#" class="header__nav-link">Services</a></li>
-                    <li><a href="#" class="header__nav-link">Projects</a></li>
-                    <li><a href="#" class="header__nav-link">Testimonials</a></li>
-                    <li><a href="#" class="header__nav-link">About</a></li>
-                </ul>
-            </nav>
-
-            <!-- ACTIONS -->
             <div class="header__actions">
                 <a href="tel:+15039805216" class="header__phone">+1 (503) 980 5216</a>
-                <a href="#" class="header__icon" aria-label="Instagram">
-                    <img src="img/instagram.avif" alt="Instagram">
+                <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="header__icon">
+                    <img src="img/instagram.avif" alt="Instagram" />
                 </a>
-                <a href="#" class="header__icon" aria-label="Thumbtack">
-                    <img src="img/thumbtack.avif" alt="Thumbtack">
+                <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
+                    target="_blank" class="header__icon">
+                    <img src="img/thumbtack.avif" alt="Thumbtack" />
                 </a>
             </div>
         </div>
@@ -47,19 +46,21 @@
     
     <main class="main">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero__video-wrapper">
                 <video class="hero__video" autoplay muted loop playsinline>
-                    <source src="video/hero.mp4" type="video/mp4">
+                    <source src="video/hero.mp4" type="video/mp4" />
                 </video>
                 <div class="hero__overlay"></div>
             </div>
-            
             <div class="hero__content">
+                <!-- Badge панелька -->
                 <div class="hero__badge">
-                    You imagine it, <strong>STYLE HOMES</strong> creates it!
+                    You imagine it,<br>
+                    <strong>STYLE HOMES</strong> creates it!
                 </div>
                 
+                <!-- Main content панелька -->
                 <div class="hero__card">
                     <h1 class="hero__title">KITCHEN & BATH REMODELING</h1>
                     <p class="hero__subtitle">Smart Investment • Quality Craftsmanship</p>
@@ -92,9 +93,9 @@
         </section>
 
         <!-- Consultation Form Section -->
-        <section class="consultation">
+        <section class="consultation" data-aos="fade-up">
             <div class="consultation__container">
-                <div class="consultation__card">
+                <div class="consultation__card" data-aos="zoom-in" data-aos-delay="100">
                     <h2 class="consultation__title">Get Your Free Consultation Today</h2>
                     <p class="consultation__description">
                         Fill out the form below, and one of our experts will contact you shortly to provide personalized advice and solutions for your project.
@@ -178,9 +179,9 @@
         </section>
 
         <!-- About Section -->
-        <section class="about">
+        <section class="about" data-aos="fade-up">
             <div class="about__container">
-                <div class="about__card">
+                <div class="about__card" data-aos="fade-right" data-aos-delay="100">
                     <h2 class="about__title">About</h2>
                     <h5 class="about__subtitle">Our Mission</h5>
                     
@@ -200,13 +201,13 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services">
+        <section class="services" data-aos="fade-up">
             <div class="services__container">
-                <h2 class="services__title">Services</h2>
-                <h5 class="services__subtitle">Our Services</h5>
+                <h2 class="services__title" data-aos="fade-up">Services</h2>
+                <h5 class="services__subtitle" data-aos="fade-up" data-aos-delay="50">Our Services</h5>
 
                 <div class="services__list">
-                    <a href="#" class="service-card">
+                    <a href="#" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                         <div class="service-card__image">
                             <img src="img/panel.jpg" alt="Wood and Panel Wall Decor">
                         </div>
@@ -220,7 +221,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="service-card">
+                    <a href="#" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                         <div class="service-card__image">
                             <img src="img/kitchen.jpg" alt="Kitchen Renovation">
                         </div>
@@ -234,7 +235,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="service-card">
+                    <a href="#" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                         <div class="service-card__image">
                             <img src="img/bathroom.jpg" alt="Bathroom Renovation">
                         </div>
@@ -248,7 +249,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="service-card">
+                    <a href="#" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                         <div class="service-card__image">
                             <img src="img/home.jpg" alt="Whole-Home Transformation">
                         </div>
@@ -266,13 +267,13 @@
         </section>
 
         <!-- Projects Section -->
-        <section class="projects">
+        <section class="projects" data-aos="fade-up">
             <div class="projects__container">
-                <h2 class="projects__title">Projects</h2>
-                <h5 class="projects__subtitle">Our Work</h5>
+                <h2 class="projects__title" data-aos="fade-up">Projects</h2>
+                <h5 class="projects__subtitle" data-aos="fade-up" data-aos-delay="50">Our Work</h5>
 
                 <div class="projects__grid">
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects1/project1_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -306,7 +307,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects2/project2_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -341,7 +342,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects3/project3_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -359,7 +360,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects4/project4_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -386,7 +387,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects5/project5_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -417,7 +418,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects6/project6_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -437,7 +438,7 @@
                         </p>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
                                 <img src="img/projects/projects7/project7_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
@@ -458,9 +459,9 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="testimonials">
+        <section class="testimonials" data-aos="fade-up">
             <div class="testimonials__container">
-                <div class="testimonials__header">
+                <div class="testimonials__header" data-aos="fade-up">
                     <h2 class="testimonials__title">What Our Clients Are Saying</h2>
                     <h5 class="testimonials__subtitle">Client Reviews</h5>
                 </div>
@@ -526,10 +527,10 @@
         </section>
 
         <!-- Start Section (About Master) -->
-        <section class="start">
+        <section class="start" data-aos="fade-up">
             <div class="start__container">
                 <!-- LEFT -->
-                <div class="start__content">
+                <div class="start__content" data-aos="fade-right" data-aos-delay="100">
                     <h3 class="start__title">
                         Ready to Start <br />
                         in Just <span>2 Weeks</span>
@@ -543,10 +544,10 @@
                 </div>
 
                 <!-- RIGHT -->
-                <div class="start__media">
+                <div class="start__media" data-aos="fade-left" data-aos-delay="200">
                     <img src="img/photo.jpg" alt="Founder" loading="lazy" decoding="async" />
 
-                    <div class="start__quote">
+                    <div class="start__quote" data-aos="zoom-in" data-aos-delay="300">
                         <p>
                             "We want you to trust us. That's why we give our very best to earn your
                             trust every step of the way. For us, honesty, quality, and your peace
@@ -559,63 +560,63 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="faq">
+        <section class="faq" data-aos="fade-up">
             <div class="faq__overlay">
                 <div class="faq__container">
-                    <h2 class="faq__title">FAQ</h2>
-                    <h5 class="faq__subtitle">Frequently Asked Questions</h5>
+                    <h2 class="faq__title" data-aos="fade-up">FAQ</h2>
+                    <h5 class="faq__subtitle" data-aos="fade-up" data-aos-delay="50">Frequently Asked Questions</h5>
 
                     <div class="faq__accordion">
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="100">
                             <div class="faq__question">How long does a renovation take?</div>
                             <div class="faq__answer">
                                 <p>Typically, a kitchen or bathroom renovation takes 2 to 4 weeks, depending on the scope of work and project complexity.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="150">
                             <div class="faq__question">Do you help with material selection and design?</div>
                             <div class="faq__answer">
                                 <p>Yes, we offer design services and assist in selecting the best materials to match your budget and style.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="200">
                             <div class="faq__question">Do I need to leave the apartment during the renovation?</div>
                             <div class="faq__answer">
                                 <p>It depends on the project scope. If it's only the kitchen or bathroom, it's usually possible to stay in the apartment.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="250">
                             <div class="faq__question">Do you provide a warranty for your work?</div>
                             <div class="faq__answer">
                                 <p>Yes, we provide a warranty on all completed work. Details are outlined in the contract.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="300">
                             <div class="faq__question">What is the payment schedule for the renovation?</div>
                             <div class="faq__answer">
                                 <p>Payment is made in stages: a deposit, progress payments, and final payment upon project completion.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="350">
                             <div class="faq__question">Do you offer full-service (turnkey) renovations?</div>
                             <div class="faq__answer">
                                 <p>Yes, we provide full-service renovations — from demolition to furniture and plumbing installation.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="400">
                             <div class="faq__question">Can I get a preliminary cost estimate?</div>
                             <div class="faq__answer">
                                 <p>Yes, we provide a free preliminary estimate after inspecting the site or reviewing the room layout.</p>
                             </div>
                         </div>
 
-                        <div class="faq__item">
+                        <div class="faq__item" data-aos="fade-up" data-aos-delay="450">
                             <div class="faq__question">Can I customize my project?</div>
                             <div class="faq__answer">
                                 <p>Absolutely. Every project is tailored to your preferences. We collaborate closely to ensure the final result matches your vision.</p>
@@ -696,6 +697,8 @@
         </section>
     </footer>
     
+    <script src="js/libs/aos.js"></script>
+    <script src="js/libs/anime.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

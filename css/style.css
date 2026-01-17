@@ -14,62 +14,231 @@ body {
 
 /* ===== HEADER ===== */
 .header {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s, padding 0.3s;
+    background: transparent;
+    /* Initially transparent on Hero */
+    padding: 20px 0;
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
 }
 
 .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    padding: 0 24px;
+    gap: 40px; /* Мінімальна відстань між елементами */
+    min-width: 0; /* Дозволяє контейнеру стискатися */
 }
 
-/* LOGO */
 .header__logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
+    text-decoration: none;
+    flex: 0 0 auto; /* Логотип не стискається */
 }
 
 .header__logo-img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
+    height: 48px;
+    transition: height 0.3s;
 }
 
-.header__logo-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: #111;
-    letter-spacing: 0.5px;
+.header.scrolled .header__logo-img {
+    height: 40px;
 }
 
-/* BURGER MENU (Mobile) */
+.header__nav {
+    display: flex; /* По замовчуванню видимо на десктопі */
+    flex: 1 1 auto; /* Дозволяє навігації стискатися, якщо потрібно */
+    min-width: 0; /* Дозволяє стискатися нижче мінімального розміру контенту */
+    max-width: 100%; /* Не дозволяє навігації виходити за межі */
+    overflow: hidden; /* Приховує переповнення */
+    transition: none; /* Без transition для миттєвого показу/приховування */
+}
+
+.header__nav-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap; /* Не дозволяє переноситися на новий рядок */
+}
+
+.header__nav-link {
+    font-weight: 500;
+    color: #fff;
+    /* White text on hero */
+    font-size: 0.95rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.header.scrolled .header__nav-link,
+.header:not(.scrolled) .header__nav-link:hover {
+    color: #333;
+}
+
+.header__nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #8b0000;
+    transition: width 0.3s ease;
+}
+
+.header__nav-link:hover::after,
+.header__nav-link.active::after {
+    width: 100%;
+}
+
+/* Invert link color when scrolled */
+.header.scrolled .header__nav-link {
+    color: #333;
+}
+
+.header.scrolled .header__nav-link:hover {
+    color: #8b0000;
+}
+
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Зменшена відстань між телефоном та іконками */
+    flex: 0 0 auto; /* Не дозволяє actions стискатися */
+    margin-right: 0; /* Відступ від правого краю через padding контейнера */
+    order: 3; /* Розміщуємо останнім (найправіше) */
+}
+
+.header__phone {
+    background-color: #8b0000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    /* Pill shape */
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+    transition: all 0.3s;
+    white-space: nowrap; /* Номер в один рядок */
+    flex: 0 0 auto; /* Не дозволяємо номеру стискатися або розширюватися */
+    min-width: max-content; /* Мінімальна ширина за контентом */
+}
+
+.header__phone:hover {
+    background-color: #6f0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+}
+
+.header__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0; /* Не дозволяє іконкам стискатися */
+}
+
+.header__icon img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+    filter: brightness(0) invert(1);
+    /* White icons initial */
+    transition: all 0.3s;
+}
+
+.header.scrolled .header__icon img {
+    filter: none;
+    /* Original colors or dark */
+    opacity: 1;
+}
+
+.header__icon:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Mobile Menu */
 .header__burger {
-    display: none;
+    display: none; /* По замовчуванню приховано, показується через JS коли елементи торкаються */
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
+    padding: 10px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
     z-index: 1001;
+    flex-shrink: 0; /* Не дозволяє стискатися */
+    order: 2; /* Розміщуємо праворуч після навігації */
+    margin-left: auto; /* Відштовхуємо від навігації */
+    transition: none; /* Без transition для миттєвого показу/приховування */
+}
+
+/* Коли бургер-меню активно через auto-show */
+.header.burger-mode .header__nav:not(.active) {
+    display: none !important;
+}
+
+.header.burger-mode .header__burger {
+    display: flex !important;
+}
+
+/* Коли меню відкрите (active), воно має бути видиме навіть в burger-mode */
+.header.burger-mode .header__nav.active,
+.header__nav.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+/* На десктопі, коли бургер активний, навігація має бути як мобільне меню */
+@media (min-width: 769px) {
+    .header__nav.active {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(10px) !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 999 !important;
+        padding: 80px 20px 20px !important;
+    }
 }
 
 .header__burger-line {
     width: 24px;
     height: 2px;
-    background: #333;
+    background-color: #fff;
     transition: all 0.3s ease;
-    border-radius: 2px;
+}
+
+.header.scrolled .header__burger-line {
+    background-color: #333;
 }
 
 .header__burger.active .header__burger-line:nth-child(1) {
@@ -84,107 +253,28 @@ body {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* NAV */
-.header__nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.header__nav-list {
-    display: flex;
-    list-style: none;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
-}
-
-.header__nav-link {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 6px 0;
-    position: relative;
-}
-
-.header__nav-link.active {
-    color: #8b0000;
-}
-
-.header__nav-link.active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #8b0000;
-}
-
-.header__nav-link:hover {
-    color: #8b0000;
-}
-
-/* ACTIONS */
-.header__actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
-}
-
-.header__phone {
-    background: #8b0000;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.header__phone:hover {
-    background: #6f0000;
-}
-
-.header__icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #f5f5f5;
-}
-
-.header__icon img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
-.header__icon:hover {
-    background: #e0e0e0;
-}
-
 /* ===== HERO SECTION ===== */
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 600px;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
     overflow: hidden;
+    padding: 0;
+    margin-top: 0;
+    /* Override section spacing if any */
 }
 
 .hero__video-wrapper {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
 }
 
 .hero__video {
@@ -195,8 +285,86 @@ body {
 
 .hero__overlay {
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    /* Elegant gradient */
+    z-index: 1;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+    animation: fadeUp 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero__badge {
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    line-height: 1.6; /* Для кращого відображення двох рядків */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeUpBadge 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes fadeUpBadge {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero__badge strong {
+    color: #8b0000;
+}
+
+.hero__title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: #8b0000;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    font-weight: 300;
+    color: #555;
+}
+
+.hero__location {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #777;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero__content {
@@ -227,10 +395,32 @@ body {
 
 /* CARD */
 .hero__card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 32px 48px;
+    position: relative;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 48px;
     border-radius: 16px;
     max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeUpCard 0.8s ease-out 1s forwards;
+    margin-top: 20px;
+}
+
+@keyframes fadeUpCard {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUpCard {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .hero__title {
@@ -256,22 +446,181 @@ body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .header__nav-list {
-        gap: 24px;
+        gap: 16px; /* Зменшуємо gap на менших екранах, щоб не залазити на телефон */
     }
     
     .header__nav-link {
-        font-size: 15px;
+        font-size: 0.85rem; /* Зменшуємо шрифт для економії місця */
+        white-space: nowrap; /* Не переносимо текст */
+    }
+    
+    .header__container {
+        gap: 20px; /* Зменшуємо gap між елементами контейнера */
     }
     
     .hero__title {
-        font-size: 32px;
+        font-size: 3rem;
+    }
+    
+    .hero__subtitle {
+        font-size: 1.3rem;
     }
 }
 
 @media (max-width: 768px) {
+    .header {
+        padding: 15px 0;
+    }
+    
+    .header.scrolled {
+        padding: 10px 0;
+    }
+    
     .header__container {
-        padding: 12px 16px;
-        gap: 16px;
+        padding: 0 16px;
+        gap: 24px; /* Зменшуємо gap на планшетах */
+    }
+    
+    .header__nav {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    
+    .header__actions {
+        flex: 0 0 auto;
+    }
+    
+    .header__logo-img {
+        height: 40px;
+    }
+    
+    .header.scrolled .header__logo-img {
+        height: 35px;
+    }
+    
+    .header__burger {
+        display: flex;
+    }
+    
+    .header__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease, visibility 0s 0.3s, opacity 0.3s ease;
+        z-index: 999;
+        padding: 80px 20px 20px;
+        /* Завжди починаємо в закритому стані */
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    /* Кнопка закриття меню (хрестик) */
+    .header__nav-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+        padding: 0;
+        transition: transform 0.3s ease;
+    }
+    
+    .header__nav-close:hover {
+        transform: rotate(90deg);
+    }
+    
+    .header__nav-close-line {
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: #333;
+        transition: all 0.3s ease;
+    }
+    
+    .header__nav-close-line:nth-child(1) {
+        transform: rotate(45deg);
+    }
+    
+    .header__nav-close-line:nth-child(2) {
+        transform: rotate(-45deg);
+    }
+    
+    .header__nav.active {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        transition: transform 0.3s ease, visibility 0s, opacity 0.3s ease;
+    }
+    
+    /* Блокуємо transition при resize */
+    body.no-transition .header__nav,
+    body.no-transition .header__nav.active {
+        transition: none !important;
+    }
+    
+    .header__nav-list {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .header__nav-link {
+        font-size: 1.5rem;
+        color: #333;
+    }
+    
+    .header__actions {
+        gap: 10px; /* Зменшена відстань на планшетах */
+        flex: 0 0 auto; /* Не дозволяє actions стискатися */
+    }
+    
+    .header__icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .header__icon img {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .header__phone {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        min-width: max-content;
+    }
+    
+    .hero {
+        min-height: 600px;
+    }
+    
+    .hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .hero__subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero__badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
     }
     
     .header__logo-text {
@@ -325,11 +674,22 @@ body {
     .header__phone {
         padding: 8px 14px;
         font-size: 13px;
+        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        min-width: max-content;
+    }
+    
+    .header__actions {
+        flex: 0 0 auto; /* Не дозволяє actions стискатися */
     }
     
     .header__icon {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .header__icon img {
+        width: 26px;
+        height: 26px;
     }
     
     .hero {
@@ -373,6 +733,10 @@ body {
         padding: 20px 24px;
         width: 90%;
         max-width: 300px;
+        min-height: 100px; /* Фіксована мінімальна висота */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .services-hero__card-title {
@@ -450,7 +814,6 @@ body {
         height: 350px;
     }
 }
-}
 
 @media (max-width: 480px) {
     .header__logo-text {
@@ -463,12 +826,25 @@ body {
     }
     
     .header__actions {
-        gap: 8px;
+        gap: 8px; /* Мінімальна відстань на мобільних */
+        flex: 0 0 auto; /* Не дозволяє actions стискатися */
+    }
+    
+    .header__icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .header__icon img {
+        width: 24px;
+        height: 24px;
     }
     
     .header__phone {
         padding: 8px 12px;
         font-size: 12px;
+        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        min-width: max-content;
     }
     
     .hero__badge {
@@ -517,6 +893,10 @@ body {
         padding: 16px 20px;
         width: 85%;
         max-width: none;
+        min-height: 90px; /* Фіксована мінімальна висота для мобільних */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .services-hero__card-title {
@@ -754,10 +1134,16 @@ body {
     position: relative;
     z-index: 2;
     background: rgba(255, 255, 255, 0.9);
-    padding: 20px 40px;
+    padding: 24px 40px;
     border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease;
+    min-height: 100px; /* Фіксована мінімальна висота для однакових розмірів */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 400px;
 }
 
 .services-hero__card:hover .services-hero__card-overlay {
@@ -935,6 +1321,24 @@ body {
     padding: 80px 20px;
     background: #e8e8e8;
     position: relative;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, var(--darken-opacity, 0));
+    transition: background 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.services.scrolled::before {
+    background: rgba(0, 0, 0, var(--darken-opacity, 0.3));
 }
 
 .services__container {
@@ -944,6 +1348,8 @@ body {
     border-radius: 20px;
     padding: 60px 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2; /* Контент поверх затемнення */
 }
 
 .services__title {
@@ -974,8 +1380,9 @@ body {
     gap: 40px;
     text-decoration: none;
     color: inherit;
-    align-items: center;
+    align-items: flex-start; /* Вирівнюємо по верхній лінії */
     transition: all 0.3s ease;
+    will-change: transform; /* Оптимізація для анімацій */
 }
 
 .service-card:hover .service-card__title {
@@ -988,6 +1395,7 @@ body {
     height: 200px;
     border-radius: 16px;
     overflow: hidden;
+    align-self: flex-start; /* Вирівнюємо зображення по верхній лінії */
 }
 
 .service-card__image img {
@@ -995,6 +1403,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    will-change: transform; /* Оптимізація для анімацій */
 }
 
 .service-card:hover .service-card__image img {
@@ -1155,13 +1564,12 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
+    background: transparent;
     border: none;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
     font-size: 24px;
-    color: #8b0000;
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     user-select: none;
     z-index: 10;
@@ -1169,13 +1577,11 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-btn:hover {
-    background: #8b0000;
-    color: #fff;
-    transform: translateY(-50%) scale(1.1);
+    color: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.2);
 }
 
 .carousel-btn.prev {
@@ -1526,9 +1932,8 @@ body {
 .faq {
     position: relative;
     min-height: 110vh;
-    background: url("../img/form_background.jpg") center / cover no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: linear-gradient(to bottom, #faf8f5 0%, #f5f3f0 100%);
+    background-color: #faf8f5;
 }
 
 .faq__overlay {
@@ -1650,7 +2055,6 @@ body {
 @media (max-width: 768px) {
     .faq {
         min-height: auto;
-        background-attachment: scroll;
     }
 
     .faq__overlay {
