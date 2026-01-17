@@ -320,5 +320,47 @@ document.addEventListener('DOMContentLoaded', () => {
       textarea.style.height = newHeight + 'px';
     });
   }
+
+  // ===== MOBILE NAVIGATION (BURGER MENU) =====
+  const burger = document.querySelector('.header__burger');
+  const nav = document.querySelector('.header__nav');
+  
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      const isActive = burger.classList.contains('active');
+      
+      burger.classList.toggle('active');
+      nav.classList.toggle('active');
+      burger.setAttribute('aria-expanded', !isActive);
+      
+      // Блокуємо прокрутку body коли меню відкрите
+      if (!isActive) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Закриваємо меню при кліку на посилання
+    const navLinks = nav.querySelectorAll('.header__nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        nav.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Закриваємо меню при кліку поза меню
+    nav.addEventListener('click', (e) => {
+      if (e.target === nav) {
+        burger.classList.remove('active');
+        nav.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 });
 

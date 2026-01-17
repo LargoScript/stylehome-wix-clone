@@ -40,8 +40,8 @@ body {
 }
 
 .header__logo-img {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
 }
 
@@ -50,6 +50,38 @@ body {
     font-weight: 700;
     color: #111;
     letter-spacing: 0.5px;
+}
+
+/* BURGER MENU (Mobile) */
+.header__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.header__burger-line {
+    width: 24px;
+    height: 2px;
+    background: #333;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.header__burger.active .header__burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.header__burger.active .header__burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.header__burger.active .header__burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* NAV */
@@ -246,7 +278,47 @@ body {
         font-size: 16px;
     }
     
+    .header__burger {
+        display: flex;
+    }
+    
     .header__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 80px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .header__nav.active {
+        transform: translateX(0);
+    }
+    
+    .header__nav-list {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        padding: 0 24px;
+    }
+    
+    .header__nav-link {
+        font-size: 20px;
+        padding: 12px 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .header__nav-link.active::after {
         display: none;
     }
     
@@ -383,6 +455,11 @@ body {
 @media (max-width: 480px) {
     .header__logo-text {
         display: none;
+    }
+    
+    .header__logo-img {
+        width: 60px;
+        height: 60px;
     }
     
     .header__actions {
