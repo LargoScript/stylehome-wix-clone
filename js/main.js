@@ -345,6 +345,97 @@ function initAnimations() {
   }
 }
 
+// ===== SMOOTH SCROLL NAVIGATION =====
+let closeMenuFunction = null; // Глобальна змінна для функції закриття меню
+
+function initSmoothScroll() {
+  const navLinks = document.querySelectorAll('.header__nav-link[href^="#"]');
+  const header = document.querySelector('.header');
+  const nav = document.querySelector('.header__nav');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      
+      // Пропускаємо порожні якорі
+      if (href === '#' || href === '#hero') {
+        e.preventDefault();
+        
+        // Закриваємо мобільне меню, якщо воно відкрите
+        if (nav && nav.classList.contains('active') && closeMenuFunction) {
+          closeMenuFunction();
+        }
+        
+        // Невелика затримка для закриття меню перед прокруткою
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }, nav && nav.classList.contains('active') ? 150 : 0);
+        return;
+      }
+      
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        
+        // Закриваємо мобільне меню, якщо воно відкрите
+        if (nav && nav.classList.contains('active') && closeMenuFunction) {
+          closeMenuFunction();
+        }
+        
+        // Чекаємо трохи, щоб меню встигло закритися перед прокруткою
+        setTimeout(() => {
+          const headerHeight = header ? header.offsetHeight : 80;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }, nav && nav.classList.contains('active') ? 150 : 0);
+      }
+    });
+  });
+}
+
+// ===== UPDATE ACTIVE NAV LINK ON SCROLL =====
+function initActiveNavLink() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.header__nav-link[href^="#"]');
+  const header = document.querySelector('.header');
+  const headerHeight = header ? header.offsetHeight : 80;
+  
+  const updateActiveLink = () => {
+    let current = '';
+    const scrollPosition = window.pageYOffset + headerHeight + 100;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = sectionId;
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href === `#${current}` || (current === 'hero' && href === '#')) {
+        link.classList.add('active');
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink(); // Check initial state
+}
+
 // ===== CAROUSEL FUNCTIONALITY =====
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize header scroll effect
@@ -353,8 +444,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize services darkening effect
   initServicesDarkening();
   
-  // Initialize auto burger menu
+  // Initialize auto burger menu (має бути перед initSmoothScroll, щоб closeMenuFunction була доступна)
   initAutoBurgerMenu();
+  
+  // Initialize smooth scroll navigation (після initAutoBurgerMenu, щоб closeMenuFunction була встановлена)
+  // Використовуємо setTimeout, щоб переконатися, що closeMenuFunction встановлена
+  setTimeout(() => {
+    initSmoothScroll();
+  }, 0);
+  
+  // Initialize active nav link on scroll
+  initActiveNavLink();
   
   // Initialize animations
   initAnimations();
@@ -782,6 +882,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     };
     
+    // Зберігаємо функцію закриття меню для використання в initSmoothScroll
+    closeMenuFunction = closeMenu;
+    
     // Закриваємо меню при кліку на хрестик
     const navClose = nav.querySelector('.header__nav-close');
     if (navClose) {
@@ -791,13 +894,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // Закриваємо меню при кліку на посилання
-    const navLinks = nav.querySelectorAll('.header__nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
+    // Видалено дублюючий обробник для nav links - вже є в initSmoothScroll()
     
     // Закриваємо меню при кліку поза меню
     nav.addEventListener('click', (e) => {
