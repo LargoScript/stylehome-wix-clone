@@ -8,10 +8,17 @@ declare var anime: any;
 
 /**
  * Ініціалізація анімованого градієнта для hero overlay
+ * Працює тільки на головній сторінці, не на підсторінках
+ * Функція збережена для майбутнього використання в інших секціях
  */
 export function initAnimatedGradient(): void {
+    const hero = querySelector<HTMLElement>('.hero');
     const overlay = querySelector<HTMLElement>('.hero__overlay');
-    if (!overlay) return;
+    
+    // Не використовуємо анімацію на підсторінках
+    if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
+        return;
+    }
 
     // Створюємо анімований градієнт через CSS змінні
     overlay.style.background = `
@@ -26,6 +33,11 @@ export function initAnimatedGradient(): void {
     // Анімація градієнта
     let angle = 45;
     const animateGradient = (): void => {
+        // Перевіряємо, чи hero все ще існує і не став підсторінкою
+        if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
+            return;
+        }
+        
         angle += 0.5;
         const redOpacity1 = 0.3 + Math.sin(angle * 0.01) * 0.2;
         const redOpacity2 = 0.2 + Math.cos(angle * 0.015) * 0.15;
@@ -47,10 +59,13 @@ export function initAnimatedGradient(): void {
 
 /**
  * Створення canvas з частинками для hero секції
+ * Працює тільки на головній сторінці, не на підсторінках
+ * Функція збережена для майбутнього використання в інших секціях
  */
 export function initParticleBackground(): void {
     const hero = querySelector<HTMLElement>('.hero');
-    if (!hero) return;
+    // Не використовуємо частинки на підсторінках
+    if (!hero || hero.classList.contains('hero--subpage')) return;
 
     const canvas = document.createElement('canvas');
     canvas.className = 'hero__particles';

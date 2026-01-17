@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitchen Renovation - Style Homes | Portland OR & Vancouver WA</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/libs/aos.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/public/js/libs/aos.css">
 </head>
 <body>
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
-                <img src="img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
+                <img src="/public/img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
             </a>
             <nav class="header__nav">
                 <button class="header__nav-close" aria-label="Close menu">
@@ -34,11 +34,11 @@
             <div class="header__actions">
                 <a href="tel:+15039805216" class="header__phone">+1 (503) 980 5216</a>
                 <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="header__icon">
-                    <img src="img/instagram.avif" alt="Instagram" />
+                    <img src="/public/img/instagram.avif" alt="Instagram" />
                 </a>
                 <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
                     target="_blank" class="header__icon">
-                    <img src="img/thumbtack.avif" alt="Thumbtack" />
+                    <img src="/public/img/thumbtack.avif" alt="Thumbtack" />
                 </a>
             </div>
         </div>
@@ -46,9 +46,9 @@
     
     <main class="main">
         <!-- Hero Section -->
-        <section class="hero" id="hero">
+        <section class="hero hero--subpage" id="hero">
             <div class="hero__video-wrapper">
-                <div class="hero__image-bg" style="background-image: url('img/kitchen-renovation.jpg');"></div>
+                <div class="hero__image-bg" style="background-image: url('/public/img/kitchen-renovation.jpg');"></div>
                 <div class="hero__overlay"></div>
             </div>
             <div class="hero__content">
@@ -78,7 +78,7 @@
                     </p>
                 </div>
                 <div class="service-details__image" data-aos="fade-left" data-aos-delay="300">
-                    <img src="img/kitchen.jpg" alt="Kitchen Renovation">
+                    <img src="/public/img/kitchen.jpg" alt="Kitchen Renovation">
                 </div>
             </div>
         </section>
@@ -103,6 +103,133 @@
                     <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
                         <h3 class="feature-card__title">Expert Installation</h3>
                         <p class="feature-card__text">Professional craftsmanship ensuring durability and reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects" data-aos="fade-up">
+            <div class="projects__container">
+                <h2 class="projects__title" data-aos="fade-up">Our Kitchen Projects</h2>
+                <h5 class="projects__subtitle" data-aos="fade-up" data-aos-delay="50">Featured Work</h5>
+
+                <div class="projects__grid">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="/public/img/projects/projects1/project1_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_2.jpg" alt="Project Image 2" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_3.jpg" alt="Project Image 3" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_4.jpg" alt="Project Image 4" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_5.jpg" alt="Project Image 5" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_6.jpg" alt="Project Image 6" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_7.jpg" alt="Project Image 7" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_8.jpg" alt="Project Image 8" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_9.jpg" alt="Project Image 9" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_10.jpg" alt="Project Image 10" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_11.jpg" alt="Project Image 11" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_12.jpg" alt="Project Image 12" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_13.jpg" alt="Project Image 13" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_14.jpg" alt="Project Image 14" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_15.jpg" alt="Project Image 15" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_16.jpg" alt="Project Image 16" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_17.jpg" alt="Project Image 17" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_18.jpg" alt="Project Image 18" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_19.jpg" alt="Project Image 19" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_20.jpg" alt="Project Image 20" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects1/project1_21.jpg" alt="Project Image 21" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Full Interior Work in a Newly Built Home</h3>
+                        <p class="project-card__description">
+                            This beautiful new home was built from the ground up. Our team completed all the interior work except for painting. The project features bright white tones, natural wood flooring, and elegant finishes that create a warm and modern atmosphere. It was a pleasure to collaborate on this project together with BTN Homes LLC.
+                        </p>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="/public/img/projects/projects2/project2_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_2.jpg" alt="Project Image 2" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_3.jpg" alt="Project Image 3" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_4.jpg" alt="Project Image 4" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_5.jpg" alt="Project Image 5" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_6.jpg" alt="Project Image 6" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_7.jpg" alt="Project Image 7" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_8.jpg" alt="Project Image 8" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_9.jpg" alt="Project Image 9" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_10.jpg" alt="Project Image 10" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_11.jpg" alt="Project Image 11" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_12.jpg" alt="Project Image 12" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_13.jpg" alt="Project Image 13" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_14.jpg" alt="Project Image 14" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_15.jpg" alt="Project Image 15" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_16.jpg" alt="Project Image 16" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_17.jpg" alt="Project Image 17" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_18.jpg" alt="Project Image 18" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_19.jpg" alt="Project Image 19" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_20.jpg" alt="Project Image 20" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_21.jpg" alt="Project Image 21" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects2/project2_22.jpg" alt="Project Image 22" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Complete Interior and Exterior Work for a Newly Built Home</h3>
+                        <p class="project-card__description">
+                            Our team completed a full scope of work for this new home — both interior and exterior finishes, except for painting and last coating. The project features bright white tones, natural wood flooring, and a fresh modern style. It was a pleasure to bring this project to life together with BTN Homes LLC.
+                        </p>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="/public/img/projects/projects5/project5_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_2.jpg" alt="Project Image 2" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_3.jpg" alt="Project Image 3" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_4.jpg" alt="Project Image 4" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_5.jpg" alt="Project Image 5" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_6.jpg" alt="Project Image 6" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_7.jpg" alt="Project Image 7" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_8.jpg" alt="Project Image 8" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_9.jpg" alt="Project Image 9" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_10.jpg" alt="Project Image 10" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_11.jpg" alt="Project Image 11" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_12.jpg" alt="Project Image 12" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_13.jpg" alt="Project Image 13" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_14.jpg" alt="Project Image 14" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_15.jpg" alt="Project Image 15" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_16.jpg" alt="Project Image 16" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_17.jpg" alt="Project Image 17" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects5/project5_18.jpg" alt="Project Image 18" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Crafting Modern Luxury Through Custom Carpentry</h3>
+                        <p class="project-card__description">
+                            Our team completed all custom carpentry work, including doors, windows, staircases, baseboards, and large custom closets and built-in cabinets — every detail designed and installed with precision and elegance. This project represents a perfect blend of modern design and timeless craftsmanship.
+                        </p>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="/public/img/projects/projects7/project7_1.jpg" alt="Project Image 1" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects7/project7_2.jpg" alt="Project Image 2" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects7/project7_3.jpg" alt="Project Image 3" loading="lazy" decoding="async">
+                                <img src="/public/img/projects/projects7/project7_4.jpg" alt="Project Image 4" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Complete Home Transformation with Custom Reconstruction</h3>
+                        <p class="project-card__description">
+                            This complete home transformation project showcases our team's ability to handle full-scale renovations. From custom reconstruction to finishing touches, we worked closely with the homeowner to bring their vision to life. Every detail was carefully planned and executed, resulting in a beautiful, functional, and modern living space.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -143,8 +270,57 @@
         </section>
     </main>
 
-    <script src="js/libs/aos.js"></script>
-    <script src="js/libs/anime.min.js"></script>
-    <script type="module" src="src/main.ts"></script>
+    <footer class="footer">
+        <div class="footer__section">
+            <div class="footer__container">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="/public/img/logo-red.svg" alt="Style Homes Logo" />
+                    </a>
+                    <p class="footer__tagline">Smart Investment • Quality Craftsmanship</p>
+                    <div class="footer__socials">
+                        <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="footer__social-icon">
+                            <img src="/public/img/instagram.avif" alt="Instagram" />
+                        </a>
+                        <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
+                            target="_blank" class="footer__social-icon">
+                            <img src="/public/img/thumbtack.avif" alt="Thumbtack" />
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contact Us</h4>
+                    <ul class="footer__list">
+                        <li><a href="tel:+15039805216" class="footer__link">+1 (503) 980 5216</a></li>
+                        <li><a href="mailto:chaikataras@icloud.com" class="footer__link">chaikataras@icloud.com</a></li>
+                        <li>Portland, OR +50 miles</li>
+                        <li>Washington License: STYLEHL751CS</li>
+                        <li>Oregon CCB: 259642</li>
+                    </ul>
+                </div>
+                <div class="footer__nav">
+                    <h4 class="footer__title">Quick Links</h4>
+                    <ul class="footer__list">
+                        <li><a href="index.html#hero">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer__bottom-logo">
+                <img src="/public/img/logo-red.svg" alt="Style Homes Logo" />
+            </div>
+            <p>&copy; 2024 Style Homes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/public/js/libs/aos.js"></script>
+    <script src="/public/js/libs/anime.min.js"></script>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

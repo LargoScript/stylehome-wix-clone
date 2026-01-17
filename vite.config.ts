@@ -25,7 +25,8 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
       '@types': resolve(__dirname, 'src/types'),
       '@modules': resolve(__dirname, 'src/modules'),
-      '@utils': resolve(__dirname, 'src/utils')
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@components': resolve(__dirname, 'src/components')
     }
   }
 });

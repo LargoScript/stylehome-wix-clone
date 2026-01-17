@@ -1,184 +1,46 @@
 // Carousel модуль - проекти каруселі з infinite loop
 
-import { querySelector, querySelectorAll, getDatasetNumber } from '../utils/dom';
-import type { CarouselTrack } from '../types/dom';
+import { querySelectorAll } from '../utils/dom';
+import { Carousel, type CarouselOptions } from '../components/Carousel';
+
+// Зберігаємо посилання на всі створені каруселі для можливості очищення
+const carouselInstances: Carousel[] = [];
 
 /**
  * Ініціалізація каруселей проектів
+ * 
+ * @param options Опції для налаштування каруселей (опціонально)
  */
-export function initCarousels(): void {
-  const carousels = querySelectorAll<HTMLElement>('.project-card__carousel');
+export function initCarousels(options?: CarouselOptions): void {
+  const carouselElements = querySelectorAll<HTMLElement>('.project-card__carousel');
   
-  carousels.forEach(carousel => {
-    const track = querySelector<CarouselTrack>('.carousel-track', carousel);
-    if (!track) return;
-    
-    const slides = Array.from(track.querySelectorAll<HTMLImageElement>('img'));
-    if (slides.length === 0) return;
-    
-    // Додаємо дублікати для безшовного циклу
-    const firstSlide = slides[0].cloneNode(true) as HTMLImageElement;
-    const lastSlide = slides[slides.length - 1].cloneNode(true) as HTMLImageElement;
-    
-    track.insertBefore(lastSlide, slides[0]);
-    track.appendChild(firstSlide);
-    
-    // Встановлюємо початкову позицію
-    const slideWidth = carousel.clientWidth;
-    track.dataset.index = '1';
-    track.style.transition = 'none';
-    track.style.transform = `translateX(-${slideWidth}px)`;
-    
-    setTimeout(() => {
-      track.style.transition = 'transform 0.5s ease';
-    }, 50);
-  });
-
-  // Click handlers для кнопок каруселі
-  document.addEventListener('click', (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    const prevBtn = target.closest('.carousel-btn.prev');
-    const nextBtn = target.closest('.carousel-btn.next');
-
-    if (!prevBtn && !nextBtn) return;
-
-    const carousel = target.closest<HTMLElement>('.project-card__carousel');
-    if (!carousel) return;
-
-    const track = querySelector<CarouselTrack>('.carousel-track', carousel);
-    if (!track) return;
-    
-    const allSlides = Array.from(track.querySelectorAll<HTMLImageElement>('img'));
-    if (allSlides.length === 0) return;
-    
-    const originalCount = allSlides.length - 2;
-    let index = getDatasetNumber(track, 'index', 1);
-    const slideWidth = carousel.clientWidth;
-
-    const handleTransitionEnd = (event: TransitionEvent): void => {
-      if (event.target !== track) return;
-      
-      const currentIndex = getDatasetNumber(track, 'index', 1);
-      
-      if (currentIndex === 0) {
-        track.style.transition = 'none';
-        track.dataset.index = originalCount.toString();
-        track.style.transform = `translateX(-${originalCount * slideWidth}px)`;
-        setTimeout(() => {
-          track.style.transition = 'transform 0.5s ease';
-        }, 50);
-      } else if (currentIndex === originalCount + 1) {
-        track.style.transition = 'none';
-        track.dataset.index = '1';
-        track.style.transform = `translateX(-${slideWidth}px)`;
-        setTimeout(() => {
-          track.style.transition = 'transform 0.5s ease';
-        }, 50);
-      }
-      
-      track.removeEventListener('transitionend', handleTransitionEnd);
-    };
-
-    track.style.transition = 'transform 0.5s ease';
-    track.addEventListener('transitionend', handleTransitionEnd);
-
-    if (prevBtn) {
-      index = index - 1;
-      if (index < 1) {
-        index = 0;
-      }
+  carouselElements.forEach(carouselElement => {
+    try {
+      const carousel = new Carousel(carouselElement, options);
+      carouselInstances.push(carousel);
+    } catch (error) {
+      // Якщо карусель не може бути ініціалізована (немає слайдів, треку тощо),
+      // просто пропускаємо її
+      console.warn('Failed to initialize carousel:', error);
     }
-    
-    if (nextBtn) {
-      index = index + 1;
-      if (index > originalCount) {
-        index = originalCount + 1;
-      }
-    }
-
-    track.dataset.index = index.toString();
-    track.style.transform = `translateX(-${index * slideWidth}px)`;
   });
+}
 
-  // Resize handler
-  window.addEventListener('resize', () => {
-    carousels.forEach(carousel => {
-      const track = querySelector<CarouselTrack>('.carousel-track', carousel);
-      if (!track) return;
-      const index = getDatasetNumber(track, 'index', 1);
-      const slideWidth = carousel.clientWidth;
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
-    });
+/**
+ * Очищення всіх каруселей (видалення слухачів подій)
+ * Корисно при динамічному оновленні сторінки
+ */
+export function destroyCarousels(): void {
+  carouselInstances.forEach(carousel => {
+    carousel.destroy();
   });
+  carouselInstances.length = 0;
+}
 
-  // Touch/swipe support для мобільних
-  carousels.forEach(carousel => {
-    let startX = 0;
-    let endX = 0;
-
-    const track = querySelector<CarouselTrack>('.carousel-track', carousel);
-    if (!track) return;
-
-    carousel.addEventListener('touchstart', (e: TouchEvent) => {
-      startX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener('touchmove', (e: TouchEvent) => {
-      endX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener('touchend', () => {
-      if (!track) return;
-      
-      const allSlides = Array.from(track.querySelectorAll<HTMLImageElement>('img'));
-      const originalCount = allSlides.length - 2;
-      let index = getDatasetNumber(track, 'index', 1);
-      const threshold = 50;
-      const slideWidth = carousel.clientWidth;
-
-      const handleTransitionEnd = (event: TransitionEvent): void => {
-        if (event.target !== track) return;
-        
-        const currentIndex = getDatasetNumber(track, 'index', 1);
-        
-        if (currentIndex === 0) {
-          track.style.transition = 'none';
-          track.dataset.index = originalCount.toString();
-          track.style.transform = `translateX(-${originalCount * slideWidth}px)`;
-          setTimeout(() => {
-            track.style.transition = 'transform 0.5s ease';
-          }, 50);
-        } else if (currentIndex === originalCount + 1) {
-          track.style.transition = 'none';
-          track.dataset.index = '1';
-          track.style.transform = `translateX(-${slideWidth}px)`;
-          setTimeout(() => {
-            track.style.transition = 'transform 0.5s ease';
-          }, 50);
-        }
-        
-        track.removeEventListener('transitionend', handleTransitionEnd);
-      };
-
-      track.style.transition = 'transform 0.5s ease';
-      track.addEventListener('transitionend', handleTransitionEnd);
-
-      if (startX - endX > threshold) {
-        index = index + 1;
-        if (index > originalCount) {
-          index = originalCount + 1;
-        }
-      } else if (endX - startX > threshold) {
-        index = index - 1;
-        if (index < 1) {
-          index = 0;
-        }
-      }
-
-      track.dataset.index = index.toString();
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
-      startX = 0;
-      endX = 0;
-    });
-  });
+/**
+ * Отримати всі екземпляри каруселей
+ * Корисно для програмного керування каруселями
+ */
+export function getCarouselInstances(): readonly Carousel[] {
+  return carouselInstances;
 }

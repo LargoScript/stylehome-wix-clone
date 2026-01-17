@@ -312,6 +312,75 @@ body {
     transition: background 0.1s ease-out;
 }
 
+/* Підсторінки Hero - менша висота */
+.hero--subpage {
+    height: 70vh;
+    min-height: 500px;
+}
+
+/* Статичний overlay для підсторінок (без анімації) */
+.hero--subpage .hero__overlay {
+    background: linear-gradient(45deg, rgba(139, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(139, 0, 0, 0.2) 100%);
+    transition: none;
+}
+
+/* Вирівнювання контенту для підсторінок */
+.hero--subpage .hero__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 20px;
+}
+
+.hero--subpage .hero__badge {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.hero--subpage .hero__badge strong {
+    color: #8b0000;
+    font-weight: 700;
+}
+
+.hero--subpage .hero__card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 48px;
+    border-radius: 16px;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.hero--subpage .hero__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #8b0000;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.hero--subpage .hero__subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.hero--subpage .hero__location {
+    font-size: 14px;
+    color: #777;
+}
+
 .hero__particles {
     position: absolute;
     top: 0;
@@ -365,7 +434,9 @@ body {
 
 .service-details__image img {
     width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: 600px;
     display: block;
     object-fit: cover;
 }
@@ -757,17 +828,44 @@ body {
         min-height: 600px;
     }
     
+    .hero--subpage {
+        height: 60vh;
+        min-height: 450px;
+    }
+    
     .hero__title {
         font-size: 2.5rem;
+    }
+    
+    .hero--subpage .hero__title {
+        font-size: 28px;
     }
     
     .hero__subtitle {
         font-size: 1.2rem;
     }
     
+    .hero--subpage .hero__subtitle {
+        font-size: 16px;
+    }
+    
     .hero__badge {
         font-size: 0.75rem;
         padding: 6px 12px;
+    }
+    
+    .hero--subpage .hero__badge {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    
+    .hero--subpage .hero__card {
+        padding: 24px 32px;
+        max-width: 90%;
+    }
+    
+    .hero--subpage .hero__location {
+        font-size: 12px;
     }
     
     .header__logo-text {
@@ -999,20 +1097,47 @@ body {
         padding: 10px 20px;
     }
     
+    .hero--subpage {
+        height: 50vh;
+        min-height: 400px;
+    }
+    
+    .hero--subpage .hero__badge {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
     .hero__card {
         padding: 20px 24px;
+    }
+    
+    .hero--subpage .hero__card {
+        padding: 20px 24px;
+        max-width: 95%;
     }
     
     .hero__title {
         font-size: 24px;
     }
     
+    .hero--subpage .hero__title {
+        font-size: 22px;
+    }
+    
     .hero__subtitle {
         font-size: 14px;
     }
     
+    .hero--subpage .hero__subtitle {
+        font-size: 13px;
+    }
+    
     .hero__location {
         font-size: 12px;
+    }
+    
+    .hero--subpage .hero__location {
+        font-size: 11px;
     }
     
     .services {
