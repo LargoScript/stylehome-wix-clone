@@ -14,6 +14,7 @@ import { initCarousels } from './modules/carousel';
 import { initTestimonials } from './modules/testimonials';
 import { initFAQ } from './modules/faq';
 import { initForm } from './modules/form';
+import { initBackgroundEffects } from './modules/background-effects';
 
 console.log('Style Homes website loaded');
 
@@ -53,4 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize form
   initForm();
+  
+  // Initialize background effects
+  initBackgroundEffects();
 });

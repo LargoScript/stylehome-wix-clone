@@ -14,7 +14,9 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
+        kitchen: resolve(__dirname, 'kitchen-renovation.html'),
+        bathroom: resolve(__dirname, 'bathroom-renovation.html')
       }
     }
   },
