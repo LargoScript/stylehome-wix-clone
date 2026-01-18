@@ -40,6 +40,10 @@ jobs:
           head -20 dist/index.html
           echo "Checking for CSS/JS files..."
           ls -la dist/assets/*.css dist/assets/*.js || echo "No CSS/JS files found"
+          echo "Checking .nojekyll file..."
+          ls -la dist/.nojekyll || echo ".nojekyll file not found"
+          echo "Listing all files in dist/assets..."
+          ls -la dist/assets/ | head -20
       
       - name: Add .nojekyll
         run: touch dist/.nojekyll
