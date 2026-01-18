@@ -78,6 +78,18 @@ export class Carousel {
     this.currentIndex = 1;
     this.slideWidth = this.carousel.clientWidth;
 
+    // Приховуємо кнопки, якщо є тільки 1 слайд
+    if (this.originalCount <= 1) {
+      if (this.prevBtn) {
+        this.prevBtn.style.display = 'none';
+      }
+      if (this.nextBtn) {
+        this.nextBtn.style.display = 'none';
+      }
+      // Якщо тільки 1 слайд, не додаємо слухачі подій
+      return;
+    }
+
     // Налаштовуємо безкінечний цикл, якщо потрібно
     if (this.options.infinite) {
       this.setupInfiniteLoop();

@@ -53,7 +53,9 @@ export function generateHeroHTML(config: HeroConfig): string {
         <source src="${mediaSrc}" type="video/mp4" />
       </video>`;
   } else {
-    mediaHTML = `<div class="hero__image-bg" style="background-image: url('${mediaSrc}');"></div>`;
+    mediaHTML = `<div class="hero__image-bg">
+      <img src="${mediaSrc}" alt="${title}" />
+    </div>`;
   }
 
   // Генерація контенту
@@ -157,7 +159,15 @@ export function updateHero(
     } else {
       const existingImage = videoWrapper.querySelector('.hero__image-bg');
       if (existingImage) {
-        (existingImage as HTMLElement).style.backgroundImage = `url('${config.mediaSrc}')`;
+        const img = existingImage.querySelector('img');
+        if (img) {
+          img.src = config.mediaSrc;
+        } else {
+          const newImg = document.createElement('img');
+          newImg.src = config.mediaSrc;
+          newImg.alt = config.title || 'Hero image';
+          existingImage.appendChild(newImg);
+        }
       } else {
         // Замінюємо video на image
         const video = videoWrapper.querySelector('video');
@@ -166,7 +176,10 @@ export function updateHero(
         }
         const imageBg = document.createElement('div');
         imageBg.className = 'hero__image-bg';
-        imageBg.style.backgroundImage = `url('${config.mediaSrc}')`;
+        const img = document.createElement('img');
+        img.src = config.mediaSrc;
+        img.alt = config.title || 'Hero image';
+        imageBg.appendChild(img);
         videoWrapper.insertBefore(imageBg, videoWrapper.querySelector('.hero__overlay'));
       }
     }

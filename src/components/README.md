@@ -249,10 +249,217 @@ interface HeroConfig {
 - `insertHero(container: HTMLElement | string, config: HeroConfig): HTMLElement | null` - вставка Hero в DOM
 - `updateHero(heroElement: HTMLElement | string, config: Partial<HeroConfig>): HTMLElement | null` - оновлення існуючої Hero
 
+## Footer
+
+Компонент Footer секції для створення підвалу сайту з підтримкою:
+- Логотипу компанії
+- Контактної інформації (ліцензії, телефон, email)
+- Соціальних мереж
+- Швидких посилань (навігація)
+- Зон обслуговування
+- Копірайту
+
+### Використання
+
+#### Автоматична ініціалізація (через модуль)
+
+```typescript
+import { initFooter } from '../modules/footer';
+
+// Ініціалізує Footer з конфігурацією за замовчуванням
+initFooter();
+
+// Або з кастомною конфігурацією
+import { initFooterWithConfig } from '../modules/footer';
+
+initFooterWithConfig({
+  logo: {
+    src: '/img/logo-red.svg',
+    alt: 'Style Homes Logo'
+  },
+  contacts: [
+    { text: 'Phone: +1 (503) 980 5216', href: 'tel:+15039805216' }
+  ],
+  // ... інші опції
+});
+```
+
+#### Генерація HTML (статичне використання)
+
+```typescript
+import { generateFooterHTML } from '../components/Footer';
+
+const footerHTML = generateFooterHTML({
+  logo: {
+    src: '/img/logo-red.svg',
+    alt: 'Style Homes Logo'
+  },
+  contacts: [
+    { text: 'Washington License: STYLEHL751CS', href: '...', target: '_blank' },
+    { text: '+1 (503) 980 5216', href: 'tel:+15039805216' }
+  ],
+  socials: [
+    { href: 'https://instagram.com/...', iconSrc: '/img/social_ico/instagram.avif', alt: 'Instagram', target: '_blank' }
+  ],
+  quickLinks: [
+    { text: 'Home', href: '/' },
+    { text: 'Services', href: '#services' }
+  ],
+  serviceAreas: ['Portland, OR +50 miles', 'Vancouver, WA +50 miles'],
+  copyright: '© Style Homes 2025'
+});
+
+// Вставка в DOM
+document.querySelector('body')!.innerHTML += footerHTML;
+```
+
+#### Динамічна вставка
+
+```typescript
+import { insertFooter } from '../components/Footer';
+
+// Вставка Footer в body
+const footerElement = insertFooter('body', {
+  logo: { src: '/img/logo-red.svg', alt: 'Logo' },
+  contacts: [],
+  socials: [],
+  quickLinks: [],
+  serviceAreas: [],
+  copyright: '© 2025'
+});
+```
+
+#### Оновлення існуючого Footer
+
+```typescript
+import { updateFooter } from '../components/Footer';
+
+// Оновлення тільки копірайту
+updateFooter('.footer', {
+  copyright: '© Style Homes 2026'
+});
+
+// Оновлення контактів
+updateFooter('.footer', {
+  contacts: [
+    { text: 'New Phone', href: 'tel:+1234567890' }
+  ]
+});
+```
+
+### Опції (FooterConfig)
+
+```typescript
+interface FooterConfig {
+  /** Логотип компанії */
+  logo: {
+    src: string;
+    alt: string;
+  };
+  
+  /** Контактна інформація */
+  contacts: FooterContact[];
+  
+  /** Соціальні мережі */
+  socials: FooterSocial[];
+  
+  /** Швидкі посилання */
+  quickLinks: FooterLink[];
+  
+  /** Зони обслуговування */
+  serviceAreas: string[];
+  
+  /** Копірайт текст */
+  copyright: string;
+  
+  /** Додаткові класи для footer */
+  additionalClasses?: string;
+}
+
+interface FooterContact {
+  text: string;
+  href: string;
+  target?: '_blank' | '_self';
+}
+
+interface FooterSocial {
+  href: string;
+  iconSrc: string;
+  alt: string;
+  target?: '_blank' | '_self';
+}
+
+interface FooterLink {
+  text: string;
+  href: string;
+  target?: '_blank' | '_self';
+}
+```
+
+### HTML Структура
+
+```html
+<footer class="footer">
+  <section class="footer__section">
+    <div class="footer__container">
+      <!-- Brand / Contacts -->
+      <div class="footer__col footer__brand">
+        <div class="footer__logo">
+          <img src="/img/logo-red.svg" alt="Style Homes Logo">
+        </div>
+        <a class="footer__link" href="...">Washington License: STYLEHL751CS</a>
+        <a class="footer__link" href="...">Oregon CCB: 259642</a>
+        <a class="footer__link" href="tel:+15039805216">+1 (503) 980 5216</a>
+        <a class="footer__link" href="mailto:...">chaikataras@icloud.com</a>
+        <div class="footer__socials">
+          <a href="..." class="footer__icon">
+            <img src="/img/social_ico/instagram.avif" alt="Instagram">
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer__col">
+        <h4 class="footer__title">Quick Links</h4>
+        <nav class="footer__nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Service Areas -->
+      <div class="footer__col">
+        <h4 class="footer__title">Service Areas</h4>
+        <ul class="footer__list">
+          <li>Portland, OR +50 miles</li>
+          <li>Vancouver, WA +50 miles</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__bottom-logo">
+        <img src="/img/logo-red.svg" alt="Style Homes Logo">
+      </div>
+      <p>© Style Homes 2025</p>
+    </div>
+  </section>
+</footer>
+```
+
+### Функції
+
+- `generateFooterHTML(config: FooterConfig): string` - генерація HTML рядка
+- `insertFooter(container: HTMLElement | string, config: FooterConfig): HTMLElement | null` - вставка Footer в DOM
+- `updateFooter(footerElement: HTMLElement | string, config: Partial<FooterConfig>): HTMLElement | null` - оновлення існуючого Footer
+
 ## Додавання нових компонентів
 
 При додаванні нового компонента:
 
 1. Створіть файл компонента в цій теці
 2. Додайте експорт в `index.ts`
-3. Оновіть цей README з документацією
+3. Створіть модуль для ініціалізації в `../modules/`
+4. Оновіть цей README з документацією

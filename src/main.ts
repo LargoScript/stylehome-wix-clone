@@ -15,6 +15,8 @@ import { initTestimonials } from './modules/testimonials';
 import { initFAQ } from './modules/faq';
 import { initForm } from './modules/form';
 import { initBackgroundEffects } from './modules/background-effects';
+import { initHero } from './modules/hero';
+import { initFooter } from './modules/footer';
 
 console.log('Style Homes website loaded');
 
@@ -57,4 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize background effects
   initBackgroundEffects();
+  
+  // Initialize hero section (може оновити існуючу, якщо потрібно)
+  // initHero(); // Розкоментуйте, якщо потрібно динамічно оновлювати Hero
+  
+  // Initialize footer section
+  initFooter();
 });

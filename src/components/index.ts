@@ -8,3 +8,12 @@ export {
   type HeroConfig,
   type HeroMediaType
 } from './Hero';
+export {
+  generateFooterHTML,
+  insertFooter,
+  updateFooter,
+  type FooterConfig,
+  type FooterLink,
+  type FooterSocial,
+  type FooterContact
+} from './Footer';

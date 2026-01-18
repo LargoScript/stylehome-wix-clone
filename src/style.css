@@ -43,15 +43,18 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
-    gap: 40px; /* Мінімальна відстань між елементами */
-    min-width: 0; /* Дозволяє контейнеру стискатися */
+    gap: 40px;
+    /* Мінімальна відстань між елементами */
+    min-width: 0;
+    /* Дозволяє контейнеру стискатися */
 }
 
 .header__logo {
     display: flex;
     align-items: center;
     text-decoration: none;
-    flex: 0 0 auto; /* Логотип не стискається */
+    flex: 0 0 auto;
+    /* Логотип не стискається */
 }
 
 .header__logo-img {
@@ -64,12 +67,18 @@ body {
 }
 
 .header__nav {
-    display: flex; /* По замовчуванню видимо на десктопі */
-    flex: 1 1 auto; /* Дозволяє навігації стискатися, якщо потрібно */
-    min-width: 0; /* Дозволяє стискатися нижче мінімального розміру контенту */
-    max-width: 100%; /* Не дозволяє навігації виходити за межі */
-    overflow: hidden; /* Приховує переповнення */
-    transition: none; /* Без transition для миттєвого показу/приховування */
+    display: flex;
+    /* По замовчуванню видимо на десктопі */
+    flex: 1 1 auto;
+    /* Дозволяє навігації стискатися, якщо потрібно */
+    min-width: 0;
+    /* Дозволяє стискатися нижче мінімального розміру контенту */
+    max-width: 100%;
+    /* Не дозволяє навігації виходити за межі */
+    overflow: hidden;
+    /* Приховує переповнення */
+    transition: none;
+    /* Без transition для миттєвого показу/приховування */
 }
 
 .header__nav-list {
@@ -78,7 +87,8 @@ body {
     gap: 40px;
     margin: 0;
     padding: 0;
-    flex-wrap: nowrap; /* Не дозволяє переноситися на новий рядок */
+    flex-wrap: nowrap;
+    /* Не дозволяє переноситися на новий рядок */
 }
 
 .header__nav-link {
@@ -124,10 +134,14 @@ body {
 .header__actions {
     display: flex;
     align-items: center;
-    gap: 12px; /* Зменшена відстань між телефоном та іконками */
-    flex: 0 0 auto; /* Не дозволяє actions стискатися */
-    margin-right: 0; /* Відступ від правого краю через padding контейнера */
-    order: 3; /* Розміщуємо останнім (найправіше) */
+    gap: 12px;
+    /* Зменшена відстань між телефоном та іконками */
+    flex: 0 0 auto;
+    /* Не дозволяє actions стискатися */
+    margin-right: 0;
+    /* Відступ від правого краю через padding контейнера */
+    order: 3;
+    /* Розміщуємо останнім (найправіше) */
 }
 
 .header__phone {
@@ -141,9 +155,12 @@ body {
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
     transition: all 0.3s;
-    white-space: nowrap; /* Номер в один рядок */
-    flex: 0 0 auto; /* Не дозволяємо номеру стискатися або розширюватися */
-    min-width: max-content; /* Мінімальна ширина за контентом */
+    white-space: nowrap;
+    /* Номер в один рядок */
+    flex: 0 0 auto;
+    /* Не дозволяємо номеру стискатися або розширюватися */
+    min-width: max-content;
+    /* Мінімальна ширина за контентом */
 }
 
 .header__phone:hover {
@@ -159,7 +176,8 @@ body {
     text-decoration: none;
     width: 32px;
     height: 32px;
-    flex-shrink: 0; /* Не дозволяє іконкам стискатися */
+    flex-shrink: 0;
+    /* Не дозволяє іконкам стискатися */
 }
 
 .header__icon img {
@@ -184,7 +202,8 @@ body {
 
 /* Mobile Menu */
 .header__burger {
-    display: none; /* По замовчуванню приховано, показується через JS коли елементи торкаються */
+    display: none;
+    /* По замовчуванню приховано, показується через JS коли елементи торкаються */
     flex-direction: column;
     gap: 6px;
     padding: 10px;
@@ -192,10 +211,14 @@ body {
     border: none;
     cursor: pointer;
     z-index: 1001;
-    flex-shrink: 0; /* Не дозволяє стискатися */
-    order: 2; /* Розміщуємо праворуч після навігації */
-    margin-left: auto; /* Відштовхуємо від навігації */
-    transition: none; /* Без transition для миттєвого показу/приховування */
+    flex-shrink: 0;
+    /* Не дозволяє стискатися */
+    order: 2;
+    /* Розміщуємо праворуч після навігації */
+    margin-left: auto;
+    /* Відштовхуємо від навігації */
+    transition: none;
+    /* Без transition для миттєвого показу/приховування */
 }
 
 /* Коли бургер-меню активно через auto-show */
@@ -287,6 +310,25 @@ body {
     object-fit: cover;
 }
 
+/* Image background - same behavior as video */
+.hero__image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero__image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
 .hero__overlay {
     position: absolute;
     top: 0;
@@ -322,7 +364,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50px;
     backdrop-filter: blur(5px);
-    line-height: 1.6; /* Для кращого відображення двох рядків */
+    line-height: 1.6;
+    /* Для кращого відображення двох рядків */
     text-align: center;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -447,25 +490,127 @@ body {
     color: #777;
 }
 
+/* ===== HERO SUBPAGE ===== */
+/* Підсторінки Hero - така ж висота як головна сторінка */
+.hero--subpage {
+    height: 100vh;
+    min-height: 700px;
+    width: 100%;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero--subpage .hero__video-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero--subpage .hero__image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero--subpage .hero__image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.hero--subpage .hero__overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(139, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(139, 0, 0, 0.2) 100%);
+    transition: none;
+}
+
+/* Вирівнювання контенту для підсторінок */
+.hero--subpage .hero__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 20px;
+}
+
+.hero--subpage .hero__badge {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.hero--subpage .hero__badge strong {
+    color: #8b0000;
+    font-weight: 700;
+}
+
+.hero--subpage .hero__card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 48px;
+    border-radius: 16px;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.hero--subpage .hero__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #8b0000;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.hero--subpage .hero__subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.hero--subpage .hero__location {
+    font-size: 14px;
+    color: #777;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .header__nav-list {
-        gap: 16px; /* Зменшуємо gap на менших екранах, щоб не залазити на телефон */
+        gap: 16px;
+        /* Зменшуємо gap на менших екранах, щоб не залазити на телефон */
     }
-    
+
     .header__nav-link {
-        font-size: 0.85rem; /* Зменшуємо шрифт для економії місця */
-        white-space: nowrap; /* Не переносимо текст */
+        font-size: 0.85rem;
+        /* Зменшуємо шрифт для економії місця */
+        white-space: nowrap;
+        /* Не переносимо текст */
     }
-    
+
     .header__container {
-        gap: 20px; /* Зменшуємо gap між елементами контейнера */
+        gap: 20px;
+        /* Зменшуємо gap між елементами контейнера */
     }
-    
+
     .hero__title {
         font-size: 3rem;
     }
-    
+
     .hero__subtitle {
         font-size: 1.3rem;
     }
@@ -475,37 +620,38 @@ body {
     .header {
         padding: 15px 0;
     }
-    
+
     .header.scrolled {
         padding: 10px 0;
     }
-    
+
     .header__container {
         padding: 0 16px;
-        gap: 24px; /* Зменшуємо gap на планшетах */
+        gap: 24px;
+        /* Зменшуємо gap на планшетах */
     }
-    
+
     .header__nav {
         flex: 1 1 auto;
         min-width: 0;
     }
-    
+
     .header__actions {
         flex: 0 0 auto;
     }
-    
+
     .header__logo-img {
         height: 40px;
     }
-    
+
     .header.scrolled .header__logo-img {
         height: 35px;
     }
-    
+
     .header__burger {
         display: flex;
     }
-    
+
     .header__nav {
         position: fixed;
         top: 0;
@@ -525,7 +671,7 @@ body {
         visibility: hidden;
         opacity: 0;
     }
-    
+
     /* Кнопка закриття меню (хрестик) */
     .header__nav-close {
         position: absolute;
@@ -543,11 +689,11 @@ body {
         padding: 0;
         transition: transform 0.3s ease;
     }
-    
+
     .header__nav-close:hover {
         transform: rotate(90deg);
     }
-    
+
     .header__nav-close-line {
         position: absolute;
         width: 24px;
@@ -555,86 +701,89 @@ body {
         background-color: #333;
         transition: all 0.3s ease;
     }
-    
+
     .header__nav-close-line:nth-child(1) {
         transform: rotate(45deg);
     }
-    
+
     .header__nav-close-line:nth-child(2) {
         transform: rotate(-45deg);
     }
-    
+
     .header__nav.active {
         transform: translateX(0);
         visibility: visible;
         opacity: 1;
         transition: transform 0.3s ease, visibility 0s, opacity 0.3s ease;
     }
-    
+
     /* Блокуємо transition при resize */
     body.no-transition .header__nav,
     body.no-transition .header__nav.active {
         transition: none !important;
     }
-    
+
     .header__nav-list {
         flex-direction: column;
         gap: 30px;
         text-align: center;
     }
-    
+
     .header__nav-link {
         font-size: 1.5rem;
         color: #333;
     }
-    
+
     .header__actions {
-        gap: 10px; /* Зменшена відстань на планшетах */
-        flex: 0 0 auto; /* Не дозволяє actions стискатися */
+        gap: 10px;
+        /* Зменшена відстань на планшетах */
+        flex: 0 0 auto;
+        /* Не дозволяє actions стискатися */
     }
-    
+
     .header__icon {
         width: 30px;
         height: 30px;
     }
-    
+
     .header__icon img {
         width: 26px;
         height: 26px;
     }
-    
+
     .header__phone {
         padding: 10px 16px;
         font-size: 0.85rem;
-        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        flex: 0 0 auto;
+        /* Не дозволяємо номеру стискатися */
         min-width: max-content;
     }
-    
+
     .hero {
         min-height: 600px;
     }
-    
+
     .hero__title {
         font-size: 2.5rem;
     }
-    
+
     .hero__subtitle {
         font-size: 1.2rem;
     }
-    
+
     .hero__badge {
         font-size: 0.75rem;
         padding: 6px 12px;
     }
-    
+
     .header__logo-text {
         font-size: 16px;
     }
-    
+
     .header__burger {
         display: flex;
     }
-    
+
     .header__nav {
         position: fixed;
         top: 0;
@@ -651,18 +800,18 @@ body {
         z-index: 1000;
         overflow-y: auto;
     }
-    
+
     .header__nav.active {
         transform: translateX(0);
     }
-    
+
     .header__nav-list {
         flex-direction: column;
         gap: 24px;
         width: 100%;
         padding: 0 24px;
     }
-    
+
     .header__nav-link {
         font-size: 20px;
         padding: 12px 0;
@@ -670,150 +819,153 @@ body {
         text-align: center;
         border-bottom: 1px solid #eee;
     }
-    
+
     .header__nav-link.active::after {
         display: none;
     }
-    
+
     .header__phone {
         padding: 8px 14px;
         font-size: 13px;
-        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        flex: 0 0 auto;
+        /* Не дозволяємо номеру стискатися */
         min-width: max-content;
     }
-    
+
     .header__actions {
-        flex: 0 0 auto; /* Не дозволяє actions стискатися */
+        flex: 0 0 auto;
+        /* Не дозволяє actions стискатися */
     }
-    
+
     .header__icon {
         width: 30px;
         height: 30px;
     }
-    
+
     .header__icon img {
         width: 26px;
         height: 26px;
     }
-    
+
     .hero {
         height: 80vh;
         min-height: 500px;
     }
-    
+
     .hero__badge {
         font-size: 18px;
         padding: 12px 24px;
     }
-    
+
     .hero__card {
         padding: 24px 32px;
     }
-    
+
     .hero__title {
         font-size: 28px;
     }
-    
+
     .hero__subtitle {
         font-size: 16px;
     }
-    
+
     .services-hero {
         padding: 40px 16px;
     }
-    
+
     .services-hero__container {
         grid-template-columns: 1fr;
         gap: 16px;
         max-width: 100%;
     }
-    
+
     .services-hero__card {
         aspect-ratio: 16 / 9;
         min-height: 200px;
     }
-    
+
     .services-hero__card-overlay {
         padding: 20px 24px;
         width: 90%;
         max-width: 300px;
-        min-height: 100px; /* Фіксована мінімальна висота */
+        min-height: 100px;
+        /* Фіксована мінімальна висота */
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .services-hero__card-title {
         font-size: 20px;
         line-height: 1.3;
     }
-    
+
     .consultation {
         padding: 50px 20px;
     }
-    
+
     .consultation__card {
         padding: 40px 32px;
     }
-    
+
     .form__row {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .consultation__title {
         font-size: 32px;
     }
-    
+
     .about {
         padding: 60px 20px;
     }
-    
+
     .about__card {
         padding: 40px 50px;
     }
-    
+
     .about__title {
         font-size: 32px;
     }
-    
+
     .services {
         padding: 60px 20px;
     }
-    
+
     .services__container {
         padding: 50px 40px;
     }
-    
+
     .service-card {
         gap: 30px;
     }
-    
+
     .service-card__image {
         width: 280px;
         height: 180px;
     }
-    
+
     .service-card__title {
         font-size: 24px;
     }
-    
+
     .service-card__text {
         font-size: 15px;
     }
-    
+
     .projects {
         padding: 60px 20px;
     }
-    
+
     .projects__grid {
         gap: 24px;
     }
-    
+
     .projects__title {
         font-size: 32px;
     }
-    
+
     .project-card__carousel {
         height: 350px;
     }
@@ -823,262 +975,266 @@ body {
     .header__logo-text {
         display: none;
     }
-    
+
     .header__logo-img {
         width: 60px;
         height: 60px;
     }
-    
+
     .header__actions {
-        gap: 8px; /* Мінімальна відстань на мобільних */
-        flex: 0 0 auto; /* Не дозволяє actions стискатися */
+        gap: 8px;
+        /* Мінімальна відстань на мобільних */
+        flex: 0 0 auto;
+        /* Не дозволяє actions стискатися */
     }
-    
+
     .header__icon {
         width: 28px;
         height: 28px;
     }
-    
+
     .header__icon img {
         width: 24px;
         height: 24px;
     }
-    
+
     .header__phone {
         padding: 8px 12px;
         font-size: 12px;
-        flex: 0 0 auto; /* Не дозволяємо номеру стискатися */
+        flex: 0 0 auto;
+        /* Не дозволяємо номеру стискатися */
         min-width: max-content;
     }
-    
+
     .hero__badge {
         font-size: 16px;
         padding: 10px 20px;
     }
-    
+
     .hero__card {
         padding: 20px 24px;
     }
-    
+
     .hero__title {
         font-size: 24px;
     }
-    
+
     .hero__subtitle {
         font-size: 14px;
     }
-    
+
     .hero__location {
         font-size: 12px;
     }
-    
+
     .services {
         padding: 30px 16px;
     }
-    
+
     .services__card-overlay {
         padding: 14px 20px;
     }
-    
+
     .services-hero {
         padding: 30px 12px;
     }
-    
+
     .services-hero__container {
         gap: 12px;
     }
-    
+
     .services-hero__card {
         aspect-ratio: 4 / 3;
         min-height: 180px;
     }
-    
+
     .services-hero__card-overlay {
         padding: 16px 20px;
         width: 85%;
         max-width: none;
-        min-height: 90px; /* Фіксована мінімальна висота для мобільних */
+        min-height: 90px;
+        /* Фіксована мінімальна висота для мобільних */
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .services-hero__card-title {
         font-size: 18px;
         line-height: 1.2;
     }
-    
+
     .services-hero__card-title {
         font-size: 18px;
     }
-    
+
     .consultation {
         padding: 40px 16px;
     }
-    
+
     .consultation__card {
         padding: 32px 24px;
     }
-    
+
     .consultation__title {
         font-size: 28px;
     }
-    
+
     .consultation__description {
         font-size: 15px;
     }
-    
+
     .form__row {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .form__submit {
         width: 100%;
         padding: 14px;
     }
-    
+
     .about {
         padding: 50px 16px;
         min-height: auto;
     }
-    
+
     .about__card {
         padding: 30px 25px;
     }
-    
+
     .about__title {
         font-size: 28px;
     }
-    
+
     .about__subtitle {
         font-size: 16px;
     }
-    
+
     .about__paragraph {
         font-size: 15px;
     }
-    
+
     .services {
         padding: 50px 16px;
     }
-    
+
     .services__container {
         padding: 40px 30px;
         border-radius: 16px;
     }
-    
+
     .services__title {
         font-size: 28px;
     }
-    
+
     .services__subtitle {
         font-size: 16px;
         margin-bottom: 40px;
     }
-    
+
     .services__list {
         gap: 40px;
     }
-    
+
     .service-card {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
     }
-    
+
     .service-card__image {
         width: 100%;
         height: 220px;
     }
-    
+
     .service-card__title {
         font-size: 22px;
     }
-    
+
     .service-card__text {
         font-size: 15px;
     }
-    
+
     .projects {
         padding: 50px 16px;
     }
-    
+
     .projects__grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .projects__title {
         font-size: 28px;
     }
-    
+
     .projects__subtitle {
         font-size: 16px;
         margin-bottom: 40px;
     }
-    
+
     .project-card__carousel {
         height: 300px;
     }
-    
+
     .project-card__name {
         font-size: 18px;
         padding: 20px 20px 12px;
     }
-    
+
     .project-card__description {
         font-size: 14px;
         padding: 0 20px 20px;
     }
-    
+
     .carousel-btn {
         width: 40px;
         height: 40px;
         font-size: 20px;
     }
-    
+
     .testimonials {
         padding: 50px 16px;
     }
-    
+
     .testimonials__container {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .testimonials__header {
         position: static;
         text-align: center;
     }
-    
+
     .testimonials__title {
         font-size: 28px;
     }
-    
+
     .testimonials__subtitle {
         font-size: 16px;
     }
-    
+
     .testimonials__carousel-wrapper {
         padding: 40px 30px;
         min-height: auto;
     }
-    
+
     .testimonials__btn {
         width: 40px;
         height: 40px;
         font-size: 20px;
     }
-    
+
     .testimonials__btn--prev {
         left: 10px;
     }
-    
+
     .testimonials__btn--next {
         right: 10px;
     }
-    
+
     .testimonial-card__text {
         font-size: 15px;
         line-height: 1.7;
@@ -1142,7 +1298,8 @@ body {
     border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease;
-    min-height: 100px; /* Фіксована мінімальна висота для однакових розмірів */
+    min-height: 100px;
+    /* Фіксована мінімальна висота для однакових розмірів */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1353,7 +1510,8 @@ body {
     padding: 60px 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     position: relative;
-    z-index: 2; /* Контент поверх затемнення */
+    z-index: 2;
+    /* Контент поверх затемнення */
 }
 
 .services__title {
@@ -1384,9 +1542,11 @@ body {
     gap: 40px;
     text-decoration: none;
     color: inherit;
-    align-items: flex-start; /* Вирівнюємо по верхній лінії */
+    align-items: flex-start;
+    /* Вирівнюємо по верхній лінії */
     transition: all 0.3s ease;
-    will-change: transform; /* Оптимізація для анімацій */
+    will-change: transform;
+    /* Оптимізація для анімацій */
 }
 
 .service-card:hover .service-card__title {
@@ -1399,7 +1559,8 @@ body {
     height: 200px;
     border-radius: 16px;
     overflow: hidden;
-    align-self: flex-start; /* Вирівнюємо зображення по верхній лінії */
+    align-self: flex-start;
+    /* Вирівнюємо зображення по верхній лінії */
 }
 
 .service-card__image img {
@@ -1407,7 +1568,8 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-    will-change: transform; /* Оптимізація для анімацій */
+    will-change: transform;
+    /* Оптимізація для анімацій */
 }
 
 .service-card:hover .service-card__image img {
@@ -2381,4 +2543,3 @@ body {
         width: 100px;
     }
 }
-
