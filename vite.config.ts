@@ -52,8 +52,10 @@ export default defineConfig({
         // Після збірки виправляємо шляхи в HTML файлах
         const distDir = resolve(__dirname, 'dist');
         const htmlFiles = findHtmlFiles(distDir);
+        console.log(`[add-base-path] Found ${htmlFiles.length} HTML files to process`);
         htmlFiles.forEach(file => {
           let content = readFileSync(file, 'utf-8');
+          const originalContent = content;
           // Додаємо base path до відносних шляхів у script та link тегах
           content = content.replace(
             /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:|data:)([^"]+)"/g,
@@ -65,8 +67,12 @@ export default defineConfig({
               return `${attr}="/stylehome-wix-clone/${path}"`;
             }
           );
-          writeFileSync(file, content, 'utf-8');
+          if (content !== originalContent) {
+            writeFileSync(file, content, 'utf-8');
+            console.log(`[add-base-path] Updated ${file}`);
+          }
         });
+        console.log(`[add-base-path] Plugin completed`);
       }
     }
   ]
