@@ -32,11 +32,11 @@ export class Carousel {
   private options: Required<CarouselOptions>;
   
   // Обробники подій для видалення
-  private clickHandler: (e: MouseEvent) => void;
-  private resizeHandler: () => void;
-  private touchStartHandler: (e: TouchEvent) => void;
-  private touchMoveHandler: (e: TouchEvent) => void;
-  private touchEndHandler: () => void;
+  private clickHandler!: (e: MouseEvent) => void;
+  private resizeHandler!: () => void;
+  private touchStartHandler!: (e: TouchEvent) => void;
+  private touchMoveHandler!: (e: TouchEvent) => void;
+  private touchEndHandler!: () => void;
   
   private touchStartX: number = 0;
   private touchEndX: number = 0;
