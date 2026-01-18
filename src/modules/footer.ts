@@ -7,7 +7,7 @@ import { insertFooter, updateFooter, type FooterConfig } from '../components/Foo
  */
 const defaultFooterConfig: FooterConfig = {
   logo: {
-    src: '/img/logo-red.svg',
+    src: 'img/logo-red.svg',
     alt: 'Style Homes Logo'
   },
   contacts: [
@@ -33,13 +33,13 @@ const defaultFooterConfig: FooterConfig = {
   socials: [
     {
       href: 'https://www.instagram.com/style_homes_usa',
-      iconSrc: '/img/social_ico/instagram.avif',
+      iconSrc: 'img/social_ico/instagram.avif',
       alt: 'Instagram',
       target: '_blank'
     },
     {
       href: 'https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678',
-      iconSrc: '/img/social_ico/thumbtack.avif',
+      iconSrc: 'img/social_ico/thumbtack.avif',
       alt: 'Thumbtack',
       target: '_blank'
     }

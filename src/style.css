@@ -1928,6 +1928,93 @@ body {
     height: 12px;
 }
 
+/* ===== TESTIMONIALS MOBILE ADAPTIVE ===== */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 60px 20px;
+    }
+
+    .testimonials__container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .testimonials__header {
+        position: static;
+        order: 1;
+        text-align: center;
+    }
+
+    .testimonials__carousel-wrapper {
+        order: 2;
+        padding: 40px 30px;
+        min-height: auto;
+        max-height: none;
+    }
+
+    .testimonials__title {
+        font-size: 28px;
+    }
+
+    .testimonials__subtitle {
+        font-size: 16px;
+    }
+
+    .testimonial-card__name {
+        font-size: 18px;
+    }
+
+    .testimonial-card__text {
+        font-size: 15px;
+    }
+
+    .testimonials__btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .testimonials__btn--prev {
+        left: 10px;
+    }
+
+    .testimonials__btn--next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 40px 16px;
+    }
+
+    .testimonials__container {
+        gap: 30px;
+    }
+
+    .testimonials__carousel-wrapper {
+        padding: 30px 20px;
+    }
+
+    .testimonials__title {
+        font-size: 24px;
+    }
+
+    .testimonials__subtitle {
+        font-size: 14px;
+    }
+
+    .testimonial-card__name {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .testimonial-card__text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
 /* ============================================
    START SECTION (About Master)
    ============================================ */

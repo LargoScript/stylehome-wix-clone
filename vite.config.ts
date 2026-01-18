@@ -32,7 +32,9 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         kitchen: resolve(__dirname, 'kitchen-renovation.html'),
-        bathroom: resolve(__dirname, 'bathroom-renovation.html')
+        bathroom: resolve(__dirname, 'bathroom-renovation.html'),
+        woodPanel: resolve(__dirname, 'wood-and-panel-wall-decor.html'),
+        wholeHome: resolve(__dirname, 'whole-home-transformation.html')
       }
     }
   },
