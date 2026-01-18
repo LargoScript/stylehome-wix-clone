@@ -2568,3 +2568,30 @@ img, video {
     height: auto;
 }
 
+
+
+/* FIX MOBILE SERVICES LIST AND CARDS */
+@media (max-width: 768px) {
+    .services__list {
+        flex-direction: column !important;
+        gap: 40px;
+    }
+
+    .service-card {
+        flex-direction: column !important;
+        align-items: flex-start;
+        height: auto !important;
+    }
+
+    .service-card__image {
+        width: 100% !important;
+        height: 250px !important;
+        max-width: 100%;
+    }
+
+    .service-card__content {
+        width: 100% !important;
+        padding: 20px 0 !important;
+    }
+}
+
