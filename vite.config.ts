@@ -56,10 +56,10 @@ export default defineConfig({
           let content = readFileSync(file, 'utf-8');
           // Додаємо base path до відносних шляхів у script та link тегах
           content = content.replace(
-            /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:)([^"]+)"/g,
+            /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:|data:)([^"]+)"/g,
             (match, attr, path) => {
               // Пропускаємо шляхи, які вже мають base path або абсолютні
-              if (path.startsWith('/stylehome-wix-clone/') || path.startsWith('http') || path.startsWith('tel:') || path.startsWith('mailto:')) {
+              if (path.startsWith('/stylehome-wix-clone/') || path.startsWith('http') || path.startsWith('tel:') || path.startsWith('mailto:') || path.startsWith('data:')) {
                 return match;
               }
               return `${attr}="/stylehome-wix-clone/${path}"`;
