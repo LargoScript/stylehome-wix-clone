@@ -153,7 +153,17 @@ def generate_html_page(json_file, template_file='kitchen-renovation.html'):
         images = project.get('images', [])
         
         # Знаходимо папку з завантаженими зображеннями
-        project_dir = f'downloaded_images/{page_name_safe}/projects/project{project_num:02d}_{sanitize_filename(title)}'
+        # Спочатку шукаємо за новою назвою, потім за старою
+        project_dir_new = f'downloaded_images/{page_name_safe}/projects/project{project_num:02d}_{sanitize_filename(title)}'
+        project_dir_old = f'downloaded_images/{page_name_safe}/projects/project{project_num:02d}_Project {project_num}'
+        
+        # Перевіряємо, яка папка існує
+        if os.path.exists(project_dir_new):
+            project_dir = project_dir_new
+        elif os.path.exists(project_dir_old):
+            project_dir = project_dir_old
+        else:
+            project_dir = project_dir_new
         
         # Отримуємо шляхи до зображень
         image_paths = get_image_paths(project_dir, images)
