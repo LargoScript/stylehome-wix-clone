@@ -16,17 +16,18 @@ export function initAnimations(): void {
       once: true,
       offset: 100,
       delay: 0,
-      anchorPlacement: 'top-bottom'
+      anchorPlacement: 'top-bottom',
+      disable: 'mobile'
     };
     window.AOS.init(aosOptions);
   }
-  
+
   // Анімація Header елементів при завантаженні
   if (typeof window.anime !== 'undefined') {
     const headerLogo = querySelector<HTMLElement>('.header__logo');
     const headerNav = querySelector<HTMLElement>('.header__nav');
     const headerActions = querySelector<HTMLElement>('.header__actions');
-    
+
     // Спочатку ховаємо елементи
     if (headerLogo) {
       headerLogo.style.opacity = '0';
@@ -40,7 +41,7 @@ export function initAnimations(): void {
       headerActions.style.opacity = '0';
       headerActions.style.transform = 'translateX(30px)';
     }
-    
+
     // Анімація logo (зліва)
     if (headerLogo) {
       const logoConfig: AnimeConfig = {
@@ -53,7 +54,7 @@ export function initAnimations(): void {
       };
       window.anime(logoConfig);
     }
-    
+
     // Анімація navigation (зверху)
     if (headerNav) {
       const navConfig: AnimeConfig = {
@@ -65,7 +66,7 @@ export function initAnimations(): void {
         easing: 'easeOutCubic'
       };
       window.anime(navConfig);
-      
+
       // Анімація nav links по черзі
       const navLinks = querySelectorAll<HTMLElement>('.header__nav-link', headerNav);
       navLinks.forEach((link, index) => {
@@ -81,7 +82,7 @@ export function initAnimations(): void {
         window.anime(linkConfig);
       });
     }
-    
+
     // Анімація actions (справа)
     if (headerActions) {
       const actionsConfig: AnimeConfig = {
@@ -94,7 +95,7 @@ export function initAnimations(): void {
       };
       window.anime(actionsConfig);
     }
-    
+
     // Анімація Hero секції
     const badgeConfig: AnimeConfig = {
       targets: '.hero__badge',
@@ -105,7 +106,7 @@ export function initAnimations(): void {
       easing: 'easeOutCubic'
     };
     window.anime(badgeConfig);
-    
+
     const heroCardConfig: AnimeConfig = {
       targets: '.hero__card',
       opacity: [0, 1],
@@ -115,7 +116,7 @@ export function initAnimations(): void {
       easing: 'easeOutCubic'
     };
     window.anime(heroCardConfig);
-    
+
     const heroTitleConfig: AnimeConfig = {
       targets: '.hero__title',
       opacity: [0, 1],
@@ -125,7 +126,7 @@ export function initAnimations(): void {
       easing: 'easeOutElastic(1, .6)'
     };
     window.anime(heroTitleConfig);
-    
+
     // Анімація project cards при hover
     const projectCards = querySelectorAll<HTMLElement>('.project-card');
     projectCards.forEach((card) => {
@@ -140,7 +141,7 @@ export function initAnimations(): void {
           };
           window.anime(hoverConfig);
         });
-        
+
         card.addEventListener('mouseleave', () => {
           const leaveConfig: AnimeConfig = {
             targets: carousel,
@@ -152,7 +153,7 @@ export function initAnimations(): void {
         });
       }
     });
-    
+
     // Анімація кнопок форми при hover
     const formButtons = querySelectorAll<HTMLElement>('.form__submit');
     formButtons.forEach((btn) => {
@@ -165,7 +166,7 @@ export function initAnimations(): void {
         };
         window.anime(enterConfig);
       });
-      
+
       btn.addEventListener('mouseleave', () => {
         const leaveConfig: AnimeConfig = {
           targets: btn,
@@ -176,7 +177,7 @@ export function initAnimations(): void {
         window.anime(leaveConfig);
       });
     });
-    
+
     // Анімація services-hero cards при hover
     const servicesHeroCards = querySelectorAll<HTMLElement>('.services-hero__card');
     servicesHeroCards.forEach((card) => {
@@ -189,7 +190,7 @@ export function initAnimations(): void {
         };
         window.anime(enterConfig);
       });
-      
+
       card.addEventListener('mouseleave', () => {
         const leaveConfig: AnimeConfig = {
           targets: card,
