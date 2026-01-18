@@ -72,6 +72,10 @@ export default defineConfig({
             console.log(`[add-base-path] Updated ${file}`);
           }
         });
+        // Створюємо .nojekyll файл для GitHub Pages
+        const nojekyllPath = join(distDir, '.nojekyll');
+        writeFileSync(nojekyllPath, '', 'utf-8');
+        console.log(`[add-base-path] Created .nojekyll file`);
         console.log(`[add-base-path] Plugin completed`);
       }
     }
