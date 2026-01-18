@@ -1,4 +1,4 @@
-// Типи для AOS (Animate On Scroll)
+// Типи for AOS (Animate On Scroll)
 
 export interface AOSOptions {
   offset?: number;

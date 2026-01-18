@@ -1,9 +1,9 @@
-// Testimonials модуль - карусель відгуків
+// Testimonials module - карусель testimonials
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 
 /**
- * Ініціалізація каруселі відгуків
+ * Initialize carousel testimonials
  */
 export function initTestimonials(): void {
   const testimonialsTrack = querySelector<HTMLElement>('.testimonials__track');

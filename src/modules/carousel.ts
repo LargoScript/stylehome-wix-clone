@@ -1,15 +1,15 @@
-// Carousel модуль - проекти каруселі з infinite loop
+// Carousel module - проекти carousel with infinite loop
 
 import { querySelectorAll } from '../utils/dom';
 import { Carousel, type CarouselOptions } from '../components/Carousel';
 
-// Зберігаємо посилання на всі створені каруселі для можливості очищення
+// Store reference on all created carousel for можливості cleanup
 const carouselInstances: Carousel[] = [];
 
 /**
- * Ініціалізація каруселей проектів
+ * Initialize каруселей projects
  * 
- * @param options Опції для налаштування каруселей (опціонально)
+ * @param options Опції for settings каруселей (опціонально)
  */
 export function initCarousels(options?: CarouselOptions): void {
   const carouselElements = querySelectorAll<HTMLElement>('.project-card__carousel');
@@ -19,16 +19,16 @@ export function initCarousels(options?: CarouselOptions): void {
       const carousel = new Carousel(carouselElement, options);
       carouselInstances.push(carousel);
     } catch (error) {
-      // Якщо карусель не може бути ініціалізована (немає слайдів, треку тощо),
-      // просто пропускаємо її
+      // If карусель not може бути ініціаліwithована (doesn't exist slideів, track тоthat),
+      // just skip it
       console.warn('Failed to initialize carousel:', error);
     }
   });
 }
 
 /**
- * Очищення всіх каруселей (видалення слухачів подій)
- * Корисно при динамічному оновленні сторінки
+ * Cleanup allх каруселей (removal listeners events)
+ * Useful при dynamicallyму update page
  */
 export function destroyCarousels(): void {
   carouselInstances.forEach(carousel => {
@@ -38,8 +38,8 @@ export function destroyCarousels(): void {
 }
 
 /**
- * Отримати всі екземпляри каруселей
- * Корисно для програмного керування каруселями
+ * Get all instances каруселей
+ * Useful for програмного control carousels
  */
 export function getCarouselInstances(): readonly Carousel[] {
   return carouselInstances;

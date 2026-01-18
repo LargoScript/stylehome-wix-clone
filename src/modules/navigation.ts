@@ -1,15 +1,15 @@
-// Navigation модуль - smooth scroll, active nav link, auto burger menu
+// Navigation module - smooth scroll, active nav link, auto burger menu
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 import { scrollToElement, scrollToTop } from '../utils/scroll';
 import type { CloseMenuFunction, CheckCollisionFunction } from '../types/navigation';
 
-// Глобальні змінні для взаємодії між модулями
+// Global variables for interaction between modules
 export let closeMenuFunction: CloseMenuFunction | null = null;
 export let checkElementsCollision: CheckCollisionFunction | null = null;
 
 /**
- * Ініціалізація автоматичного показу/приховування burger меню
+ * Initialize automaticallyго show/hide burger menu
  */
 export function initAutoBurgerMenu(): void {
   const nav = querySelector<HTMLElement>('.header__nav');
@@ -20,13 +20,13 @@ export function initAutoBurgerMenu(): void {
   if (!nav || !actions || !burger || !header) return;
 
   checkElementsCollision = function(): void {
-    // Не перевіряємо, якщо меню відкрите
+    // Not check, if menu open
     const isMenuOpen = nav.classList.contains('active');
     if (isMenuOpen) {
       return;
     }
 
-    // Перевіряємо тільки на десктопі (ширина > 768px)
+    // Check only on desktop (width > 768px)
     if (window.innerWidth <= 768) {
       (burger as HTMLElement).style.display = 'flex';
       if (!isMenuOpen) {
@@ -58,10 +58,10 @@ export function initAutoBurgerMenu(): void {
     });
   };
 
-  // Перевіряємо при завантаженні
+  // Check on load
   checkElementsCollision();
 
-  // Перевіряємо при resize
+  // Check on resize
   let resizeRequestId: number | null = null;
   window.addEventListener('resize', () => {
     if (resizeRequestId) {
@@ -74,7 +74,7 @@ export function initAutoBurgerMenu(): void {
     });
   });
 
-  // Перевіряємо при scroll
+  // Check on scroll
   let scrollRequestId: number | null = null;
   window.addEventListener('scroll', () => {
     if (nav.classList.contains('active')) {
@@ -93,7 +93,7 @@ export function initAutoBurgerMenu(): void {
 }
 
 /**
- * Ініціалізація плавної прокрутки навігації
+ * Initialize плавної прокрутки navigation
  */
 export function initSmoothScroll(): void {
   const navLinks = querySelectorAll<HTMLAnchorElement>('.header__nav-link[href^="#"]');
@@ -105,7 +105,7 @@ export function initSmoothScroll(): void {
       const href = link.getAttribute('href');
       if (!href) return;
       
-      // Пропускаємо порожні якорі
+      // Skip порожні якорі
       if (href === '#' || href === '#hero') {
         e.preventDefault();
         
@@ -139,7 +139,7 @@ export function initSmoothScroll(): void {
 }
 
 /**
- * Ініціалізація оновлення активного посилання при скролі
+ * Initialize оновлення active reference on scroll
  */
 export function initActiveNavLink(): void {
   const sections = querySelectorAll<HTMLElement>('section[id]');
@@ -152,23 +152,23 @@ export function initActiveNavLink(): void {
     const scrollY = window.pageYOffset;
     const windowHeight = window.innerHeight;
     
-    // Якщо ми на самому верху сторінки, активний - hero
+    // If ми на самому верху page, активний - hero
     if (scrollY < 100) {
       current = 'hero';
     } else {
-      // Перевіряємо всі секції, щоб знайти поточну
+      // Check all section, thatб withнайти поточну
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const sectionId = section.getAttribute('id');
         
         if (sectionId) {
-          // Секція вважається активною, якщо її верх знаходиться вище середини екрану
-          // або якщо вона займає більшу частину екрану
+          // Section вважається активною, if it верх withнаходиться вище середини екрану
+          // або if вона withаймає більшу частину екрану
           const sectionTop = rect.top;
           const sectionBottom = rect.bottom;
           const viewportMiddle = windowHeight / 2;
           
-          // Якщо верх секції вище середини екрану і секція видима
+          // If верх section вище середини екрану і section visible
           if (sectionTop <= viewportMiddle && sectionBottom > 0) {
             current = sectionId;
           }
@@ -180,7 +180,7 @@ export function initActiveNavLink(): void {
       link.classList.remove('active');
       const href = link.getAttribute('href');
       
-      // Перевіряємо різні варіанти href
+      // Check ріwithні варіанти href
       if (href === `#${current}` || 
           (current === 'hero' && (href === '#' || href === '#hero'))) {
         link.classList.add('active');
@@ -193,7 +193,7 @@ export function initActiveNavLink(): void {
 }
 
 /**
- * Ініціалізація мобільного меню (burger)
+ * Initialize мобільного menu (burger)
  */
 export function initMobileMenu(): void {
   const burger = querySelector<HTMLElement>('.header__burger');
@@ -202,7 +202,7 @@ export function initMobileMenu(): void {
   
   if (!burger || !nav || !header) return;
 
-  // Переконаємося, що меню завжди починає в закритому стані
+  // Переконаємося, that menu withавжди починає в withакритому стані
   burger.classList.remove('active');
   nav.classList.remove('active');
   if (burger instanceof HTMLButtonElement) {
@@ -289,7 +289,7 @@ export function initMobileMenu(): void {
   
   closeMenuFunction = closeMenu;
   
-  // Закриваємо меню при кліку на хрестик
+  // Close menu при кліку на хрестик
   const navClose = querySelector<HTMLElement>('.header__nav-close', nav);
   if (navClose) {
     navClose.addEventListener('click', (e: MouseEvent) => {
@@ -298,14 +298,14 @@ export function initMobileMenu(): void {
     });
   }
   
-  // Закриваємо меню при кліку поза меню
+  // Close menu при кліку поwithа menu
   nav.addEventListener('click', (e: MouseEvent) => {
     if (e.target === nav) {
       closeMenu();
     }
   });
   
-  // Використовуємо matchMedia для виявлення зміни медіа-запиту
+  // Використовуємо matchMedia for виявлення withміни медіа-withапиту
   const mediaQuery = window.matchMedia('(max-width: 768px)');
   
   const handleMediaChange = (e: MediaQueryListEvent): void => {
@@ -348,7 +348,7 @@ export function initMobileMenu(): void {
     }, 100);
   });
   
-  // Перевіряємо початковий стан
+  // Check початковий стан
   if (window.innerWidth > 768) {
     closeMenuWithoutAnimation();
   }

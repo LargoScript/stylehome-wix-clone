@@ -1,7 +1,7 @@
 // Main TypeScript entry file
 import './style.css';
 
-// Імпортуємо модулі
+// Import modules
 import { initHeaderScroll, initServicesDarkening } from './modules/header';
 import {
   initAutoBurgerMenu,
@@ -20,7 +20,7 @@ import { initFooter } from './modules/footer';
 
 console.log('Style Homes website loaded');
 
-// Ініціалізація всіх модулів
+// Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize header scroll effect
   initHeaderScroll();
@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize services darkening effect
   initServicesDarkening();
   
-  // Initialize auto burger menu (має бути перед initSmoothScroll)
+  // Initialize auto burger menu (must be before initSmoothScroll)
   initAutoBurgerMenu();
   
   // Initialize mobile menu
   initMobileMenu();
   
-  // Initialize smooth scroll navigation (після initAutoBurgerMenu)
+  // Initialize smooth scroll navigation (after initAutoBurgerMenu)
   setTimeout(() => {
     initSmoothScroll();
   }, 0);
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize background effects
   initBackgroundEffects();
   
-  // Initialize hero section (може оновити існуючу, якщо потрібно)
-  // initHero(); // Розкоментуйте, якщо потрібно динамічно оновлювати Hero
+  // Initialize hero section (can update existing if needed)
+  // initHero(); // Uncomment if you need to dynamically update Hero
   
   // Initialize footer section
   initFooter();

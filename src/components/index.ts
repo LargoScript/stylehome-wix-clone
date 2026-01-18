@@ -1,4 +1,4 @@
-// Експорт всіх компонентів
+// Експорт allх компоnotнтів
 
 export { Carousel, type CarouselOptions } from './Carousel';
 export {

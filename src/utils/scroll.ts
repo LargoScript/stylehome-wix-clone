@@ -1,7 +1,7 @@
 // Scroll утиліти
 
 /**
- * Плавна прокрутка до елемента
+ * Smooth scroll до елемента
  */
 export function scrollToElement(
   element: HTMLElement,
@@ -18,7 +18,7 @@ export function scrollToElement(
 }
 
 /**
- * Плавна прокрутка на початок сторінки
+ * Smooth scroll на початок page
  */
 export function scrollToTop(behavior: ScrollBehavior = 'smooth'): void {
   window.scrollTo({
@@ -28,14 +28,14 @@ export function scrollToTop(behavior: ScrollBehavior = 'smooth'): void {
 }
 
 /**
- * Отримати поточну позицію скролу
+ * Get поточну position scroll
  */
 export function getScrollPosition(): number {
   return window.pageYOffset || document.documentElement.scrollTop;
 }
 
 /**
- * Debounce для scroll events
+ * Debounce for scroll events
  */
 export function debounce<T extends (...args: any[]) => void>(
   func: T,

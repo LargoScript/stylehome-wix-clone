@@ -1,14 +1,14 @@
-// Animations модуль - AOS та Anime.js анімації
+// Animations module - AOS та Anime.js animation
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 import type { AnimeConfig } from '../types/anime';
 import type { AOSOptions } from '../types/aos';
 
 /**
- * Ініціалізація всіх анімацій
+ * Initialize allх анімацій
  */
 export function initAnimations(): void {
-  // Ініціалізуємо AOS (Animate On Scroll)
+  // Initialize AOS (Animate On Scroll)
   if (typeof window.AOS !== 'undefined') {
     const aosOptions: AOSOptions = {
       duration: 800,
@@ -22,13 +22,13 @@ export function initAnimations(): void {
     window.AOS.init(aosOptions);
   }
 
-  // Анімація Header елементів при завантаженні
+  // Animation Header elements on load
   if (typeof window.anime !== 'undefined') {
     const headerLogo = querySelector<HTMLElement>('.header__logo');
     const headerNav = querySelector<HTMLElement>('.header__nav');
     const headerActions = querySelector<HTMLElement>('.header__actions');
 
-    // Спочатку ховаємо елементи
+    // First hide elements
     if (headerLogo) {
       headerLogo.style.opacity = '0';
       headerLogo.style.transform = 'translateX(-30px)';
@@ -42,7 +42,7 @@ export function initAnimations(): void {
       headerActions.style.transform = 'translateX(30px)';
     }
 
-    // Анімація logo (зліва)
+    // Animation logo (from left)
     if (headerLogo) {
       const logoConfig: AnimeConfig = {
         targets: headerLogo,
@@ -55,7 +55,7 @@ export function initAnimations(): void {
       window.anime(logoConfig);
     }
 
-    // Анімація navigation (зверху)
+    // Animation navigation (from top)
     if (headerNav) {
       const navConfig: AnimeConfig = {
         targets: headerNav,
@@ -67,7 +67,7 @@ export function initAnimations(): void {
       };
       window.anime(navConfig);
 
-      // Анімація nav links по черзі
+      // Animation nav links one by one
       const navLinks = querySelectorAll<HTMLElement>('.header__nav-link', headerNav);
       navLinks.forEach((link, index) => {
         link.style.opacity = '0';
@@ -83,7 +83,7 @@ export function initAnimations(): void {
       });
     }
 
-    // Анімація actions (справа)
+    // Animation actions (from right)
     if (headerActions) {
       const actionsConfig: AnimeConfig = {
         targets: headerActions,
@@ -96,7 +96,7 @@ export function initAnimations(): void {
       window.anime(actionsConfig);
     }
 
-    // Анімація Hero секції
+    // Animation Hero section
     const badgeConfig: AnimeConfig = {
       targets: '.hero__badge',
       opacity: [0, 1],
@@ -127,7 +127,7 @@ export function initAnimations(): void {
     };
     window.anime(heroTitleConfig);
 
-    // Анімація project cards при hover
+    // Animation project cards on hover
     const projectCards = querySelectorAll<HTMLElement>('.project-card');
     projectCards.forEach((card) => {
       const carousel = querySelector<HTMLElement>('.project-card__carousel', card);
@@ -154,7 +154,7 @@ export function initAnimations(): void {
       }
     });
 
-    // Анімація кнопок форми при hover
+    // Animation кнопок форми on hover
     const formButtons = querySelectorAll<HTMLElement>('.form__submit');
     formButtons.forEach((btn) => {
       btn.addEventListener('mouseenter', () => {
@@ -178,7 +178,7 @@ export function initAnimations(): void {
       });
     });
 
-    // Анімація services-hero cards при hover
+    // Animation services-hero cards on hover
     const servicesHeroCards = querySelectorAll<HTMLElement>('.services-hero__card');
     servicesHeroCards.forEach((card) => {
       card.addEventListener('mouseenter', () => {

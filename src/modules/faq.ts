@@ -1,9 +1,9 @@
-// FAQ модуль - accordion
+// FAQ module - accordion
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 
 /**
- * Ініціалізація FAQ accordion
+ * Initialize FAQ accordion
  */
 export function initFAQ(): void {
   const faqItems = querySelectorAll<HTMLElement>('.faq__item');
@@ -14,14 +14,14 @@ export function initFAQ(): void {
     
     if (!question || !answer) return;
     
-    // Захист від подвійного навішування
+    // Protection from double binding
     if (question.dataset.bound) return;
     question.dataset.bound = 'true';
     
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       
-      // Закриваємо всі інші елементи
+      // Close all інші elements
       faqItems.forEach(i => {
         if (i !== item) {
           const a = querySelector<HTMLElement>('.faq__answer', i);
@@ -32,7 +32,7 @@ export function initFAQ(): void {
         }
       });
       
-      // Перемикаємо поточний елемент
+      // Toggle current елемент
       if (!isActive) {
         item.classList.add('active');
         answer.style.maxHeight = '0';
@@ -51,7 +51,7 @@ export function initFAQ(): void {
     });
   });
   
-  // Оновлюємо висоту при зміні розміру вікна
+  // Update height on change size window
   window.addEventListener('resize', () => {
     faqItems.forEach(item => {
       if (item.classList.contains('active')) {

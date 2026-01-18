@@ -1,10 +1,10 @@
-// Header модуль - scroll effect та затемнення services
+// Header module - scroll effect та withатемnotння services
 
 import { querySelector } from '../utils/dom';
 import type { ServicesSection } from '../types/dom';
 
 /**
- * Ініціалізація ефекту скролу для header
+ * Initialize effect scroll for header
  */
 export function initHeaderScroll(): void {
   const header = querySelector<HTMLElement>('.header');
@@ -23,7 +23,7 @@ export function initHeaderScroll(): void {
 }
 
 /**
- * Ініціалізація затемнення services секції при скролі
+ * Initialize withатемnotння services section on scroll
  */
 export function initServicesDarkening(): void {
   const servicesSection = querySelector<ServicesSection>('.services');
@@ -39,22 +39,22 @@ export function initServicesDarkening(): void {
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         
-        // Розраховуємо прогрес затемнення
+        // Calculate progress withатемnotння
         let scrollProgress = 0;
         
         if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-          // Секція видима на екрані
+          // Section visible on screen
           scrollProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight * 0.5)));
         } else if (sectionTop <= -sectionHeight * 0.5) {
-          // Секція повністю прокручена вгору
+          // Section completely scrolled up
           scrollProgress = 1;
         }
         
-        // Динамічно змінюємо прозорість затемнення (від 0 до 0.4)
+        // Dynamically change opacity withатемnotння (від 0 до 0.4)
         const opacity = scrollProgress * 0.4;
         servicesSection.style.setProperty('--darken-opacity', opacity.toString());
         
-        // Додаємо клас для плавного переходу
+        // Add class for smooth transition
         if (opacity > 0.1) {
           servicesSection.classList.add('scrolled');
         } else {

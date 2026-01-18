@@ -1,4 +1,4 @@
-// Типи для навігації
+// Типи for navigation
 
 export interface NavigationConfig {
   headerHeight: number;

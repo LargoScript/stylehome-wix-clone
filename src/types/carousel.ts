@@ -1,4 +1,4 @@
-// Типи для каруселей
+// Типи for каруселей
 
 export interface CarouselConfig {
   infinite: boolean;

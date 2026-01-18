@@ -1,5 +1,5 @@
 /**
- * Модуль для динамічних ефектів фону
+ * Module for dynamic effects background
  */
 
 import { querySelector } from '../utils/dom';
@@ -7,20 +7,20 @@ import { querySelector } from '../utils/dom';
 declare var anime: any;
 
 /**
- * Ініціалізація анімованого градієнта для hero overlay
- * Працює тільки на головній сторінці, не на підсторінках
- * Функція збережена для майбутнього використання в інших секціях
+ * Initialize animated gradient for hero overlay
+ * Works only на main сторінці, not на subpages
+ * Function saved for future use в other sectionх
  */
 export function initAnimatedGradient(): void {
     const hero = querySelector<HTMLElement>('.hero');
     const overlay = querySelector<HTMLElement>('.hero__overlay');
     
-    // Не використовуємо анімацію на підсторінках
+    // Not використовуємо animation на subpages
     if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
         return;
     }
 
-    // Створюємо анімований градієнт через CSS змінні
+    // Create анімований градієнт череwith CSS withмінні
     overlay.style.background = `
         linear-gradient(
             ${45 + Math.sin(Date.now() / 5000) * 15}deg,
@@ -30,10 +30,10 @@ export function initAnimatedGradient(): void {
         )
     `;
 
-    // Анімація градієнта
+    // Animation gradient
     let angle = 45;
     const animateGradient = (): void => {
-        // Перевіряємо, чи hero все ще існує і не став підсторінкою
+        // Check, чи hero все ще існує і not став підсторінкою
         if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
             return;
         }
@@ -58,13 +58,13 @@ export function initAnimatedGradient(): void {
 }
 
 /**
- * Створення canvas з частинками для hero секції
- * Працює тільки на головній сторінці, не на підсторінках
- * Функція збережена для майбутнього використання в інших секціях
+ * Створення canvas with particles for hero section
+ * Works only на main сторінці, not на subpages
+ * Function saved for future use в other sectionх
  */
 export function initParticleBackground(): void {
     const hero = querySelector<HTMLElement>('.hero');
-    // Не використовуємо частинки на підсторінках
+    // Not використовуємо particles на subpages
     if (!hero || hero.classList.contains('hero--subpage')) return;
 
     const canvas = document.createElement('canvas');
@@ -80,7 +80,7 @@ export function initParticleBackground(): void {
     const wrapper = querySelector<HTMLElement>('.hero__video-wrapper');
     if (!wrapper) return;
     
-    // Перевіряємо, чи вже є canvas
+    // Check, чи already exists canvas
     const existingCanvas = wrapper.querySelector('.hero__particles');
     if (existingCanvas) return;
     
@@ -89,7 +89,7 @@ export function initParticleBackground(): void {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Налаштування canvas
+    // Settings canvas
     const resizeCanvas = (): void => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -97,7 +97,7 @@ export function initParticleBackground(): void {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Клас частинки
+    // Class particles
     class Particle {
         x: number;
         y: number;
@@ -121,11 +121,11 @@ export function initParticleBackground(): void {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Відскок від країв
+            // Bounce from edges
             if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
             if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
 
-            // Забезпечуємо, що частинки залишаються в межах
+            // Ensure, that particles stay within bounds
             this.x = Math.max(0, Math.min(canvas.width, this.x));
             this.y = Math.max(0, Math.min(canvas.height, this.y));
         }
@@ -142,7 +142,7 @@ export function initParticleBackground(): void {
         }
     }
 
-    // Створюємо масив частинок
+    // Create масив частинок
     const particles: Particle[] = [];
     const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
     
@@ -150,17 +150,17 @@ export function initParticleBackground(): void {
         particles.push(new Particle());
     }
 
-    // Функція анімації
+    // Function animation
     const animate = (): void => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Оновлюємо та малюємо частинки
+        // Update та draw particles
         particles.forEach(particle => {
             particle.update();
             particle.draw();
         });
 
-        // Малюємо лінії між близькими частинками
+        // Draw lines between close particles
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -185,7 +185,7 @@ export function initParticleBackground(): void {
 }
 
 /**
- * Ініціалізація parallax ефекту для hero відео
+ * Initialize parallax effect for hero video
  */
 export function initParallaxEffect(): void {
     const video = querySelector<HTMLVideoElement>('.hero__video');
@@ -213,7 +213,7 @@ export function initParallaxEffect(): void {
 }
 
 /**
- * Ініціалізація всіх ефектів фону
+ * Initialize allх effects background
  */
 export function initBackgroundEffects(): void {
     initAnimatedGradient();

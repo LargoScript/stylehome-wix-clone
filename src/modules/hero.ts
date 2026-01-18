@@ -1,9 +1,9 @@
-// Модуль для ініціалізації Hero секцій
+// Module for ініціаліwithації Hero секцій
 
 import { insertHero, type HeroConfig } from '../components/Hero';
 
 /**
- * Конфігурації Hero для різних сторінок
+ * Конфігурації Hero for different pages
  */
 const heroConfigs: Record<string, HeroConfig> = {
   index: {
@@ -39,7 +39,7 @@ const heroConfigs: Record<string, HeroConfig> = {
 };
 
 /**
- * Визначення поточної сторінки за URL
+ * Determine current page by URL
  */
 function getCurrentPage(): string {
   const path = window.location.pathname;
@@ -49,7 +49,7 @@ function getCurrentPage(): string {
 }
 
 /**
- * Ініціалізація Hero секції на поточній сторінці
+ * Initialize Hero section на current page
  */
 export function initHero(): void {
   const page = getCurrentPage();
@@ -60,18 +60,18 @@ export function initHero(): void {
     return;
   }
 
-  // Перевіряємо, чи вже є hero секція
+  // Check, чи already exists hero section
   const existingHero = document.querySelector<HTMLElement>('.hero');
   
   if (existingHero) {
-    // Якщо є, оновлюємо її
+    // If є, update it
     const main = document.querySelector<HTMLElement>('main');
     if (main && existingHero.parentElement === main) {
-      // Замінюємо існуючу hero
+      // Replace existing hero
       insertHero(main, config);
     }
   } else {
-    // Якщо немає, вставляємо нову
+    // If doesn't exist, insert нову
     const main = document.querySelector<HTMLElement>('main');
     if (main) {
       insertHero(main, config);
@@ -80,7 +80,7 @@ export function initHero(): void {
 }
 
 /**
- * Ініціалізація Hero з кастомною конфігурацією
+ * Initialize Hero with custom конфігурацією
  */
 export function initHeroWithConfig(config: HeroConfig): void {
   const main = document.querySelector<HTMLElement>('main');

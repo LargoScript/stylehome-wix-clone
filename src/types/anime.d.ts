@@ -1,4 +1,4 @@
-// Типи для Anime.js
+// Типи for Anime.js
 
 export interface AnimeConfig {
   targets: string | HTMLElement | HTMLElement[] | NodeList;

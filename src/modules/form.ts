@@ -1,26 +1,26 @@
-// Form модуль - auto-resize textarea
+// Form module - auto-resize textarea
 
 import { querySelector } from '../utils/dom';
 
 /**
- * Ініціалізація автоматичного змінення розміру textarea
+ * Initialize automatic textarea resize
  */
 export function initForm(): void {
   const textarea = querySelector<HTMLTextAreaElement>('.form__textarea');
   if (!textarea) return;
   
-  // Встановлюємо початкову висоту
+  // Set initial height
   textarea.style.height = 'auto';
   textarea.style.height = `${textarea.scrollHeight}px`;
   
-  // Автоматично змінюємо висоту при введенні тексту
+  // Automatically change height on text input
   textarea.addEventListener('input', function() {
     this.style.height = 'auto';
-    const newHeight = Math.min(this.scrollHeight, 400); // Максимальна висота 400px
+    const newHeight = Math.min(this.scrollHeight, 400); // Maximum height 400px
     this.style.height = `${newHeight}px`;
   });
   
-  // Також при завантаженні сторінки
+  // Also on page load
   window.addEventListener('load', () => {
     textarea.style.height = 'auto';
     const newHeight = Math.min(textarea.scrollHeight, 400);

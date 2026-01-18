@@ -51,18 +51,18 @@ export default defineConfig({
     {
       name: 'add-base-path',
       closeBundle() {
-        // Після збірки виправляємо шляхи в HTML файлах
+        // After build fix paths in HTML files
         const distDir = resolve(__dirname, 'dist');
         const htmlFiles = findHtmlFiles(distDir);
         console.log(`[add-base-path] Found ${htmlFiles.length} HTML files to process`);
         htmlFiles.forEach(file => {
           let content = readFileSync(file, 'utf-8');
           const originalContent = content;
-          // Додаємо base path до відносних шляхів у script та link тегах
+          // Add base path to relative paths in script and link tags
           content = content.replace(
             /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:|data:)([^"]+)"/g,
             (match, attr, path) => {
-              // Пропускаємо шляхи, які вже мають base path або абсолютні
+              // Skip paths that already have base path or are absolute
               if (path.startsWith('/stylehome-wix-clone/') || path.startsWith('http') || path.startsWith('tel:') || path.startsWith('mailto:') || path.startsWith('data:')) {
                 return match;
               }
@@ -74,7 +74,7 @@ export default defineConfig({
             console.log(`[add-base-path] Updated ${file}`);
           }
         });
-        // Створюємо .nojekyll файл для GitHub Pages
+        // Create .nojekyll file for GitHub Pages
         const nojekyllPath = join(distDir, '.nojekyll');
         writeFileSync(nojekyllPath, '', 'utf-8');
         console.log(`[add-base-path] Created .nojekyll file`);

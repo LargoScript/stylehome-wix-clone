@@ -1,7 +1,7 @@
 // DOM утиліти
 
 /**
- * Безпечний querySelector з типами
+ * Беwithпечний querySelector with типами
  */
 export function querySelector<T extends HTMLElement>(
   selector: string,
@@ -11,7 +11,7 @@ export function querySelector<T extends HTMLElement>(
 }
 
 /**
- * Безпечний querySelectorAll з типами
+ * Беwithпечний querySelectorAll with типами
  */
 export function querySelectorAll<T extends HTMLElement>(
   selector: string,
@@ -30,7 +30,7 @@ export function elementExists<T extends HTMLElement>(
 }
 
 /**
- * Отримати числове значення з dataset
+ * Get числове withначення with dataset
  */
 export function getDatasetNumber(
   element: HTMLElement,

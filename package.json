@@ -1,7 +1,7 @@
 {
   "name": "stylehome_new",
   "version": "1.0.0",
-  "description": "Новий проект сайту Style Homes, створюється з нуля (ну майже)",
+  "description": "New Style Homes website project, created from scratch",
   "main": "index.js",
   "directories": {
     "doc": "docs"

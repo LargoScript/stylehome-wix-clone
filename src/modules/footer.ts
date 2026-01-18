@@ -1,9 +1,9 @@
-// Модуль для ініціалізації Footer секцій
+// Module for initializing Footer sections
 
 import { insertFooter, updateFooter, type FooterConfig } from '../components/Footer';
 
 /**
- * Конфігурація Footer за замовчуванням
+ * Default Footer configuration
  */
 const defaultFooterConfig: FooterConfig = {
   logo: {
@@ -60,16 +60,16 @@ const defaultFooterConfig: FooterConfig = {
 };
 
 /**
- * Ініціалізація Footer секції на поточній сторінці
+ * Initialize Footer section on current page
  */
 export function initFooter(): void {
   const existingFooter = document.querySelector<HTMLElement>('.footer');
   
   if (existingFooter) {
-    // Якщо footer вже є, оновлюємо його через updateFooter
+    // If footer already exists, update it via updateFooter
     updateFooter(existingFooter, defaultFooterConfig);
   } else {
-    // Якщо footer немає, вставляємо новий
+    // If footer doesn't exist, insert new one
     const body = document.querySelector<HTMLElement>('body');
     if (body) {
       insertFooter(body, defaultFooterConfig);
@@ -78,7 +78,7 @@ export function initFooter(): void {
 }
 
 /**
- * Ініціалізація Footer з кастомною конфігурацією
+ * Initialize Footer with custom configuration
  */
 export function initFooterWithConfig(config: FooterConfig): void {
   const body = document.querySelector<HTMLElement>('body');
