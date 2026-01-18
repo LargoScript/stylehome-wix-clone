@@ -34,6 +34,13 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Verify build output
+        run: |
+          echo "Checking dist/index.html..."
+          head -20 dist/index.html
+          echo "Checking for CSS/JS files..."
+          ls -la dist/assets/*.css dist/assets/*.js || echo "No CSS/JS files found"
+      
       - name: Add .nojekyll
         run: touch dist/.nojekyll
       
