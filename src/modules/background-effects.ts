@@ -27,17 +27,20 @@ export function initAnimatedGradient(): void {
         return;
     }
 
-    // Create анімований градієнт череwith CSS withмінні
+    // Create анімований градієнт з плавними переходами
     overlay.style.background = `
         linear-gradient(
             ${45 + Math.sin(Date.now() / 5000) * 15}deg,
-            rgba(139, 0, 0, 0.4) 0%,
-            rgba(0, 0, 0, 0.5) 50%,
-            rgba(139, 0, 0, 0.3) 100%
+            rgba(139, 0, 0, 0.25) 0%,
+            rgba(139, 0, 0, 0.15) 20%,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(139, 0, 0, 0.15) 80%,
+            rgba(139, 0, 0, 0.25) 100%
         )
     `;
 
-    // Animation gradient
+    // Animation gradient з плавними переходами
     let angle = 45;
     const animateGradient = (): void => {
         // Check, чи hero все ще існує
@@ -45,16 +48,22 @@ export function initAnimatedGradient(): void {
             return;
         }
         
-        angle += 0.5;
-        const redOpacity1 = 0.3 + Math.sin(angle * 0.01) * 0.2;
-        const redOpacity2 = 0.2 + Math.cos(angle * 0.015) * 0.15;
+        angle += 0.3; // Повільніше обертання
+        const redOpacity1 = 0.2 + Math.sin(angle * 0.01) * 0.15;
+        const redOpacity2 = 0.15 + Math.cos(angle * 0.015) * 0.1;
+        const redOpacity3 = 0.2 + Math.sin(angle * 0.012) * 0.12;
+        const blackOpacity1 = 0.35 + Math.sin(angle * 0.008) * 0.15;
+        const blackOpacity2 = 0.45 + Math.cos(angle * 0.01) * 0.15;
         
         overlay.style.background = `
             linear-gradient(
                 ${angle}deg,
                 rgba(139, 0, 0, ${redOpacity1}) 0%,
-                rgba(0, 0, 0, 0.6) 50%,
-                rgba(139, 0, 0, ${redOpacity2}) 100%
+                rgba(139, 0, 0, ${redOpacity2}) 20%,
+                rgba(0, 0, 0, ${blackOpacity1}) 40%,
+                rgba(0, 0, 0, ${blackOpacity2}) 60%,
+                rgba(139, 0, 0, ${redOpacity2}) 80%,
+                rgba(139, 0, 0, ${redOpacity3}) 100%
             )
         `;
         
