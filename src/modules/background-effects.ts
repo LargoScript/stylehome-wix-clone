@@ -8,15 +8,22 @@ declare var anime: any;
 
 /**
  * Initialize animated gradient for hero overlay
- * Works only на main сторінці, not на subpages
- * Function saved for future use в other sectionх
+ * Works on main page and subpages with images
  */
 export function initAnimatedGradient(): void {
     const hero = querySelector<HTMLElement>('.hero');
     const overlay = querySelector<HTMLElement>('.hero__overlay');
     
-    // Not використовуємо animation на subpages
-    if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
+    if (!hero || !overlay) {
+        return;
+    }
+    
+    // For subpages with images, use animated gradient
+    const hasImage = hero.querySelector('.hero__image-bg img');
+    const isSubpage = hero.classList.contains('hero--subpage');
+    
+    // Skip animation only if it's subpage without image (shouldn't happen, but safety check)
+    if (isSubpage && !hasImage) {
         return;
     }
 
@@ -33,8 +40,8 @@ export function initAnimatedGradient(): void {
     // Animation gradient
     let angle = 45;
     const animateGradient = (): void => {
-        // Check, чи hero все ще існує і not став підсторінкою
-        if (!hero || !overlay || hero.classList.contains('hero--subpage')) {
+        // Check, чи hero все ще існує
+        if (!hero || !overlay) {
             return;
         }
         
@@ -185,13 +192,14 @@ export function initParticleBackground(): void {
 }
 
 /**
- * Initialize parallax effect for hero video and images
+ * Initialize parallax effect for hero video only
+ * Images should be static (no parallax)
  */
 export function initParallaxEffect(): void {
     const video = querySelector<HTMLVideoElement>('.hero__video');
-    const imageBg = querySelector<HTMLImageElement>('.hero__image-bg img');
+    // Images are static, no parallax effect
     
-    if (!video && !imageBg) return;
+    if (!video) return;
 
     let ticking = false;
 
@@ -203,10 +211,6 @@ export function initParallaxEffect(): void {
                 
                 if (video) {
                     video.style.transform = `translateY(${rate}px)`;
-                }
-                
-                if (imageBg) {
-                    imageBg.style.transform = `translateY(${rate}px)`;
                 }
                 
                 ticking = false;

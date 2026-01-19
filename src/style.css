@@ -327,8 +327,7 @@ body {
     object-fit: cover;
     object-position: center;
     display: block;
-    transition: transform 0.1s ease-out;
-    will-change: transform;
+    /* Static image - no parallax effect */
 }
 
 .hero__overlay {
