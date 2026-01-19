@@ -1,7 +1,10 @@
-name: Deploy to GitHub Pages (DISABLED - using gh-pages branch instead)
+name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:  # Only manual trigger, main workflow is deploy-gh-pages-branch.yml
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
