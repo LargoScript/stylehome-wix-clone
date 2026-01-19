@@ -59,7 +59,8 @@ export default defineConfig({
         htmlFiles.forEach(file => {
           let content = readFileSync(file, 'utf-8');
           const originalContent = content;
-          // Add base path to relative paths in script and link tags
+          // Add base path to relative paths in script, link, and img tags
+          // This regex matches src and href attributes in any tag
           content = content.replace(
             /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:|data:)([^"]+)"/g,
             (match, attr, path) => {
