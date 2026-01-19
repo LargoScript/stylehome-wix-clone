@@ -185,11 +185,13 @@ export function initParticleBackground(): void {
 }
 
 /**
- * Initialize parallax effect for hero video
+ * Initialize parallax effect for hero video and images
  */
 export function initParallaxEffect(): void {
     const video = querySelector<HTMLVideoElement>('.hero__video');
-    if (!video) return;
+    const imageBg = querySelector<HTMLImageElement>('.hero__image-bg img');
+    
+    if (!video && !imageBg) return;
 
     let ticking = false;
 
@@ -201,6 +203,10 @@ export function initParallaxEffect(): void {
                 
                 if (video) {
                     video.style.transform = `translateY(${rate}px)`;
+                }
+                
+                if (imageBg) {
+                    imageBg.style.transform = `translateY(${rate}px)`;
                 }
                 
                 ticking = false;
