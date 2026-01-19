@@ -1800,6 +1800,59 @@ body {
 }
 
 /* ===== TESTIMONIALS SECTION ===== */
+/* ===== REVIEWS SECTION (Elfsight Google Reviews) ===== */
+.reviews-section {
+    padding: 80px 20px;
+    background: #e8e8e8;
+}
+
+.reviews-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.reviews-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.elfsight-reviews {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Reviews section mobile adaptive */
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 60px 20px;
+    }
+
+    .reviews-container {
+        max-width: 100%;
+    }
+
+    .reviews-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-section {
+        padding: 50px 16px;
+    }
+
+    .reviews-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Legacy testimonials styles - keeping for compatibility */
 .testimonials {
     padding: 80px 20px;
     background: #e8e8e8;
