@@ -23,11 +23,28 @@ export function initAnimations(): void {
   }
 
   // Animation Header elements on load
-  if (typeof window.anime !== 'undefined') {
-    const headerLogo = querySelector<HTMLElement>('.header__logo');
-    const headerNav = querySelector<HTMLElement>('.header__nav');
-    const headerActions = querySelector<HTMLElement>('.header__actions');
+  const headerLogo = querySelector<HTMLElement>('.header__logo');
+  const headerNav = querySelector<HTMLElement>('.header__nav');
+  const headerActions = querySelector<HTMLElement>('.header__actions');
 
+  // Fallback: ensure elements are visible if anime.js is not loaded
+  if (typeof window.anime === 'undefined') {
+    if (headerLogo) {
+      headerLogo.style.opacity = '1';
+      headerLogo.style.transform = 'none';
+    }
+    if (headerNav) {
+      headerNav.style.opacity = '1';
+      headerNav.style.transform = 'none';
+    }
+    if (headerActions) {
+      headerActions.style.opacity = '1';
+      headerActions.style.transform = 'none';
+    }
+    return; // Exit early if anime.js is not available
+  }
+
+  if (typeof window.anime !== 'undefined') {
     // First hide elements
     if (headerLogo) {
       headerLogo.style.opacity = '0';

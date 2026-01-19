@@ -22,6 +22,13 @@ console.log('Style Homes website loaded');
 
 // Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
+  // Ensure header is visible (fallback if animations fail)
+  const header = document.querySelector<HTMLElement>('.header');
+  if (header) {
+    header.style.opacity = '1';
+    header.style.visibility = 'visible';
+  }
+  
   // Initialize header scroll effect
   initHeaderScroll();
   
@@ -42,8 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize active nav link on scroll
   initActiveNavLink();
   
-  // Initialize animations
-  initAnimations();
+  // Initialize animations (with delay to ensure AOS and anime.js are loaded)
+  setTimeout(() => {
+    initAnimations();
+  }, 100);
   
   // Initialize carousels
   initCarousels();
