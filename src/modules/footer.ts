@@ -73,6 +73,12 @@ const defaultFooterConfig: FooterConfig = {
       target: '_blank'
     },
     {
+      href: 'https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr',
+      iconSrc: 'img/social_ico/facebook.svg',
+      alt: 'Facebook',
+      target: '_blank'
+    },
+    {
       href: 'https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678',
       iconSrc: 'img/social_ico/thumbtack.avif',
       alt: 'Thumbtack',
