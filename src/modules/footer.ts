@@ -1,6 +1,41 @@
 // Module for initializing Footer sections
 
-import { insertFooter, updateFooter, type FooterConfig } from '../components/Footer';
+import { insertFooter, updateFooter, type FooterConfig, type FooterLink } from '../components/Footer';
+
+/**
+ * Get current page name (e.g., 'index.html', 'kitchen-renovation.html')
+ */
+function getCurrentPage(): string {
+  const path = window.location.pathname;
+  const page = path.split('/').pop() || 'index.html';
+  return page;
+}
+
+/**
+ * Check if current page is the main index page
+ */
+function isMainPage(): boolean {
+  const currentPage = getCurrentPage();
+  return currentPage === 'index.html' || currentPage === '' || currentPage === '/';
+}
+
+/**
+ * Normalize Quick Links hrefs - add index.html prefix for anchor links on non-main pages
+ */
+function normalizeQuickLinks(quickLinks: FooterLink[]): FooterLink[] {
+  const isMain = isMainPage();
+  
+  return quickLinks.map(link => {
+    // If it's an anchor link (starts with #) and we're not on main page, add index.html
+    if (link.href.startsWith('#') && !isMain) {
+      return {
+        ...link,
+        href: `index.html${link.href}`
+      };
+    }
+    return link;
+  });
+}
 
 /**
  * Default Footer configuration
@@ -71,14 +106,20 @@ const defaultFooterConfig: FooterConfig = {
 export function initFooter(): void {
   const existingFooter = document.querySelector<HTMLElement>('.footer');
   
+  // Normalize quick links based on current page
+  const normalizedConfig: FooterConfig = {
+    ...defaultFooterConfig,
+    quickLinks: normalizeQuickLinks(defaultFooterConfig.quickLinks)
+  };
+  
   if (existingFooter) {
     // If footer already exists, update it via updateFooter
-    updateFooter(existingFooter, defaultFooterConfig);
+    updateFooter(existingFooter, normalizedConfig);
   } else {
     // If footer doesn't exist, insert new one
     const body = document.querySelector<HTMLElement>('body');
     if (body) {
-      insertFooter(body, defaultFooterConfig);
+      insertFooter(body, normalizedConfig);
     }
   }
 }
