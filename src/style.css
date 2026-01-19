@@ -1185,6 +1185,7 @@ body {
 
     .project-card__description {
         font-size: 14px;
+        color: #111 !important;
         padding: 0 20px 20px;
     }
 
@@ -1718,7 +1719,7 @@ body {
 }
 
 .project-card {
-    background: #fff;
+    background: rgb(217, 217, 217);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
@@ -1793,7 +1794,7 @@ body {
 
 .project-card__description {
     font-size: 15px;
-    color: #555;
+    color: #111 !important;
     line-height: 1.7;
     padding: 0 24px 24px;
     margin: 0;

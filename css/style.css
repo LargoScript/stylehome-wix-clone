@@ -1356,6 +1356,7 @@ body {
     
     .project-card__description {
         font-size: 14px;
+        color: #222;
         padding: 0 20px 20px;
     }
     
@@ -1937,7 +1938,7 @@ body {
 
 .project-card__description {
     font-size: 15px;
-    color: #555;
+    color: #222;
     line-height: 1.7;
     padding: 0 24px 24px;
     margin: 0;

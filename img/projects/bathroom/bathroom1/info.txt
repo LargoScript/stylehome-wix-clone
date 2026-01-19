@@ -1,0 +1,10 @@
+Назва: Bathroom Project 1
+
+Всього зображень: 1
+Завантажено: 3
+Помилок: 0
+
+Зображення:
+- img\projects\bathroom\bathroom1\bathroom1_1.jpg
+- img\projects\bathroom\bathroom1\bathroom1_2.jpg
+- img\projects\bathroom\bathroom1\bathroom1_3.jpg

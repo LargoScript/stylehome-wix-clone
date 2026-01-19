@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Timeout reached, initialize anyway (fallback will handle it)
         console.warn('AOS or anime.js not loaded after timeout, initializing with fallback');
-        initAnimations();
+  initAnimations();
       }
     };
     
