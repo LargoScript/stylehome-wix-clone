@@ -297,17 +297,20 @@ export function updateFooter(
   // Update наші сервіси
   if (config.ourServices) {
     // Знаходимо контейнер для Our Services (останній footer__nav після Service Areas)
-    const allNavs = footer.querySelectorAll<HTMLElement>('.footer__nav');
+    const allCols = footer.querySelectorAll<HTMLElement>('.footer__col');
     let ourServicesContainer: HTMLElement | null = null;
     
     // Шукаємо секцію Our Services за заголовком
-    const allCols = footer.querySelectorAll<HTMLElement>('.footer__col');
-    allCols.forEach(col => {
+    for (const col of allCols) {
       const title = col.querySelector<HTMLElement>('.footer__title');
       if (title && title.textContent === 'Our Services') {
-        ourServicesContainer = col.querySelector<HTMLElement>('.footer__nav ul');
+        const nav = col.querySelector<HTMLElement>('.footer__nav ul');
+        if (nav) {
+          ourServicesContainer = nav;
+          break;
+        }
       }
-    });
+    }
 
     // Якщо контейнер не знайдено, створюємо нову секцію
     if (!ourServicesContainer) {
@@ -335,6 +338,7 @@ export function updateFooter(
         serviceAreasCol.insertAdjacentElement('afterend', newCol);
       }
     } else {
+      // Оновлюємо існуючий контейнер
       ourServicesContainer.innerHTML = config.ourServices
         .map(
           service => `

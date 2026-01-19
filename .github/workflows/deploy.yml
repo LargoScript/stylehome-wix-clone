@@ -67,6 +67,15 @@ jobs:
             touch dist/.nojekyll
           fi
           echo ""
+          echo "Verifying CSS paths in HTML..."
+          if grep -q '/stylehome-wix-clone/assets/.*\.css' dist/index.html; then
+            echo "✓ CSS paths look correct"
+            grep -o '/stylehome-wix-clone/assets/[^"]*\.css' dist/index.html | head -5
+          else
+            echo "WARNING: CSS paths may be incorrect"
+            grep -i '\.css' dist/index.html | head -5
+          fi
+          echo ""
           echo "Listing dist directory structure..."
           find dist -type f -name "*.html" | head -10
           echo ""
