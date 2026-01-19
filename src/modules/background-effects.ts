@@ -27,20 +27,23 @@ export function initAnimatedGradient(): void {
         return;
     }
 
-    // Create анімований градієнт з плавними переходами
+    // Create анімований градієнт з дуже плавними переходами
     overlay.style.background = `
         linear-gradient(
             ${45 + Math.sin(Date.now() / 5000) * 15}deg,
-            rgba(139, 0, 0, 0.25) 0%,
-            rgba(139, 0, 0, 0.15) 20%,
-            rgba(0, 0, 0, 0.4) 40%,
-            rgba(0, 0, 0, 0.5) 60%,
-            rgba(139, 0, 0, 0.15) 80%,
-            rgba(139, 0, 0, 0.25) 100%
+            rgba(139, 0, 0, 0.2) 0%,
+            rgba(139, 0, 0, 0.18) 15%,
+            rgba(80, 0, 0, 0.25) 30%,
+            rgba(40, 0, 0, 0.3) 45%,
+            rgba(20, 0, 0, 0.35) 50%,
+            rgba(40, 0, 0, 0.3) 55%,
+            rgba(80, 0, 0, 0.25) 70%,
+            rgba(139, 0, 0, 0.18) 85%,
+            rgba(139, 0, 0, 0.2) 100%
         )
     `;
 
-    // Animation gradient з плавними переходами
+    // Animation gradient з дуже плавними переходами (без чорного кольору)
     let angle = 45;
     const animateGradient = (): void => {
         // Check, чи hero все ще існує
@@ -48,22 +51,26 @@ export function initAnimatedGradient(): void {
             return;
         }
         
-        angle += 0.3; // Повільніше обертання
-        const redOpacity1 = 0.2 + Math.sin(angle * 0.01) * 0.15;
-        const redOpacity2 = 0.15 + Math.cos(angle * 0.015) * 0.1;
-        const redOpacity3 = 0.2 + Math.sin(angle * 0.012) * 0.12;
-        const blackOpacity1 = 0.35 + Math.sin(angle * 0.008) * 0.15;
-        const blackOpacity2 = 0.45 + Math.cos(angle * 0.01) * 0.15;
+        angle += 0.2; // Ще повільніше обертання
+        const baseRed = 0.18 + Math.sin(angle * 0.01) * 0.08;
+        const midRed1 = 0.22 + Math.cos(angle * 0.012) * 0.1;
+        const midRed2 = 0.28 + Math.sin(angle * 0.015) * 0.12;
+        const darkRed1 = 0.32 + Math.cos(angle * 0.01) * 0.1;
+        const darkRed2 = 0.35 + Math.sin(angle * 0.008) * 0.08;
         
+        // Використовуємо тільки відтінки червоного (темніші замість чорного)
         overlay.style.background = `
             linear-gradient(
                 ${angle}deg,
-                rgba(139, 0, 0, ${redOpacity1}) 0%,
-                rgba(139, 0, 0, ${redOpacity2}) 20%,
-                rgba(0, 0, 0, ${blackOpacity1}) 40%,
-                rgba(0, 0, 0, ${blackOpacity2}) 60%,
-                rgba(139, 0, 0, ${redOpacity2}) 80%,
-                rgba(139, 0, 0, ${redOpacity3}) 100%
+                rgba(139, 0, 0, ${baseRed}) 0%,
+                rgba(139, 0, 0, ${baseRed + 0.02}) 15%,
+                rgba(100, 0, 0, ${midRed1}) 30%,
+                rgba(60, 0, 0, ${midRed2}) 45%,
+                rgba(30, 0, 0, ${darkRed1}) 50%,
+                rgba(60, 0, 0, ${midRed2}) 55%,
+                rgba(100, 0, 0, ${midRed1}) 70%,
+                rgba(139, 0, 0, ${baseRed + 0.02}) 85%,
+                rgba(139, 0, 0, ${baseRed}) 100%
             )
         `;
         
