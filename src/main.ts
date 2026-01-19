@@ -22,12 +22,33 @@ console.log('Style Homes website loaded');
 
 // Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
-  // Ensure header is visible (fallback if animations fail)
+  // CRITICAL: Ensure header and all its children are visible immediately
+  // This prevents any CSS/JS issues from hiding content
   const header = document.querySelector<HTMLElement>('.header');
   if (header) {
     header.style.opacity = '1';
     header.style.visibility = 'visible';
+    header.style.display = 'block';
   }
+  
+  // Ensure all header children are visible
+  const headerElements = document.querySelectorAll<HTMLElement>('.header__logo, .header__nav, .header__actions, .header__burger');
+  headerElements.forEach(el => {
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+  });
+  
+  // Additional safety: force visibility after a short delay
+  setTimeout(() => {
+    if (header) {
+      header.style.opacity = '1';
+      header.style.visibility = 'visible';
+    }
+    headerElements.forEach(el => {
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    });
+  }, 100);
   
   // Initialize header scroll effect
   initHeaderScroll();

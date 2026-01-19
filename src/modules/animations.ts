@@ -27,25 +27,60 @@ export function initAnimations(): void {
   const headerNav = querySelector<HTMLElement>('.header__nav');
   const headerActions = querySelector<HTMLElement>('.header__actions');
 
+  // CRITICAL: Always ensure elements are visible first
+  // This prevents elements from being hidden if animations fail
+  if (headerLogo) {
+    headerLogo.style.opacity = '1';
+    headerLogo.style.visibility = 'visible';
+  }
+  if (headerNav) {
+    headerNav.style.opacity = '1';
+    headerNav.style.visibility = 'visible';
+  }
+  if (headerActions) {
+    headerActions.style.opacity = '1';
+    headerActions.style.visibility = 'visible';
+  }
+
   // Fallback: ensure elements are visible if anime.js is not loaded
   if (typeof window.anime === 'undefined') {
+    // Already visible from above, just ensure transforms are reset
     if (headerLogo) {
-      headerLogo.style.opacity = '1';
       headerLogo.style.transform = 'none';
     }
     if (headerNav) {
-      headerNav.style.opacity = '1';
       headerNav.style.transform = 'none';
     }
     if (headerActions) {
-      headerActions.style.opacity = '1';
       headerActions.style.transform = 'none';
     }
     return; // Exit early if anime.js is not available
   }
 
+  // Safety timeout: if animations don't complete in 2 seconds, make elements visible
+  let safetyTimeout: ReturnType<typeof setTimeout> | null = null;
+  
   if (typeof window.anime !== 'undefined') {
-    // First hide elements
+    safetyTimeout = setTimeout(() => {
+      if (headerLogo) {
+        headerLogo.style.opacity = '1';
+        headerLogo.style.visibility = 'visible';
+        headerLogo.style.transform = 'none';
+      }
+      if (headerNav) {
+        headerNav.style.opacity = '1';
+        headerNav.style.visibility = 'visible';
+        headerNav.style.transform = 'none';
+      }
+      if (headerActions) {
+        headerActions.style.opacity = '1';
+        headerActions.style.visibility = 'visible';
+        headerActions.style.transform = 'none';
+      }
+      console.warn('Animation safety timeout: forcing elements visible');
+    }, 2000);
+
+    // First hide elements (only if anime.js is confirmed available)
     if (headerLogo) {
       headerLogo.style.opacity = '0';
       headerLogo.style.transform = 'translateX(-30px)';
@@ -60,14 +95,24 @@ export function initAnimations(): void {
     }
 
     // Animation logo (from left)
-    if (headerLogo) {
+    if (headerLogo && safetyTimeout) {
       const logoConfig: AnimeConfig = {
         targets: headerLogo,
         opacity: [0, 1],
         translateX: [-30, 0],
         duration: 800,
         delay: 100,
-        easing: 'easeOutCubic'
+        easing: 'easeOutCubic',
+        complete: () => {
+          // Clear safety timeout on successful animation
+          if (safetyTimeout) {
+            clearTimeout(safetyTimeout);
+            safetyTimeout = null;
+          }
+          if (headerLogo) {
+            headerLogo.style.visibility = 'visible';
+          }
+        }
       };
       window.anime(logoConfig);
     }
@@ -108,7 +153,13 @@ export function initAnimations(): void {
         translateX: [30, 0],
         duration: 800,
         delay: 400,
-        easing: 'easeOutCubic'
+        easing: 'easeOutCubic',
+        complete: () => {
+          // Ensure visibility after animation
+          if (headerActions) {
+            headerActions.style.visibility = 'visible';
+          }
+        }
       };
       window.anime(actionsConfig);
     }
