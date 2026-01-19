@@ -57,12 +57,12 @@ const defaultFooterConfig: FooterConfig = {
       target: '_blank'
     },
     {
-      text: '+1 (503) 980 5216',
-      href: 'tel:+15039805216'
+      text: '+1 (360) 859 6482',
+      href: 'tel:+13608596482'
     },
     {
-      text: 'chaikataras@icloud.com',
-      href: 'mailto:chaikataras@icloud.com'
+      text: 'stylehomesusa@icloud.com',
+      href: 'mailto:stylehomesusa@icloud.com'
     }
   ],
   socials: [

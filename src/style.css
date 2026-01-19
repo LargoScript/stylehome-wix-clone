@@ -190,8 +190,8 @@ body {
 }
 
 .header.scrolled .header__icon img {
-    filter: none;
-    /* Original colors or dark */
+    filter: brightness(0) invert(0);
+    /* Black icons when scrolled */
     opacity: 1;
 }
 
