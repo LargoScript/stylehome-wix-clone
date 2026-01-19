@@ -43,6 +43,8 @@ export interface FooterConfig {
   quickLinks: FooterLink[];
   /** Withони обслуговування */
   serviceAreas: string[];
+  /** Наші сервіси */
+  ourServices: FooterLink[];
   /** Копірайт текст */
   copyright: string;
   /** Додаткові classи for footer */
@@ -59,6 +61,7 @@ export function generateFooterHTML(config: FooterConfig): string {
     socials,
     quickLinks,
     serviceAreas,
+    ourServices,
     copyright,
     additionalClasses = ''
   } = config;
@@ -98,6 +101,14 @@ export function generateFooterHTML(config: FooterConfig): string {
     .map(area => `<li>${area}</li>`)
     .join('');
 
+  // Геnotрація наших сервісів
+  const ourServicesHTML = ourServices
+    .map(
+      service => `
+            <li><a href="${service.href}" ${service.target ? `target="${service.target}"` : ''}>${service.text}</a></li>`
+    )
+    .join('');
+
   return `
     <footer class="${footerClasses}">
       <section class="footer__section">
@@ -129,6 +140,16 @@ export function generateFooterHTML(config: FooterConfig): string {
             <ul class="footer__list">
               ${serviceAreasHTML}
             </ul>
+          </div>
+
+          <!-- Our Services -->
+          <div class="footer__col">
+            <h4 class="footer__title">Our Services</h4>
+            <nav class="footer__nav">
+              <ul>
+                ${ourServicesHTML}
+              </ul>
+            </nav>
           </div>
         </div>
 
@@ -269,6 +290,56 @@ export function updateFooter(
     if (serviceAreasContainer) {
       serviceAreasContainer.innerHTML = config.serviceAreas
         .map(area => `<li>${area}</li>`)
+        .join('');
+    }
+  }
+
+  // Update наші сервіси
+  if (config.ourServices) {
+    // Знаходимо контейнер для Our Services (останній footer__nav після Service Areas)
+    const allNavs = footer.querySelectorAll<HTMLElement>('.footer__nav');
+    let ourServicesContainer: HTMLElement | null = null;
+    
+    // Шукаємо секцію Our Services за заголовком
+    const allCols = footer.querySelectorAll<HTMLElement>('.footer__col');
+    allCols.forEach(col => {
+      const title = col.querySelector<HTMLElement>('.footer__title');
+      if (title && title.textContent === 'Our Services') {
+        ourServicesContainer = col.querySelector<HTMLElement>('.footer__nav ul');
+      }
+    });
+
+    // Якщо контейнер не знайдено, створюємо нову секцію
+    if (!ourServicesContainer) {
+      const serviceAreasCol = Array.from(allCols).find(col => {
+        const title = col.querySelector<HTMLElement>('.footer__title');
+        return title && title.textContent === 'Service Areas';
+      });
+
+      if (serviceAreasCol && serviceAreasCol.parentElement) {
+        const newCol = document.createElement('div');
+        newCol.className = 'footer__col';
+        newCol.innerHTML = `
+          <h4 class="footer__title">Our Services</h4>
+          <nav class="footer__nav">
+            <ul>
+              ${config.ourServices
+                .map(
+                  service => `
+                <li><a href="${service.href}" ${service.target ? `target="${service.target}"` : ''}>${service.text}</a></li>`
+                )
+                .join('')}
+            </ul>
+          </nav>
+        `;
+        serviceAreasCol.insertAdjacentElement('afterend', newCol);
+      }
+    } else {
+      ourServicesContainer.innerHTML = config.ourServices
+        .map(
+          service => `
+            <li><a href="${service.href}" ${service.target ? `target="${service.target}"` : ''}>${service.text}</a></li>`
+        )
         .join('');
     }
   }

@@ -19,6 +19,7 @@ function findHtmlFiles(dir: string, fileList: string[] = []): string[] {
 export default defineConfig({
   base: '/stylehome-wix-clone/',
   server: {
+    host: '0.0.0.0', // Allow access from network
     port: 8000,
     strictPort: true,
     open: true

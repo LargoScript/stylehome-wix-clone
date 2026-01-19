@@ -52,6 +52,7 @@ body {
     padding: 0 24px;
     gap: 40px; /* Мінімальна відстань between елементами */
     min-width: 0; /* Доwithволяє контейnotру стискатися */
+    position: relative;
 }
 
 .header__logo {
@@ -59,6 +60,7 @@ body {
     align-items: center;
     text-decoration: none;
     flex: 0 0 auto; /* Логотип not стискається */
+    order: 1; /* Логотип перший (ліворуч) */
 }
 
 .header__logo-img {
@@ -77,6 +79,7 @@ body {
     max-width: 100%; /* Not доwithволяє navigation виходити withа межі */
     overflow: hidden; /* Приховує переповnotння */
     transition: none; /* Беwith transition for миттєвого show/hide */
+    order: 3; /* Навігація по центру */
 }
 
 .header__nav-list {
@@ -131,10 +134,11 @@ body {
 .header__actions {
     display: flex;
     align-items: center;
-    gap: 12px; /* Withменшена відстань between телефоном та іконками */
+    gap: 12px; /* Відстань між іконками та телефоном */
     flex: 0 0 auto; /* Not доwithволяє actions стискатися */
     margin-right: 0; /* Відступ від правого краю череwith padding контейnotра */
-    order: 3; /* Роwithміщуємо останнім (найправіше) */
+    order: 4; /* Роwithміщуємо перед бургером */
+    margin-left: auto; /* Відштовхуємо actions та бургер праворуч */
 }
 
 .header__phone {
@@ -200,8 +204,9 @@ body {
     cursor: pointer;
     z-index: 1001;
     flex-shrink: 0; /* Not доwithволяє стискатися */
-    order: 2; /* Роwithміщуємо праворуч after navigation */
-    margin-left: auto; /* Відштовхуємо від navigation */
+    order: 5; /* Роwithміщуємо найправіше (останнім) */
+    margin-left: 20px; /* Відступ ліворуч від actions */
+    margin-right: 0; /* Без відступу праворуч */
     transition: none; /* Беwith transition for миттєвого show/hide */
 }
 

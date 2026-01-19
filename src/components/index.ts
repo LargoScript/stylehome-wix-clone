@@ -1,4 +1,4 @@
-// Експорт allх компоnotнтів
+// Export all components
 
 export { Carousel, type CarouselOptions } from './Carousel';
 export {
@@ -17,3 +17,10 @@ export {
   type FooterSocial,
   type FooterContact
 } from './Footer';
+export {
+  generateFAQHTML,
+  insertFAQ,
+  updateFAQ,
+  type FAQConfig,
+  type FAQItem
+} from './FAQ';

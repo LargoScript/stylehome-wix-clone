@@ -45,7 +45,7 @@ const defaultFooterConfig: FooterConfig = {
     }
   ],
   quickLinks: [
-    { text: 'Home', href: '/' },
+    { text: 'Home', href: '#hero' },
     { text: 'Services', href: '#services' },
     { text: 'Projects', href: '#projects' },
     { text: 'About', href: '#about' },
@@ -55,6 +55,12 @@ const defaultFooterConfig: FooterConfig = {
   serviceAreas: [
     'Portland, OR +50 miles',
     'Vancouver, WA +50 miles'
+  ],
+  ourServices: [
+    { text: 'Wood and Panel Wall Decor', href: 'wood-and-panel-wall-decor.html' },
+    { text: 'Kitchen Renovation', href: 'kitchen-renovation.html' },
+    { text: 'Bathroom Renovation', href: 'bathroom-renovation.html' },
+    { text: 'Whole-Home Transformation', href: 'whole-home-transformation.html' }
   ],
   copyright: '© Style Homes 2025'
 };
