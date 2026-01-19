@@ -49,10 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize active nav link on scroll
   initActiveNavLink();
   
-  // Initialize animations (with delay to ensure AOS and anime.js are loaded)
-  setTimeout(() => {
-    initAnimations();
-  }, 100);
+  // Initialize animations (wait for AOS and anime.js to be loaded)
+  const waitForScripts = () => {
+    // Check if scripts are loaded, with timeout
+    let attempts = 0;
+    const maxAttempts = 50; // 5 seconds max wait
+    
+    const checkScripts = () => {
+      attempts++;
+      const aosLoaded = typeof window.AOS !== 'undefined';
+      const animeLoaded = typeof window.anime !== 'undefined';
+      
+      if (aosLoaded && animeLoaded) {
+        // Both scripts loaded, initialize animations
+        initAnimations();
+      } else if (attempts < maxAttempts) {
+        // Scripts not loaded yet, wait a bit more
+        setTimeout(checkScripts, 100);
+      } else {
+        // Timeout reached, initialize anyway (fallback will handle it)
+        console.warn('AOS or anime.js not loaded after timeout, initializing with fallback');
+        initAnimations();
+      }
+    };
+    
+    checkScripts();
+  };
+  
+  waitForScripts();
   
   // Initialize carousels
   initCarousels();

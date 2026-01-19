@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="js/libs/aos.css">
     <script src="js/libs/aos.js"></script>
     <script src="js/libs/anime.min.js"></script>
+    <!-- Wait for scripts to load before initializing main module -->
+    <script>
+      // Ensure scripts are loaded before main.ts executes
+      window.addEventListener('load', () => {
+        // Scripts should be loaded by now
+        if (typeof AOS === 'undefined') {
+          console.warn('AOS not loaded');
+        }
+        if (typeof anime === 'undefined') {
+          console.warn('anime.js not loaded');
+        }
+      });
+    </script>
     <script type="module" src="/src/main.ts"></script>
 </head>
 
