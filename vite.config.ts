@@ -29,6 +29,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true,
+    assetsInlineLimit: 0, // Don't inline assets - keep them as separate files for proper base path handling
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
