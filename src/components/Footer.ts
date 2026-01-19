@@ -1,58 +1,58 @@
-// Компоnotнт Footer section
+// Footer section component
 
 export interface FooterLink {
-  /** Текст reference */
+  /** Link text */
   text: string;
   /** URL reference */
   href: string;
-  /** Чи відкривати в новій вкладці */
+  /** Whether to open in new tab */
   target?: '_blank' | '_self';
 }
 
 export interface FooterSocial {
-  /** URL соціальної мережі */
+  /** Social network URL */
   href: string;
-  /** Шлях до іконки */
+  /** Icon path */
   iconSrc: string;
-  /** Alt текст for іконки */
+  /** Alt text for icon */
   alt: string;
-  /** Чи відкривати в новій вкладці */
+  /** Whether to open in new tab */
   target?: '_blank' | '_self';
 }
 
 export interface FooterContact {
-  /** Текст контакту */
+  /** Contact text */
   text: string;
-  /** URL (tel:, mailto:, або withвичайний URL) */
+  /** URL (tel:, mailto:, or regular URL) */
   href: string;
-  /** Чи відкривати в новій вкладці */
+  /** Whether to open in new tab */
   target?: '_blank' | '_self';
 }
 
 export interface FooterConfig {
-  /** Логотип компанії */
+  /** Company logo */
   logo: {
     src: string;
     alt: string;
   };
-  /** Контактна інформація */
+  /** Contact information */
   contacts: FooterContact[];
-  /** Соціальні мережі */
+  /** Social networks */
   socials: FooterSocial[];
-  /** Швидкі reference */
+  /** Quick links */
   quickLinks: FooterLink[];
-  /** Withони обслуговування */
+  /** Service areas */
   serviceAreas: string[];
-  /** Наші сервіси */
+  /** Our services */
   ourServices: FooterLink[];
-  /** Копірайт текст */
+  /** Copyright text */
   copyright: string;
-  /** Додаткові classи for footer */
+  /** Additional classes for footer */
   additionalClasses?: string;
 }
 
 /**
- * Геnotрація HTML for Footer section
+ * Generate HTML for Footer section
  */
 export function generateFooterHTML(config: FooterConfig): string {
   const {
@@ -68,7 +68,7 @@ export function generateFooterHTML(config: FooterConfig): string {
 
   const footerClasses = ['footer', additionalClasses].filter(Boolean).join(' ');
 
-  // Геnotрація контактних посилань
+  // Generate contact links
   const contactsHTML = contacts
     .map(
       contact => `
@@ -78,7 +78,7 @@ export function generateFooterHTML(config: FooterConfig): string {
     )
     .join('');
 
-  // Геnotрація соціальних мереж
+  // Generate social networks
   const socialsHTML = socials
     .map(
       social => `
@@ -88,7 +88,7 @@ export function generateFooterHTML(config: FooterConfig): string {
     )
     .join('');
 
-  // Геnotрація швидких посилань
+  // Generate quick links
   const quickLinksHTML = quickLinks
     .map(
       link => `
@@ -96,12 +96,12 @@ export function generateFooterHTML(config: FooterConfig): string {
     )
     .join('');
 
-  // Геnotрація withон обслуговування
+  // Generate service areas
   const serviceAreasHTML = serviceAreas
     .map(area => `<li>${area}</li>`)
     .join('');
 
-  // Геnotрація наших сервісів
+  // Generate our services
   const ourServicesHTML = ourServices
     .map(
       service => `
@@ -165,7 +165,7 @@ export function generateFooterHTML(config: FooterConfig): string {
 }
 
 /**
- * Вставка Footer section в DOM
+ * Insert Footer section into DOM
  */
 export function insertFooter(
   container: HTMLElement | string,
@@ -186,26 +186,26 @@ export function insertFooter(
     return null;
   }
 
-  // If контейnotр - body, replace only footer
+  // If container is body, replace only footer
   if (targetElement === document.body) {
     const existingFooter = targetElement.querySelector<HTMLElement>('.footer');
     if (existingFooter) {
       existingFooter.outerHTML = html;
       return targetElement.querySelector<HTMLElement>('.footer');
     } else {
-      // If footer doesn't exist, add в кіnotць body
+      // If footer doesn't exist, add to end of body
       targetElement.insertAdjacentHTML('beforeend', html);
       return targetElement.querySelector<HTMLElement>('.footer');
     }
   } else {
-    // For other контейnotрів replace innerHTML
+    // For other containers replace innerHTML
     targetElement.innerHTML = html;
     return targetElement.querySelector<HTMLElement>('.footer');
   }
 }
 
 /**
- * Оновлення існуючої Footer section
+ * Update existing Footer section
  */
 export function updateFooter(
   footerElement: HTMLElement | string,
@@ -224,7 +224,7 @@ export function updateFooter(
     return null;
   }
 
-  // Update логотип
+  // Update logo
   if (config.logo) {
     const logoImages = footer.querySelectorAll<HTMLImageElement>('.footer__logo img, .footer__bottom-logo img');
     logoImages.forEach(img => {
@@ -233,7 +233,7 @@ export function updateFooter(
     });
   }
 
-  // Update контакти
+  // Update contacts
   if (config.contacts) {
     const contactsContainer = footer.querySelector<HTMLElement>('.footer__brand');
     if (contactsContainer) {
@@ -256,7 +256,7 @@ export function updateFooter(
     }
   }
 
-  // Update соціальні мережі
+  // Update social networks
   if (config.socials) {
     const socialsContainer = footer.querySelector<HTMLElement>('.footer__socials');
     if (socialsContainer) {
@@ -271,7 +271,7 @@ export function updateFooter(
     }
   }
 
-  // Update швидкі reference
+  // Update quick links
   if (config.quickLinks) {
     const quickLinksContainer = footer.querySelector<HTMLElement>('.footer__nav ul');
     if (quickLinksContainer) {
@@ -284,7 +284,7 @@ export function updateFooter(
     }
   }
 
-  // Update withони обслуговування
+  // Update service areas
   if (config.serviceAreas) {
     const serviceAreasContainer = footer.querySelector<HTMLElement>('.footer__list');
     if (serviceAreasContainer) {
@@ -294,13 +294,13 @@ export function updateFooter(
     }
   }
 
-  // Update наші сервіси
+  // Update our services
   if (config.ourServices) {
-    // Знаходимо контейнер для Our Services (останній footer__nav після Service Areas)
+    // Find container for Our Services (last footer__nav after Service Areas)
     const allCols = footer.querySelectorAll<HTMLElement>('.footer__col');
     let ourServicesContainer: HTMLElement | null = null;
     
-    // Шукаємо секцію Our Services за заголовком
+    // Search for Our Services section by heading
     for (const col of allCols) {
       const title = col.querySelector<HTMLElement>('.footer__title');
       if (title && title.textContent === 'Our Services') {
@@ -312,7 +312,7 @@ export function updateFooter(
       }
     }
 
-    // Якщо контейнер не знайдено, створюємо нову секцію
+    // If container not found, create new section
     if (!ourServicesContainer) {
       const serviceAreasCol = Array.from(allCols).find(col => {
         const title = col.querySelector<HTMLElement>('.footer__title');
@@ -338,7 +338,7 @@ export function updateFooter(
         serviceAreasCol.insertAdjacentElement('afterend', newCol);
       }
     } else {
-      // Оновлюємо існуючий контейнер
+      // Update existing container
       ourServicesContainer.innerHTML = config.ourServices
         .map(
           service => `
@@ -348,7 +348,7 @@ export function updateFooter(
     }
   }
 
-  // Update копірайт
+  // Update copyright
   if (config.copyright) {
     const copyrightEl = footer.querySelector<HTMLElement>('.footer__bottom p');
     if (copyrightEl) {

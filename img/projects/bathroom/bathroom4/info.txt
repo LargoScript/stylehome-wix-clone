@@ -1,8 +1,8 @@
-Назва: Bathroom Project 4
+Name: Bathroom Project 4
 
-Всього зображень: 1
-Завантажено: 1
-Помилок: 0
+Total images: 1
+Downloaded: 1
+Errors: 0
 
-Зображення:
+Images:
 - img\projects\bathroom\bathroom4\bathroom4_1.jpg

@@ -1,9 +1,9 @@
-// Module for ініціаліwithації Hero секцій
+// Module for initializing Hero sections
 
 import { insertHero, type HeroConfig } from '../components/Hero';
 
 /**
- * Конфігурації Hero for different pages
+ * Hero configurations for different pages
  */
 const heroConfigs: Record<string, HeroConfig> = {
   index: {
@@ -49,7 +49,7 @@ function getCurrentPage(): string {
 }
 
 /**
- * Initialize Hero section на current page
+ * Initialize Hero section on current page
  */
 export function initHero(): void {
   const page = getCurrentPage();
@@ -60,18 +60,18 @@ export function initHero(): void {
     return;
   }
 
-  // Check, чи already exists hero section
+  // Check if hero section already exists
   const existingHero = document.querySelector<HTMLElement>('.hero');
   
   if (existingHero) {
-    // If є, update it
+    // If exists, update it
     const main = document.querySelector<HTMLElement>('main');
     if (main && existingHero.parentElement === main) {
       // Replace existing hero
       insertHero(main, config);
     }
   } else {
-    // If doesn't exist, insert нову
+    // If doesn't exist, insert new one
     const main = document.querySelector<HTMLElement>('main');
     if (main) {
       insertHero(main, config);
@@ -80,7 +80,7 @@ export function initHero(): void {
 }
 
 /**
- * Initialize Hero with custom конфігурацією
+ * Initialize Hero with custom configuration
  */
 export function initHeroWithConfig(config: HeroConfig): void {
   const main = document.querySelector<HTMLElement>('main');

@@ -9,7 +9,7 @@ export let closeMenuFunction: CloseMenuFunction | null = null;
 export let checkElementsCollision: CheckCollisionFunction | null = null;
 
 /**
- * Initialize automaticallyго show/hide burger menu
+ * Initialize automatic show/hide burger menu
  */
 export function initAutoBurgerMenu(): void {
   const nav = querySelector<HTMLElement>('.header__nav');
@@ -93,7 +93,7 @@ export function initAutoBurgerMenu(): void {
 }
 
 /**
- * Initialize плавної прокрутки navigation
+ * Initialize smooth scroll navigation
  */
 export function initSmoothScroll(): void {
   const navLinks = querySelectorAll<HTMLAnchorElement>('.header__nav-link[href^="#"]');
@@ -105,7 +105,7 @@ export function initSmoothScroll(): void {
       const href = link.getAttribute('href');
       if (!href) return;
       
-      // Skip порожні якорі
+      // Skip empty anchors
       if (href === '#' || href === '#hero') {
         e.preventDefault();
         
@@ -139,7 +139,7 @@ export function initSmoothScroll(): void {
 }
 
 /**
- * Initialize оновлення active reference on scroll
+ * Initialize active link update on scroll
  */
 export function initActiveNavLink(): void {
   const sections = querySelectorAll<HTMLElement>('section[id]');
@@ -152,23 +152,23 @@ export function initActiveNavLink(): void {
     const scrollY = window.pageYOffset;
     const windowHeight = window.innerHeight;
     
-    // If ми на самому верху page, активний - hero
+    // If we are at the top of page, active is hero
     if (scrollY < 100) {
       current = 'hero';
     } else {
-      // Check all section, thatб withнайти поточну
+      // Check all sections to find current one
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const sectionId = section.getAttribute('id');
         
         if (sectionId) {
-          // Section вважається активною, if it верх withнаходиться вище середини екрану
-          // або if вона withаймає більшу частину екрану
+          // Section is considered active if its top is above screen middle
+          // or if it occupies most of the screen
           const sectionTop = rect.top;
           const sectionBottom = rect.bottom;
           const viewportMiddle = windowHeight / 2;
           
-          // If верх section вище середини екрану і section visible
+          // If section top is above screen middle and section is visible
           if (sectionTop <= viewportMiddle && sectionBottom > 0) {
             current = sectionId;
           }
@@ -180,7 +180,7 @@ export function initActiveNavLink(): void {
       link.classList.remove('active');
       const href = link.getAttribute('href');
       
-      // Check ріwithні варіанти href
+      // Check different href variants
       if (href === `#${current}` || 
           (current === 'hero' && (href === '#' || href === '#hero'))) {
         link.classList.add('active');
@@ -193,7 +193,7 @@ export function initActiveNavLink(): void {
 }
 
 /**
- * Initialize мобільного menu (burger)
+ * Initialize mobile menu (burger)
  */
 export function initMobileMenu(): void {
   const burger = querySelector<HTMLElement>('.header__burger');
@@ -202,7 +202,7 @@ export function initMobileMenu(): void {
   
   if (!burger || !nav || !header) return;
 
-  // Переконаємося, that menu withавжди починає в withакритому стані
+  // Make sure menu always starts in closed state
   burger.classList.remove('active');
   nav.classList.remove('active');
   if (burger instanceof HTMLButtonElement) {
@@ -289,7 +289,7 @@ export function initMobileMenu(): void {
   
   closeMenuFunction = closeMenu;
   
-  // Close menu при кліку на хрестик
+  // Close menu on cross click
   const navClose = querySelector<HTMLElement>('.header__nav-close', nav);
   if (navClose) {
     navClose.addEventListener('click', (e: MouseEvent) => {
@@ -298,14 +298,14 @@ export function initMobileMenu(): void {
     });
   }
   
-  // Close menu при кліку поwithа menu
+  // Close menu on click outside menu
   nav.addEventListener('click', (e: MouseEvent) => {
     if (e.target === nav) {
       closeMenu();
     }
   });
   
-  // Використовуємо matchMedia for виявлення withміни медіа-withапиту
+  // Use matchMedia to detect media query change
   const mediaQuery = window.matchMedia('(max-width: 768px)');
   
   const handleMediaChange = (e: MediaQueryListEvent): void => {
@@ -318,7 +318,7 @@ export function initMobileMenu(): void {
   
   mediaQuery.addEventListener('change', handleMediaChange);
   
-  // Обробляємо resize
+  // Handle resize
   let resizeTimer: ReturnType<typeof setTimeout> | null = null;
   let isResizing = false;
   
@@ -348,7 +348,7 @@ export function initMobileMenu(): void {
     }, 100);
   });
   
-  // Check початковий стан
+  // Check initial state
   if (window.innerWidth > 768) {
     closeMenuWithoutAnimation();
   }

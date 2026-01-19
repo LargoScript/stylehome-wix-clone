@@ -1,4 +1,4 @@
-// DOM типи та роwithширення
+// DOM types and extensions
 
 export interface HTMLElementWithDataset extends HTMLElement {
   dataset: {

@@ -1,9 +1,9 @@
-Назва: Bathroom Project 7
+Name: Bathroom Project 7
 
-Всього зображень: 1
-Завантажено: 2
-Помилок: 0
+Total images: 1
+Downloaded: 2
+Errors: 0
 
-Зображення:
+Images:
 - img\projects\bathroom\bathroom7\bathroom7_1.jpg
 - img\projects\bathroom\bathroom7\bathroom7_2.jpg

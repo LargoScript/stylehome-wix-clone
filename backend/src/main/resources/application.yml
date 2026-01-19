@@ -32,9 +32,11 @@ spring:
     baseline-on-migrate: true
   
   # Mail configuration (update with your SMTP settings)
+  # For iCloud: use smtp.mail.me.com with port 587
+  # For Gmail: use smtp.gmail.com with port 587
   mail:
-    host: smtp.gmail.com
-    port: 587
+    host: ${MAIL_HOST:smtp.mail.me.com}
+    port: ${MAIL_PORT:587}
     username: ${MAIL_USERNAME:}
     password: ${MAIL_PASSWORD:}
     properties:
@@ -52,7 +54,7 @@ server:
 app:
   email:
     from: ${MAIL_FROM:noreply@stylehomes.com}
-    admin: ${ADMIN_EMAIL:admin@stylehomes.com}
+    admin: ${ADMIN_EMAIL:stylehomesusa@icloud.com}
 
 # Logging
 logging:

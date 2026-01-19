@@ -212,7 +212,7 @@ body {
     cursor: pointer;
     z-index: 1001;
     flex-shrink: 0;
-    /* Not доwithволяє стискатися */
+    /* Prevents shrinking */
     order: 2;
     /* Place to the right after navigation */
     margin-left: auto;
@@ -1054,7 +1054,7 @@ body {
         width: 85%;
         max-width: none;
         min-height: 90px;
-        /* Фіксована мінімальна висота for мобільних */
+        /* Fixed minimum height for mobile */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1301,7 +1301,7 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     min-height: 100px;
-    /* Фіксована мінімальна висота for однакових роwithмірів */
+    /* Fixed minimum height for equal sizes */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1497,6 +1497,84 @@ body {
 
 .form__submit:active {
     transform: scale(0.98);
+}
+
+/* Photo upload styles */
+.form__file-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    font-size: 14px;
+    color: #666;
+}
+
+.form__file-input:hover {
+    border-color: #8b0000;
+    background: #fff5f5;
+}
+
+.form__file-input:focus {
+    outline: none;
+    border-color: #8b0000;
+    background: #fff;
+}
+
+.form__photos-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    min-height: 0;
+}
+
+.form__photo-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    background: #f5f5f5;
+}
+
+.form__photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.form__photo-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+    z-index: 10;
+}
+
+.form__photo-remove:hover {
+    background: rgba(220, 53, 69, 0.9);
+}
+
+.form__photo-remove::before {
+    content: '×';
+    line-height: 1;
 }
 
 /* ===== MAIN ===== */
@@ -2220,7 +2298,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .start {
         padding: 50px 12px;
@@ -2422,7 +2500,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .faq__overlay {
         padding: 40px 12px;
@@ -2674,7 +2752,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .footer__section {
         padding: 40px 12px 16px;

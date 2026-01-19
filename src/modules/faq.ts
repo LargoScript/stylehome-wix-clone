@@ -21,7 +21,7 @@ export function initFAQ(): void {
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       
-      // Close all інші elements
+      // Close all other elements
       faqItems.forEach(i => {
         if (i !== item) {
           const a = querySelector<HTMLElement>('.faq__answer', i);
@@ -32,7 +32,7 @@ export function initFAQ(): void {
         }
       });
       
-      // Toggle current елемент
+      // Toggle current element
       if (!isActive) {
         item.classList.add('active');
         answer.style.maxHeight = '0';

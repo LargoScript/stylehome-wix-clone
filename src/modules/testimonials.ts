@@ -1,4 +1,4 @@
-// Testimonials module - карусель testimonials
+// Testimonials module - testimonials carousel
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 

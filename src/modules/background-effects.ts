@@ -17,7 +17,7 @@ export function initAnimatedGradient(): void {
     if (!hero || !overlay) {
         return;
     }
-    
+
     // For subpages with images, use animated gradient
     const hasImage = hero.querySelector('.hero__image-bg img');
     const isSubpage = hero.classList.contains('hero--subpage');
@@ -27,7 +27,7 @@ export function initAnimatedGradient(): void {
         return;
     }
 
-    // Create анімований градієнт з дуже плавними переходами
+    // Create animated gradient with very smooth transitions
     overlay.style.background = `
         linear-gradient(
             ${45 + Math.sin(Date.now() / 5000) * 15}deg,
@@ -43,22 +43,22 @@ export function initAnimatedGradient(): void {
         )
     `;
 
-    // Animation gradient з дуже плавними переходами (без чорного кольору)
+    // Gradient animation with very smooth transitions (without black color)
     let angle = 45;
     const animateGradient = (): void => {
-        // Check, чи hero все ще існує
+        // Check if hero still exists
         if (!hero || !overlay) {
             return;
         }
         
-        angle += 0.2; // Ще повільніше обертання
+        angle += 0.2; // Even slower rotation
         const baseRed = 0.18 + Math.sin(angle * 0.01) * 0.08;
         const midRed1 = 0.22 + Math.cos(angle * 0.012) * 0.1;
         const midRed2 = 0.28 + Math.sin(angle * 0.015) * 0.12;
         const darkRed1 = 0.32 + Math.cos(angle * 0.01) * 0.1;
         const darkRed2 = 0.35 + Math.sin(angle * 0.008) * 0.08;
         
-        // Використовуємо тільки відтінки червоного (темніші замість чорного)
+        // Use only red shades (darker instead of black)
         overlay.style.background = `
             linear-gradient(
                 ${angle}deg,
@@ -81,13 +81,13 @@ export function initAnimatedGradient(): void {
 }
 
 /**
- * Створення canvas with particles for hero section
- * Works only на main сторінці, not на subpages
- * Function saved for future use в other sectionх
+ * Create canvas with particles for hero section
+ * Works only on main page, not on subpages
+ * Function saved for future use in other sections
  */
 export function initParticleBackground(): void {
     const hero = querySelector<HTMLElement>('.hero');
-    // Not використовуємо particles на subpages
+    // Do not use particles on subpages
     if (!hero || hero.classList.contains('hero--subpage')) return;
 
     const canvas = document.createElement('canvas');
@@ -103,7 +103,7 @@ export function initParticleBackground(): void {
     const wrapper = querySelector<HTMLElement>('.hero__video-wrapper');
     if (!wrapper) return;
     
-    // Check, чи already exists canvas
+    // Check if canvas already exists
     const existingCanvas = wrapper.querySelector('.hero__particles');
     if (existingCanvas) return;
     
@@ -165,7 +165,7 @@ export function initParticleBackground(): void {
         }
     }
 
-    // Create масив частинок
+    // Create particles array
     const particles: Particle[] = [];
     const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000));
     
@@ -177,7 +177,7 @@ export function initParticleBackground(): void {
     const animate = (): void => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Update та draw particles
+        // Update and draw particles
         particles.forEach(particle => {
             particle.update();
             particle.draw();
@@ -239,7 +239,7 @@ export function initParallaxEffect(): void {
 }
 
 /**
- * Initialize allх effects background
+ * Initialize all background effects
  */
 export function initBackgroundEffects(): void {
     initAnimatedGradient();

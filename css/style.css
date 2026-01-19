@@ -50,8 +50,8 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
-    gap: 40px; /* Мінімальна відстань between елементами */
-    min-width: 0; /* Доwithволяє контейnotру стискатися */
+    gap: 40px; /* Minimum distance between elements */
+    min-width: 0; /* Allows container to shrink */
     position: relative;
 }
 
@@ -59,8 +59,8 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    flex: 0 0 auto; /* Логотип not стискається */
-    order: 1; /* Логотип перший (ліворуч) */
+    flex: 0 0 auto; /* Logo does not shrink */
+    order: 1; /* Logo first (left) */
 }
 
 .header__logo-img {
@@ -73,13 +73,13 @@ body {
 }
 
 .header__nav {
-    display: flex; /* По withамовчуванню видимо on desktop */
-    flex: 1 1 auto; /* Доwithволяє navigation стискатися, if needed */
-    min-width: 0; /* Доwithволяє стискатися нижче мінімального size контенту */
-    max-width: 100%; /* Not доwithволяє navigation виходити withа межі */
-    overflow: hidden; /* Приховує переповnotння */
-    transition: none; /* Беwith transition for миттєвого show/hide */
-    order: 3; /* Навігація по центру */
+    display: flex; /* Visible by default on desktop */
+    flex: 1 1 auto; /* Allows navigation to shrink, if needed */
+    min-width: 0; /* Allows shrinking below minimum content size */
+    max-width: 100%; /* Prevents navigation from overflowing */
+    overflow: hidden; /* Hides overflow */
+    transition: none; /* No transition for instant show/hide */
+    order: 3; /* Navigation in center */
 }
 
 .header__nav-list {
@@ -88,7 +88,7 @@ body {
     gap: 40px;
     margin: 0;
     padding: 0;
-    flex-wrap: nowrap; /* Not доwithволяє переноситися на new рядок */
+    flex-wrap: nowrap; /* Prevents wrapping to new line */
 }
 
 .header__nav-link {
@@ -134,11 +134,11 @@ body {
 .header__actions {
     display: flex;
     align-items: center;
-    gap: 12px; /* Відстань між іконками та телефоном */
-    flex: 0 0 auto; /* Not доwithволяє actions стискатися */
-    margin-right: 0; /* Відступ від правого краю череwith padding контейnotра */
-    order: 4; /* Роwithміщуємо перед бургером */
-    margin-left: auto; /* Відштовхуємо actions та бургер праворуч */
+    gap: 12px; /* Distance between icons and phone */
+    flex: 0 0 auto; /* Prevents actions from shrinking */
+    margin-right: 0; /* Right margin offset via container padding */
+    order: 4; /* Place before burger */
+    margin-left: auto; /* Push actions and burger to the right */
 }
 
 .header__phone {
@@ -152,9 +152,9 @@ body {
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
     transition: all 0.3s;
-    white-space: nowrap; /* Номер в один рядок */
-    flex: 0 0 auto; /* Not доwithволяємо номеру стискатися або роwithширюватися */
-    min-width: max-content; /* Мінімальна width withа контентом */
+    white-space: nowrap; /* Phone number in one line */
+    flex: 0 0 auto; /* Prevents phone number from shrinking or expanding */
+    min-width: max-content; /* Minimum width based on content */
 }
 
 .header__phone:hover {
@@ -170,7 +170,7 @@ body {
     text-decoration: none;
     width: 32px;
     height: 32px;
-    flex-shrink: 0; /* Not доwithволяє іконкам стискатися */
+    flex-shrink: 0; /* Prevents icons from shrinking */
 }
 
 .header__icon img {
@@ -195,7 +195,7 @@ body {
 
 /* Mobile Menu */
 .header__burger {
-    display: none; /* По withамовчуванню приховано, showється череwith JS коли elements торкаються */
+    display: none; /* Hidden by default, shown via JS when elements collide */
     flex-direction: column;
     gap: 6px;
     padding: 10px;
@@ -203,14 +203,14 @@ body {
     border: none;
     cursor: pointer;
     z-index: 1001;
-    flex-shrink: 0; /* Not доwithволяє стискатися */
-    order: 5; /* Роwithміщуємо найправіше (останнім) */
-    margin-left: 20px; /* Відступ ліворуч від actions */
-    margin-right: 0; /* Без відступу праворуч */
-    transition: none; /* Беwith transition for миттєвого show/hide */
+    flex-shrink: 0; /* Prevents shrinking */
+    order: 5; /* Place rightmost (last) */
+    margin-left: 20px; /* Left margin from actions */
+    margin-right: 0; /* No right margin */
+    transition: none; /* No transition for instant show/hide */
 }
 
-/* Коли бургер-menu активно череwith auto-show */
+/* When burger-menu is active via auto-show */
 .header.burger-mode .header__nav:not(.active) {
     display: none !important;
 }
@@ -219,7 +219,7 @@ body {
     display: flex !important;
 }
 
-/* Коли menu open (active), воно must be видиме навіть в burger-mode */
+/* When menu is open (active), it must be visible even in burger-mode */
 .header.burger-mode .header__nav.active,
 .header__nav.active {
     display: flex !important;
@@ -228,7 +228,7 @@ body {
     transform: translateX(0) !important;
 }
 
-/* На десктопі, коли бургер активний, навігація must be як мобільnot menu */
+/* On desktop, when burger is active, navigation must be like mobile menu */
 @media (min-width: 769px) {
     .header__nav.active {
         position: fixed !important;
@@ -348,7 +348,7 @@ body {
     pointer-events: none;
 }
 
-/* Підpage Hero - менша висота */
+/* Subpage Hero - smaller height */
 .hero--subpage {
     height: 70vh;
     min-height: 500px;
@@ -379,7 +379,7 @@ body {
     transition: background 0.1s ease-out;
 }
 
-/* Вирівнювання контенту for підpages */
+/* Content alignment for subpages */
 .hero--subpage .hero__content {
     text-align: center;
     display: flex;
@@ -591,7 +591,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50px;
     backdrop-filter: blur(5px);
-    line-height: 1.6; /* For краthatго відображення двох рядків */
+    line-height: 1.6; /* For better display of two lines */
     text-align: center;
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -719,16 +719,16 @@ body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .header__nav-list {
-        gap: 16px; /* Withменшуємо gap на менших екранах, thatб not withалаwithити на телефон */
+        gap: 16px; /* Reduce gap on smaller screens to avoid overlapping phone */
     }
     
     .header__nav-link {
-        font-size: 0.85rem; /* Withменшуємо шрифт for економії місця */
-        white-space: nowrap; /* Not переносимо текст */
+        font-size: 0.85rem; /* Reduce font size to save space */
+        white-space: nowrap; /* Do not wrap text */
     }
     
     .header__container {
-        gap: 20px; /* Withменшуємо gap between елементами контейnotра */
+        gap: 20px; /* Reduce gap between container elements */
     }
     
     .hero__title {
@@ -751,7 +751,7 @@ body {
     
     .header__container {
         padding: 0 16px;
-        gap: 24px; /* Withменшуємо gap на планшетах */
+        gap: 24px; /* Reduce gap on tablets */
     }
     
     .header__nav {
@@ -790,12 +790,12 @@ body {
         transition: transform 0.3s ease, visibility 0s 0.3s, opacity 0.3s ease;
         z-index: 999;
         padding: 80px 20px 20px;
-        /* Withавжди починаємо в withакритому стані */
+        /* Always start in closed state */
         visibility: hidden;
         opacity: 0;
     }
     
-    /* Кнопка withакриття menu (хрестик) */
+    /* Close menu button (cross) */
     .header__nav-close {
         position: absolute;
         top: 20px;
@@ -840,7 +840,7 @@ body {
         transition: transform 0.3s ease, visibility 0s, opacity 0.3s ease;
     }
     
-    /* Блокуємо transition on resize */
+    /* Block transition on resize */
     body.no-transition .header__nav,
     body.no-transition .header__nav.active {
         transition: none !important;
@@ -858,8 +858,8 @@ body {
     }
     
     .header__actions {
-        gap: 10px; /* Withменшена відстань на планшетах */
-        flex: 0 0 auto; /* Not доwithволяє actions стискатися */
+        gap: 10px; /* Reduced distance on tablets */
+        flex: 0 0 auto; /* Prevents actions from shrinking */
     }
     
     .header__icon {
@@ -875,7 +875,7 @@ body {
     .header__phone {
         padding: 10px 16px;
         font-size: 0.85rem;
-        flex: 0 0 auto; /* Not доwithволяємо номеру стискатися */
+        flex: 0 0 auto; /* Prevents phone number from shrinking */
         min-width: max-content;
     }
     
@@ -974,12 +974,12 @@ body {
     .header__phone {
         padding: 8px 14px;
         font-size: 13px;
-        flex: 0 0 auto; /* Not доwithволяємо номеру стискатися */
+        flex: 0 0 auto; /* Prevents phone number from shrinking */
         min-width: max-content;
     }
     
     .header__actions {
-        flex: 0 0 auto; /* Not доwithволяє actions стискатися */
+        flex: 0 0 auto; /* Prevents actions from shrinking */
     }
     
     .header__icon {
@@ -1033,7 +1033,7 @@ body {
         padding: 20px 24px;
         width: 90%;
         max-width: 300px;
-        min-height: 100px; /* Фіксована мінімальна висота */
+        min-height: 100px; /* Fixed minimum height */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1126,8 +1126,8 @@ body {
     }
     
     .header__actions {
-        gap: 8px; /* Мінімальна відстань on mobile */
-        flex: 0 0 auto; /* Not доwithволяє actions стискатися */
+        gap: 8px; /* Minimum distance on mobile */
+        flex: 0 0 auto; /* Prevents actions from shrinking */
     }
     
     .header__icon {
@@ -1143,7 +1143,7 @@ body {
     .header__phone {
         padding: 8px 12px;
         font-size: 12px;
-        flex: 0 0 auto; /* Not доwithволяємо номеру стискатися */
+        flex: 0 0 auto; /* Prevents phone number from shrinking */
         min-width: max-content;
     }
     
@@ -1220,7 +1220,7 @@ body {
         padding: 16px 20px;
         width: 85%;
         max-width: none;
-        min-height: 90px; /* Фіксована мінімальна висота for мобільних */
+        min-height: 90px; /* Fixed minimum height for mobile */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1466,7 +1466,7 @@ body {
     border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease;
-    min-height: 100px; /* Фіксована мінімальна висота for однакових роwithмірів */
+    min-height: 100px; /* Fixed minimum height for equal sizes */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1541,7 +1541,7 @@ body {
     gap: 24px;
 }
 
-/* Адаптивність for форми - один стовпчик на малих екранах */
+/* Form responsiveness - single column on small screens */
 @media (max-width: 768px) {
     .form__row {
         grid-template-columns: 1fr;
@@ -1681,7 +1681,7 @@ body {
     padding: 60px 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     position: relative;
-    z-index: 2; /* Контент поверх withатемnotння */
+    z-index: 2; /* Content above overlay */
 }
 
 .services__title {
@@ -1712,9 +1712,9 @@ body {
     gap: 40px;
     text-decoration: none;
     color: inherit;
-    align-items: flex-start; /* Вирівнюємо по верхній lines */
+    align-items: flex-start; /* Align to top lines */
     transition: all 0.3s ease;
-    will-change: transform; /* Оптиміwithація for анімацій */
+    will-change: transform; /* Optimization for animations */
 }
 
 .service-card:hover .service-card__title {
@@ -1727,7 +1727,7 @@ body {
     height: 200px;
     border-radius: 16px;
     overflow: hidden;
-    align-self: flex-start; /* Вирівнюємо withображення по верхній lines */
+    align-self: flex-start; /* Align image to top lines */
 }
 
 .service-card__image img {
@@ -1735,7 +1735,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-    will-change: transform; /* Оптиміwithація for анімацій */
+    will-change: transform; /* Optimization for animations */
 }
 
 .service-card:hover .service-card__image img {
@@ -2219,7 +2219,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .start {
         padding: 50px 12px;
@@ -2351,7 +2351,7 @@ body {
     transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
-/* Доwithволяємо inline стилям перевиwithначати max-height */
+/* Allows inline styles to override max-height */
 .faq__answer[style*="max-height"] {
     transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
 }
@@ -2421,7 +2421,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .faq__overlay {
         padding: 40px 12px;
@@ -2673,7 +2673,7 @@ body {
     }
 }
 
-/* Small mobile (до 480px) */
+/* Small mobile (up to 480px) */
 @media (max-width: 480px) {
     .footer__section {
         padding: 40px 12px 16px;

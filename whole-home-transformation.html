@@ -289,6 +289,13 @@
                             <label for="details" class="form__label">Project Details *</label>
                             <textarea id="details" name="details" class="form__textarea" placeholder="Describe your whole-home transformation project" rows="4" required></textarea>
                         </div>
+
+                        <div class="form__group form__group--full">
+                            <label for="photos" class="form__label">Upload Photos (Optional)</label>
+                            <input type="file" id="photos" name="photos" class="form__file-input" 
+                                accept="image/*" multiple>
+                            <div class="form__photos-preview" id="photosPreview"></div>
+                        </div>
                         
                         <button type="submit" class="form__submit">Send</button>
                     </form>

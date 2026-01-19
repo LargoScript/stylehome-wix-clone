@@ -1,30 +1,30 @@
-// Компоnotнт Hero section - підтримка video та image
+// Hero section component - supports video and image
 
 export type HeroMediaType = 'video' | 'image';
 
 export interface HeroConfig {
-  /** Тип медіа: 'video' або 'image' */
+  /** Media type: 'video' or 'image' */
   mediaType: HeroMediaType;
-  /** Шлях до video або withображення */
+  /** Path to video or image */
   mediaSrc: string;
-  /** Withаголовок */
+  /** Heading */
   title: string;
-  /** Підwithаголовок */
+  /** Subheading */
   subtitle?: string;
-  /** Локація */
+  /** Location */
   location?: string;
-  /** Текст for badge */
+  /** Text for badge */
   badgeText?: string;
-  /** Чи це підсторінка (додає class hero--subpage) */
+  /** Whether this is a subpage (adds hero--subpage class) */
   isSubpage?: boolean;
-  /** Додаткові classи for section */
+  /** Additional classes for section */
   additionalClasses?: string;
   /** ID section (default: 'hero') */
   sectionId?: string;
 }
 
 /**
- * Геnotрація HTML for Hero section
+ * Generate HTML for Hero section
  */
 export function generateHeroHTML(config: HeroConfig): string {
   const {
@@ -45,7 +45,7 @@ export function generateHeroHTML(config: HeroConfig): string {
     additionalClasses
   ].filter(Boolean).join(' ');
 
-  // Геnotрація медіа контенту
+  // Generate media content
   let mediaHTML = '';
   if (mediaType === 'video') {
     mediaHTML = `
@@ -58,7 +58,7 @@ export function generateHeroHTML(config: HeroConfig): string {
     </div>`;
   }
 
-  // Геnotрація контенту
+  // Generate content
   const subtitleHTML = subtitle ? `<p class="hero__subtitle">${subtitle}</p>` : '';
   const locationHTML = location ? `<p class="hero__location">${location}</p>` : '';
 
@@ -81,7 +81,7 @@ export function generateHeroHTML(config: HeroConfig): string {
 }
 
 /**
- * Вставка Hero section в DOM
+ * Insert Hero section into DOM
  */
 export function insertHero(
   container: HTMLElement | string,
@@ -108,7 +108,7 @@ export function insertHero(
 }
 
 /**
- * Оновлення існуючої Hero section
+ * Update existing Hero section
  */
 export function updateHero(
   heroElement: HTMLElement | string,
@@ -127,7 +127,7 @@ export function updateHero(
     return null;
   }
 
-  // Update медіа
+  // Update media
   const videoWrapper = hero.querySelector<HTMLElement>('.hero__video-wrapper');
   if (videoWrapper && config.mediaType && config.mediaSrc) {
     if (config.mediaType === 'video') {
@@ -139,7 +139,7 @@ export function updateHero(
           existingVideo.load();
         }
       } else {
-        // Replace image на video
+        // Replace image with video
         const imageBg = videoWrapper.querySelector('.hero__image-bg');
         if (imageBg) {
           imageBg.remove();
@@ -169,7 +169,7 @@ export function updateHero(
           existingImage.appendChild(newImg);
         }
       } else {
-        // Replace video на image
+        // Replace video with image
         const video = videoWrapper.querySelector('video');
         if (video) {
           video.remove();
@@ -185,7 +185,7 @@ export function updateHero(
     }
   }
 
-  // Update контент
+  // Update content
   if (config.title) {
     const titleEl = hero.querySelector<HTMLElement>('.hero__title');
     if (titleEl) titleEl.textContent = config.title;
@@ -251,7 +251,7 @@ export function updateHero(
     }
   }
 
-  // Update classи
+  // Update classes
   if (config.isSubpage !== undefined) {
     if (config.isSubpage) {
       hero.classList.add('hero--subpage');

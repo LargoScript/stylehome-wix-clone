@@ -1,7 +1,7 @@
-// Scroll утиліти
+// Scroll utilities
 
 /**
- * Smooth scroll до елемента
+ * Smooth scroll to element
  */
 export function scrollToElement(
   element: HTMLElement,
@@ -18,7 +18,7 @@ export function scrollToElement(
 }
 
 /**
- * Smooth scroll на початок page
+ * Smooth scroll to page top
  */
 export function scrollToTop(behavior: ScrollBehavior = 'smooth'): void {
   window.scrollTo({
@@ -28,7 +28,7 @@ export function scrollToTop(behavior: ScrollBehavior = 'smooth'): void {
 }
 
 /**
- * Get поточну position scroll
+ * Get current scroll position
  */
 export function getScrollPosition(): number {
   return window.pageYOffset || document.documentElement.scrollTop;

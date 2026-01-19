@@ -1,4 +1,4 @@
-// Header module - scroll effect та withатемnotння services
+// Header module - scroll effect and services overlay
 
 import { querySelector } from '../utils/dom';
 import type { ServicesSection } from '../types/dom';
@@ -23,7 +23,7 @@ export function initHeaderScroll(): void {
 }
 
 /**
- * Initialize withатемnotння services section on scroll
+ * Initialize services section overlay on scroll
  */
 export function initServicesDarkening(): void {
   const servicesSection = querySelector<ServicesSection>('.services');
@@ -39,7 +39,7 @@ export function initServicesDarkening(): void {
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         
-        // Calculate progress withатемnotння
+        // Calculate overlay progress
         let scrollProgress = 0;
         
         if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
@@ -50,7 +50,7 @@ export function initServicesDarkening(): void {
           scrollProgress = 1;
         }
         
-        // Dynamically change opacity withатемnotння (від 0 до 0.4)
+        // Dynamically change overlay opacity (from 0 to 0.4)
         const opacity = scrollProgress * 0.4;
         servicesSection.style.setProperty('--darken-opacity', opacity.toString());
         

@@ -1,7 +1,7 @@
-// DOM утиліти
+// DOM utilities
 
 /**
- * Беwithпечний querySelector with типами
+ * Safe querySelector with types
  */
 export function querySelector<T extends HTMLElement>(
   selector: string,
@@ -11,7 +11,7 @@ export function querySelector<T extends HTMLElement>(
 }
 
 /**
- * Беwithпечний querySelectorAll with типами
+ * Safe querySelectorAll with types
  */
 export function querySelectorAll<T extends HTMLElement>(
   selector: string,
@@ -21,7 +21,7 @@ export function querySelectorAll<T extends HTMLElement>(
 }
 
 /**
- * Перевірка чи елемент існує
+ * Check if element exists
  */
 export function elementExists<T extends HTMLElement>(
   element: T | null
@@ -30,7 +30,7 @@ export function elementExists<T extends HTMLElement>(
 }
 
 /**
- * Get числове withначення with dataset
+ * Get numeric value from dataset
  */
 export function getDatasetNumber(
   element: HTMLElement,

@@ -1,11 +1,11 @@
-// Animations module - AOS та Anime.js animation
+// Animations module - AOS and Anime.js animation
 
 import { querySelector, querySelectorAll } from '../utils/dom';
 import type { AnimeConfig } from '../types/anime';
 import type { AOSOptions } from '../types/aos';
 
 /**
- * Initialize allх анімацій
+ * Initialize all animations
  */
 export function initAnimations(): void {
   // Initialize AOS (Animate On Scroll)
@@ -222,7 +222,7 @@ export function initAnimations(): void {
       }
     });
 
-    // Animation кнопок форми on hover
+    // Form button animation on hover
     const formButtons = querySelectorAll<HTMLElement>('.form__submit');
     formButtons.forEach((btn) => {
       btn.addEventListener('mouseenter', () => {

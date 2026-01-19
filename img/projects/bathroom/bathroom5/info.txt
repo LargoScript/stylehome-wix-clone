@@ -1,10 +1,10 @@
-Назва: Bathroom Project 5
+Name: Bathroom Project 5
 
-Всього зображень: 1
-Завантажено: 3
-Помилок: 0
+Total images: 1
+Downloaded: 3
+Errors: 0
 
-Зображення:
+Images:
 - img\projects\bathroom\bathroom5\bathroom5_1.jpg
 - img\projects\bathroom\bathroom5\bathroom5_2.jpg
 - img\projects\bathroom\bathroom5\bathroom5_3.jpg

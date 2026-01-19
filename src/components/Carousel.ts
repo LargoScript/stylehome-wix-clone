@@ -1,18 +1,18 @@
-// Компоnotнт carousel - reusable class for роботи with carousels
+// Carousel component - reusable class for working with carousels
 
 import { querySelector, querySelectorAll, getDatasetNumber } from '../utils/dom';
 import type { CarouselTrack } from '../types/dom';
 
 export interface CarouselOptions {
-  /** Whether to use беwithкіnotчний cycle */
+  /** Whether to use infinite cycle */
   infinite?: boolean;
   /** Duration animation transition in ms */
   transitionDuration?: number;
-  /** Threshold for свайпу on mobile devices */
+  /** Threshold for swipe on mobile devices */
   swipeThreshold?: number;
-  /** Selector for buttons "Поbeforeнє" */
+  /** Selector for buttons "Previous" */
   prevButtonSelector?: string;
-  /** Selector for buttons "Наступnot" */
+  /** Selector for buttons "Next" */
   nextButtonSelector?: string;
   /** Selector for track carousel */
   trackSelector?: string;
@@ -47,7 +47,7 @@ export class Carousel {
   ) {
     this.carousel = carouselElement;
     
-    // Set опції default
+    // Set default options
     this.options = {
       infinite: options.infinite ?? true,
       transitionDuration: options.transitionDuration ?? 500,
@@ -73,12 +73,12 @@ export class Carousel {
       throw new Error('No slides found in carousel');
     }
 
-    // Initialize карусель
+    // Initialize carousel
     this.originalCount = this.slides.length;
     this.currentIndex = 1;
     this.slideWidth = this.carousel.clientWidth;
 
-    // Hide buttons, if є only 1 slide
+    // Hide buttons, if there is only 1 slide
     if (this.originalCount <= 1) {
       if (this.prevBtn) {
         this.prevBtn.style.display = 'none';
@@ -90,7 +90,7 @@ export class Carousel {
       return;
     }
 
-    // Setup беwithкіnotчний cycle, if needed
+    // Setup infinite cycle, if needed
     if (this.options.infinite) {
       this.setupInfiniteLoop();
     }
@@ -98,7 +98,7 @@ export class Carousel {
     // Set initial position
     this.initializePosition();
 
-    // Прив'яwithуємо handlers events
+    // Bind event handlers
     this.clickHandler = this.handleClick.bind(this);
     this.resizeHandler = this.handleResize.bind(this);
     this.touchStartHandler = this.handleTouchStart.bind(this);
@@ -110,7 +110,7 @@ export class Carousel {
   }
 
   /**
-   * Settings беwithкіnotчного cycleу (додавання дублікатів)
+   * Settings for infinite cycle (adding duplicates)
    */
   private setupInfiniteLoop(): void {
     const firstSlide = this.slides[0].cloneNode(true) as HTMLImageElement;
@@ -119,12 +119,12 @@ export class Carousel {
     this.track.insertBefore(lastSlide, this.slides[0]);
     this.track.appendChild(firstSlide);
     
-    // Update список slideів
+    // Update slides list
     this.slides = Array.from(this.track.querySelectorAll<HTMLImageElement>('img'));
   }
 
   /**
-   * Initialize початкової поwithиції
+   * Initialize initial position
    */
   private initializePosition(): void {
     this.track.dataset.index = this.currentIndex.toString();
@@ -137,7 +137,7 @@ export class Carousel {
   }
 
   /**
-   * Обробка кліку на buttons
+   * Handle button clicks
    */
   private handleClick(e: MouseEvent): void {
     const target = e.target as HTMLElement;
@@ -156,7 +156,7 @@ export class Carousel {
   }
 
   /**
-   * Перехід до поbeforeнього slideу
+   * Go to previous slide
    */
   public goToPrevious(): void {
     if (this.isTransitioning) return;
@@ -177,7 +177,7 @@ export class Carousel {
   }
 
   /**
-   * Перехід до наступного slideу
+   * Go to next slide
    */
   public goToNext(): void {
     if (this.isTransitioning) return;
@@ -199,7 +199,7 @@ export class Carousel {
   }
 
   /**
-   * Перехід до конкретного індексу
+   * Go to specific index
    */
   public goToIndex(index: number): void {
     if (this.isTransitioning) return;
@@ -217,7 +217,7 @@ export class Carousel {
   }
 
   /**
-   * Переміщення до індексу with анімацією
+   * Move to index with animation
    */
   private moveToIndex(index: number): void {
     this.isTransitioning = true;
@@ -235,14 +235,14 @@ export class Carousel {
   }
 
   /**
-   * Обробка withавершення animation transition (for беwithкіnotчного cycleу)
+   * Handle animation transition completion (for infinite cycle)
    */
   private handleTransitionEnd(event: TransitionEvent): void {
     if (event.target !== this.track) return;
     
     const currentIndex = getDatasetNumber(this.track, 'index', 1);
     
-    // If ми на дублікаті останнього (індекс 0), переходимо на останнє оригінальnot
+    // If we are on duplicate of last (index 0), go to last original
     if (currentIndex === 0) {
       this.track.style.transition = 'none';
       this.track.dataset.index = this.originalCount.toString();
@@ -252,7 +252,7 @@ export class Carousel {
         this.track.style.transition = `transform ${this.options.transitionDuration}ms ease`;
       }, 50);
     }
-    // If ми на дублікаті першого (індекс originalCount + 1), переходимо на перше оригінальnot
+    // If we are on duplicate of first (index originalCount + 1), go to first original
     else if (currentIndex === this.originalCount + 1) {
       this.track.style.transition = 'none';
       this.track.dataset.index = '1';
@@ -267,7 +267,7 @@ export class Carousel {
   }
 
   /**
-   * Обробка withміни size window
+   * Handle window size change
    */
   private handleResize(): void {
     this.slideWidth = this.carousel.clientWidth;
@@ -276,21 +276,21 @@ export class Carousel {
   }
 
   /**
-   * Обробка початку дотику (for свайпу)
+   * Handle touch start (for swipe)
    */
   private handleTouchStart(e: TouchEvent): void {
     this.touchStartX = e.touches[0].clientX;
   }
 
   /**
-   * Обробка руху дотику
+   * Handle touch move
    */
   private handleTouchMove(e: TouchEvent): void {
     this.touchEndX = e.touches[0].clientX;
   }
 
   /**
-   * Обробка withавершення дотику (свайп)
+   * Handle touch end (swipe)
    */
   private handleTouchEnd(): void {
     if (this.isTransitioning) return;
@@ -300,10 +300,10 @@ export class Carousel {
 
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
-        // Свайп вліво - наступний slide
+        // Swipe left - next slide
         this.goToNext();
       } else {
-        // Свайп вправо - поbeforeній slide
+        // Swipe right - previous slide
         this.goToPrevious();
       }
     }
@@ -313,16 +313,16 @@ export class Carousel {
   }
 
   /**
-   * Додавання listeners events
+   * Add event listeners
    */
   private attachEventListeners(): void {
-    // Кліки на buttons (делегування events)
+    // Button clicks (event delegation)
     document.addEventListener('click', this.clickHandler);
 
-    // Withміна size window
+    // Window size change
     window.addEventListener('resize', this.resizeHandler);
 
-    // Touch події for свайпу
+    // Touch events for swipe
     this.carousel.addEventListener('touchstart', this.touchStartHandler);
     this.carousel.addEventListener('touchmove', this.touchMoveHandler);
     this.carousel.addEventListener('touchend', this.touchEndHandler);
@@ -340,7 +340,7 @@ export class Carousel {
   }
 
   /**
-   * Оновлення carousel (наприклад, after додавання нових slideів)
+   * Update carousel (e.g., after adding new slides)
    */
   public update(): void {
     this.slides = Array.from(this.track.querySelectorAll<HTMLImageElement>('img'));
@@ -348,10 +348,10 @@ export class Carousel {
     this.slideWidth = this.carousel.clientWidth;
     
     if (this.options.infinite) {
-      // Видаляємо старі дублікати, if вони є
+      // Remove old duplicates, if they exist
       const allSlides = this.track.querySelectorAll('img');
       if (allSlides.length > this.originalCount) {
-        // Логіка cleanup дублікатів може бути додана withа потреби
+        // Duplicate cleanup logic can be added if needed
       }
       this.setupInfiniteLoop();
     }
@@ -360,14 +360,14 @@ export class Carousel {
   }
 
   /**
-   * Get current індекс
+   * Get current index
    */
   public getCurrentIndex(): number {
     return this.currentIndex;
   }
 
   /**
-   * Get кількість slideів
+   * Get slides count
    */
   public getSlideCount(): number {
     return this.originalCount;
