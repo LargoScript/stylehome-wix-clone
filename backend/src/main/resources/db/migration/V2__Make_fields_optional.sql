@@ -1,6 +1,4 @@
--- Migration V2: Make last_name and phone optional
--- This migration allows null values for last_name and phone columns
-
--- For H2 database (development)
-ALTER TABLE consultations ALTER COLUMN last_name VARCHAR(100) NULL;
-ALTER TABLE consultations ALTER COLUMN phone VARCHAR(50) NULL;
+ALTER TABLE consultations ALTER COLUMN last_name TYPE VARCHAR(100);
+ALTER TABLE consultations ALTER COLUMN last_name DROP NOT NULL;
+ALTER TABLE consultations ALTER COLUMN phone TYPE VARCHAR(20);
+ALTER TABLE consultations ALTER COLUMN phone DROP NOT NULL;
