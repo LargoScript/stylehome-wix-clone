@@ -289,7 +289,9 @@ function fileToBase64(file: File): Promise<string> {
  */
 async function submitForm(formData: FormData): Promise<void> {
   // Get backend URL from environment or use default
-  const backendUrl = (window as any).BACKEND_URL || 'http://localhost:8080';
+  // In production with Nginx proxy, leave BACKEND_URL empty or undefined
+  // For local development, set window.BACKEND_URL = 'http://localhost:8080'
+  const backendUrl = (window as any).BACKEND_URL ?? '';
   const apiEndpoint = `${backendUrl}/api/consultations`;
   
   // Prepare JSON payload matching ConsultationRequest DTO
