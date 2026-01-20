@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize carousels
   safeInit('carousels', initCarousels);
   
-  // Initialize testimonials
-  safeInit('testimonials', initTestimonials);
+  // Testimonials now handled by Elfsight widget
+  // safeInit('testimonials', initTestimonials);
   
   // Initialize FAQ
   safeInit('faq', initFAQ);
