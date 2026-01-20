@@ -51,9 +51,9 @@ function fixTsMimeType(): Plugin {
 }
 
 export default defineConfig({
-  // For VPS hosting, use root path '/'
-  // For GitHub Pages, change to '/stylehome-wix-clone/'
-  base: '/',
+  // For VPS hosting, use '/'
+  // For GitHub Pages (this branch), use '/stylehome-wix-clone/'
+  base: '/stylehome-wix-clone/',
   server: {
     host: '0.0.0.0', // Allow access from network
     port: 8000,
