@@ -5,20 +5,20 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class ConsultationRequest {
     @NotBlank(message = "First name is required")
     private String firstName;
     
-    @NotBlank(message = "Last name is required")
     private String lastName;
     
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     private String email;
     
-    @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^[\\d\\s\\-\\(\\)\\+]+$", message = "Invalid phone number format")
+    @Pattern(regexp = "^[\\d\\s\\-\\(\\)\\+]*$", message = "Invalid phone number format")
     private String phone;
     
     private String projectType;
@@ -31,4 +31,10 @@ public class ConsultationRequest {
     
     @NotBlank(message = "Project details are required")
     private String projectDetails;
+    
+    /**
+     * List of photos attached to the consultation request.
+     * Photos are sent as base64 encoded data from the frontend.
+     */
+    private List<PhotoData> photos;
 }

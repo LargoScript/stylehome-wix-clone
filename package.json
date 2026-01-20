@@ -9,8 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview --base /stylehome-wix-clone/",
-    "type-check": "tsc --noEmit"
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "prepare:hosting": "node prepare-for-hosting.js",
+    "prepare:github": "node prepare-for-github-pages.js"
   },
   "repository": {
     "type": "git",

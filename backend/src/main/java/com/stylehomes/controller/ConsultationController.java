@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/consultations")
+@RequestMapping("/api/consultations")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ConsultationController {
     private final ConsultationService consultationService;
     

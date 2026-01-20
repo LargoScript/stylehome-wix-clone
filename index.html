@@ -24,10 +24,75 @@
         }
       });
     </script>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/entry.tsx"></script>
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__content">
+            <img src="img/logo-red.svg" alt="Style Homes" class="page-loader__logo">
+            <div class="page-loader__spinner"></div>
+        </div>
+    </div>
+    <!-- Inline styles for loader (prevents FOUC) -->
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .page-loader__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        .page-loader__logo {
+            height: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .page-loader__spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #c8102e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
+        }
+    </style>
+    <!-- Fallback: hide loader after 5s even if script fails -->
+    <script>
+        setTimeout(function() {
+            var loader = document.getElementById('pageLoader');
+            if (loader && !loader.classList.contains('hidden')) {
+                loader.classList.add('hidden');
+                setTimeout(function() { loader.remove(); }, 500);
+            }
+        }, 5000);
+    </script>
+
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
@@ -668,71 +733,14 @@
                 <div class="testimonials__carousel-wrapper">
                     <div class="testimonials__carousel">
                         <div class="testimonials__track">
-                            <div class="testimonial-card">
-                                <div class="testimonial-card__logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path fill="#4285F4"
-                                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                        <path fill="#34A853"
-                                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                        <path fill="#FBBC05"
-                                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.84z" />
-                                        <path fill="#EA4335"
-                                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                                    </svg>
-                                </div>
-                                <div class="testimonial-card__name">Nataliia Chaika</div>
-                                <p class="testimonial-card__text">Really happy with Style Homes! The guys did an amazing
-                                    job — everything looks beautiful and the quality is great. They were easy to work
-                                    with, always on time, and very professional. Totally recommend them if you want your
-                                    project done right!</p>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="testimonial-card__logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path fill="#4285F4"
-                                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                        <path fill="#34A853"
-                                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                        <path fill="#FBBC05"
-                                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.84z" />
-                                        <path fill="#EA4335"
-                                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                                    </svg>
-                                </div>
-                                <div class="testimonial-card__name">Sergo Kushnarenko</div>
-                                <p class="testimonial-card__text">Highly recommend Style Homes! I ordered all the finish
-                                    work for my house from them — closets, pantry, doors, and trims. Everything turned
-                                    out amazing! The quality is top-notch, clean, and modern.</p>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="testimonial-card__logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path fill="#4285F4"
-                                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                        <path fill="#34A853"
-                                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                        <path fill="#FBBC05"
-                                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.84z" />
-                                        <path fill="#EA4335"
-                                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                                    </svg>
-                                </div>
-                                <div class="testimonial-card__name">Sasha Pasichnyi</div>
-                                <p class="testimonial-card__text">I worked with Style Homes LLC and was very impressed
-                                    with the results. They create kitchens, closets, and decorative furniture at the
-                                    highest level. Every detail is well thought out — design, material quality, and
-                                    precise installation. You can tell the team truly loves what they do.</p>
-                            </div>
+                            <!-- Testimonials will be loaded dynamically from testimonials.ts -->
                         </div>
                     </div>
                     <button class="testimonials__btn testimonials__btn--prev"
                         aria-label="Previous review">&#10094;</button>
                     <button class="testimonials__btn testimonials__btn--next" aria-label="Next review">&#10095;</button>
                     <div class="testimonials__dots">
-                        <div class="testimonials__dot testimonials__dot--active"></div>
-                        <div class="testimonials__dot"></div>
-                        <div class="testimonials__dot"></div>
+                        <!-- Dots will be generated dynamically -->
                     </div>
                 </div>
             </div>

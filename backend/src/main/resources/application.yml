@@ -56,6 +56,13 @@ app:
     from: ${MAIL_FROM:noreply@stylehomes.com}
     admin: ${ADMIN_EMAIL:stylehomesusa@icloud.com}
 
+# Application configuration - CORS
+app:
+  cors:
+    # For development, allow all origins. For production, specify your domain:
+    # allowed-origins: https://stylehomesusa.com,https://www.stylehomesusa.com
+    allowed-origins: "*"
+
 # Logging
 logging:
   level:

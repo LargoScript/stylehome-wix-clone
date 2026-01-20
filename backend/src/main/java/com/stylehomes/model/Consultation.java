@@ -22,13 +22,13 @@ public class Consultation {
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
     
-    @Column(name = "last_name", nullable = false, length = 100)
+    @Column(name = "last_name", length = 100)
     private String lastName;
     
     @Column(nullable = false, length = 255)
     private String email;
     
-    @Column(nullable = false, length = 20)
+    @Column(length = 50)
     private String phone;
     
     @Column(name = "project_type", length = 50)

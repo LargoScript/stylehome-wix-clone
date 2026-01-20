@@ -1,7 +1,9 @@
-// Main TypeScript entry file
+// Main entry file (using .js extension to avoid Windows MIME type issue)
+// Windows associates .ts with video/vnd.dlna.mpeg-tts
+
 import './style.css';
 
-// Import modules
+// Import modules (without .ts extension - Vite resolves automatically)
 import { initHeaderScroll, initServicesDarkening } from './modules/header';
 import {
   initAutoBurgerMenu,
@@ -36,7 +38,7 @@ function hidePageLoader() {
 document.addEventListener('DOMContentLoaded', () => {
   // CRITICAL: Ensure header and all its children are visible immediately
   // This prevents any CSS/JS issues from hiding content
-  const header = document.querySelector<HTMLElement>('.header');
+  const header = document.querySelector('.header');
   if (header) {
     header.style.opacity = '1';
     header.style.visibility = 'visible';
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // Ensure all header children are visible
-  const headerElements = document.querySelectorAll<HTMLElement>('.header__logo, .header__nav, .header__actions, .header__burger');
+  const headerElements = document.querySelectorAll('.header__logo, .header__nav, .header__actions, .header__burger');
   headerElements.forEach(el => {
     el.style.opacity = '1';
     el.style.visibility = 'visible';
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Timeout reached, initialize anyway (fallback will handle it)
         console.warn('AOS or anime.js not loaded after timeout, initializing with fallback');
-  initAnimations();
+        initAnimations();
       }
     };
     

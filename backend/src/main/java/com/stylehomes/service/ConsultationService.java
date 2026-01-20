@@ -2,6 +2,7 @@ package com.stylehomes.service;
 
 import com.stylehomes.dto.ConsultationRequest;
 import com.stylehomes.dto.ConsultationResponse;
+import com.stylehomes.dto.PhotoData;
 import com.stylehomes.model.Consultation;
 import com.stylehomes.repository.ConsultationRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +24,9 @@ public class ConsultationService {
     public ConsultationResponse createConsultation(ConsultationRequest request) {
         Consultation consultation = new Consultation();
         consultation.setFirstName(request.getFirstName());
-        consultation.setLastName(request.getLastName());
+        consultation.setLastName(request.getLastName() != null ? request.getLastName() : "");
         consultation.setEmail(request.getEmail());
-        consultation.setPhone(request.getPhone());
+        consultation.setPhone(request.getPhone() != null ? request.getPhone() : "");
         consultation.setProjectType(request.getProjectType());
         consultation.setProjectLocation(request.getProjectLocation());
         consultation.setEstimatedBudget(request.getEstimatedBudget());
@@ -36,9 +37,20 @@ public class ConsultationService {
         Consultation saved = consultationRepository.save(consultation);
         log.info("Created consultation with ID: {}", saved.getId());
         
+        // Get photos from request
+        List<PhotoData> photos = request.getPhotos();
+        int photoCount = photos != null ? photos.size() : 0;
+        log.info("Received {} photos with consultation request", photoCount);
+        
         // Send email notifications
         emailService.sendConsultationConfirmation(saved);
-        emailService.sendAdminNotification(saved);
+        
+        // Send admin notification with photos as attachments
+        if (photos != null && !photos.isEmpty()) {
+            emailService.sendAdminNotificationWithPhotos(saved, photos);
+        } else {
+            emailService.sendAdminNotification(saved);
+        }
         
         return mapToResponse(saved);
     }

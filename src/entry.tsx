@@ -1,7 +1,9 @@
-// Main TypeScript entry file
+// Main entry file (using .js extension to avoid Windows MIME type issue)
+// Windows associates .ts with video/vnd.dlna.mpeg-tts
+
 import './style.css';
 
-// Import modules
+// Import modules (without .ts extension - Vite resolves automatically)
 import { initHeaderScroll, initServicesDarkening } from './modules/header';
 import {
   initAutoBurgerMenu,
@@ -62,25 +64,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 100);
   
+  // Safe initialization wrapper
+  function safeInit(name: string, fn: () => void): void {
+    try {
+      fn();
+    } catch (error) {
+      console.error(`Error initializing ${name}:`, error);
+    }
+  }
+
   // Initialize header scroll effect
-  initHeaderScroll();
+  safeInit('headerScroll', initHeaderScroll);
   
   // Initialize services darkening effect
-  initServicesDarkening();
+  safeInit('servicesDarkening', initServicesDarkening);
   
   // Initialize auto burger menu (must be before initSmoothScroll)
-  initAutoBurgerMenu();
+  safeInit('autoBurgerMenu', initAutoBurgerMenu);
   
   // Initialize mobile menu
-  initMobileMenu();
+  safeInit('mobileMenu', initMobileMenu);
   
   // Initialize smooth scroll navigation (after initAutoBurgerMenu)
   setTimeout(() => {
-    initSmoothScroll();
+    safeInit('smoothScroll', initSmoothScroll);
   }, 0);
   
   // Initialize active nav link on scroll
-  initActiveNavLink();
+  safeInit('activeNavLink', initActiveNavLink);
   
   // Initialize animations (wait for AOS and anime.js to be loaded)
   const waitForScripts = () => {
@@ -95,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (aosLoaded && animeLoaded) {
         // Both scripts loaded, initialize animations
-        initAnimations();
+        safeInit('animations', initAnimations);
       } else if (attempts < maxAttempts) {
         // Scripts not loaded yet, wait a bit more
         setTimeout(checkScripts, 100);
       } else {
         // Timeout reached, initialize anyway (fallback will handle it)
         console.warn('AOS or anime.js not loaded after timeout, initializing with fallback');
-  initAnimations();
+        safeInit('animations', initAnimations);
       }
     };
     
@@ -112,25 +123,25 @@ document.addEventListener('DOMContentLoaded', () => {
   waitForScripts();
   
   // Initialize carousels
-  initCarousels();
+  safeInit('carousels', initCarousels);
   
   // Initialize testimonials
-  initTestimonials();
+  safeInit('testimonials', initTestimonials);
   
   // Initialize FAQ
-  initFAQ();
+  safeInit('faq', initFAQ);
   
   // Initialize form
-  initForm();
+  safeInit('form', initForm);
   
   // Initialize background effects
-  initBackgroundEffects();
+  safeInit('backgroundEffects', initBackgroundEffects);
   
   // Initialize hero section (can update existing if needed)
   // initHero(); // Uncomment if you need to dynamically update Hero
   
   // Initialize footer section
-  initFooter();
+  safeInit('footer', initFooter);
   
   // Hide page loader after a small delay to ensure CSS is loaded
   setTimeout(() => {

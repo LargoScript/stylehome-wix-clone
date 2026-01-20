@@ -16,13 +16,58 @@ function findHtmlFiles(dir: string, fileList: string[] = []): string[] {
   return fileList;
 }
 
+import type { ViteDevServer, Plugin } from 'vite';
+import type { ServerResponse, IncomingMessage } from 'http';
+
+// Fix Windows MIME type plugin (Windows treats .ts as video, .tsx as octet-stream)
+function fixTsMimeType(): Plugin {
+  return {
+    name: 'fix-ts-mime-type',
+    enforce: 'pre',
+    configureServer(server: ViteDevServer) {
+      // Monkey-patch the writeHead method to fix MIME types
+      server.middlewares.use((req: IncomingMessage, res: ServerResponse, next: () => void) => {
+        const url = req.url || '';
+        if (url.match(/\.tsx?($|\?)/)) {
+          const originalWriteHead = res.writeHead.bind(res);
+          // @ts-ignore - overloading writeHead
+          res.writeHead = function(statusCode: number, statusMessage?: string | object, headers?: object) {
+            // Force Content-Type for TypeScript files
+            if (typeof statusMessage === 'object') {
+              headers = statusMessage;
+              statusMessage = undefined;
+            }
+            const finalHeaders = { ...headers as object, 'Content-Type': 'application/javascript; charset=utf-8' };
+            if (statusMessage) {
+              return originalWriteHead(statusCode, statusMessage as string, finalHeaders);
+            }
+            return originalWriteHead(statusCode, finalHeaders);
+          };
+        }
+        next();
+      });
+    }
+  };
+}
+
 export default defineConfig({
-  base: '/stylehome-wix-clone/',
+  // For VPS hosting, use root path '/'
+  // For GitHub Pages, change to '/stylehome-wix-clone/'
+  base: '/',
   server: {
     host: '0.0.0.0', // Allow access from network
     port: 8000,
     strictPort: true,
-    open: true
+    open: true,
+    // Fix Windows MIME type issue: .ts = video/vnd.dlna.mpeg-tts
+    fs: {
+      strict: false
+    }
+  },
+  // Force esbuild to handle TypeScript
+  esbuild: {
+    loader: 'tsx',
+    include: /\.(ts|tsx|mjs)$/,
   },
   publicDir: 'public',
   build: {
@@ -50,22 +95,23 @@ export default defineConfig({
     }
   },
   plugins: [
+    // Fix Windows MIME type for .ts files
+    fixTsMimeType(),
+    // Plugin for GitHub Pages base path (disabled for VPS)
+    // Uncomment if deploying to GitHub Pages
+    /*
     {
       name: 'add-base-path',
       closeBundle() {
-        // After build fix paths in HTML files
         const distDir = resolve(__dirname, 'dist');
         const htmlFiles = findHtmlFiles(distDir);
         console.log(`[add-base-path] Found ${htmlFiles.length} HTML files to process`);
         htmlFiles.forEach(file => {
           let content = readFileSync(file, 'utf-8');
           const originalContent = content;
-          // Add base path to relative paths in script, link, and img tags
-          // This regex matches src and href attributes in any tag
           content = content.replace(
             /(src|href)="(?!https?:\/\/|\/|#|tel:|mailto:|data:)([^"]+)"/g,
             (match, attr, path) => {
-              // Skip paths that already have base path or are absolute
               if (path.startsWith('/stylehome-wix-clone/') || path.startsWith('http') || path.startsWith('tel:') || path.startsWith('mailto:') || path.startsWith('data:')) {
                 return match;
               }
@@ -77,12 +123,11 @@ export default defineConfig({
             console.log(`[add-base-path] Updated ${file}`);
           }
         });
-        // Create .nojekyll file for GitHub Pages
         const nojekyllPath = join(distDir, '.nojekyll');
         writeFileSync(nojekyllPath, '', 'utf-8');
         console.log(`[add-base-path] Created .nojekyll file`);
-        console.log(`[add-base-path] Plugin completed`);
       }
     }
+    */
   ]
 });
