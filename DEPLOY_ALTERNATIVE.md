@@ -8,7 +8,7 @@
 # На VPS сервері
 cd ~
 git clone https://github.com/LargoScript/stylehome-wix-clone.git
-cd stylehome-wix-clone/stylehome_new
+cd stylehome-wix-clone
 chmod +x deploy-vps.sh
 bash deploy-vps.sh
 ```
@@ -30,7 +30,7 @@ bash deploy-vps.sh
 ## Варіант 3: Завантажити через curl з правильним URL
 
 ```bash
-curl -L https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/stylehome_new/deploy-vps.sh -o deploy-vps.sh
+curl -L https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/deploy-vps.sh -o deploy-vps.sh
 chmod +x deploy-vps.sh
 bash deploy-vps.sh
 ```

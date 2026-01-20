@@ -3,7 +3,7 @@
 ## Один рядок команди:
 
 ```bash
-ssh deploy@31.131.21.16 'wget -O - https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/stylehome_new/deploy-vps.sh | bash'
+ssh deploy@31.131.21.16 'wget -O - https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/deploy-vps.sh | bash'
 ```
 
 **Пароль:** `deploy2`
@@ -18,7 +18,7 @@ ssh deploy@31.131.21.16
 # Password: deploy2
 
 # 2. Завантажити скрипт
-wget https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/stylehome_new/deploy-vps.sh
+wget https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/deploy-vps.sh
 
 # 3. Дозволити виконання
 chmod +x deploy-vps.sh

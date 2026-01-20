@@ -14,7 +14,7 @@ ssh deploy@31.131.21.16
 ```bash
 # Завантажити скрипт на сервер
 # Варіант 1: Через wget (з GitHub)
-wget https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/stylehome_new/deploy-vps.sh
+wget https://raw.githubusercontent.com/LargoScript/stylehome-wix-clone/main/deploy-vps.sh
 
 # Варіант 2: Через SCP (з локальної машини)
 # На локальній машині:
@@ -146,7 +146,7 @@ sudo tail -f /var/log/nginx/access.log
 
 ```bash
 # Frontend
-cd /tmp/stylehome-wix-clone/stylehome_new
+cd /tmp/stylehome-wix-clone
 git pull
 npm install
 npm run build
@@ -154,7 +154,7 @@ sudo cp -r dist/* /var/www/stylehomes/
 sudo chown -R www-data:www-data /var/www/stylehomes
 
 # Backend
-cd /tmp/stylehome-wix-clone/stylehome_new/backend
+cd /tmp/stylehome-wix-clone/backend
 git pull
 mvn clean package -DskipTests
 sudo systemctl stop stylehomes

@@ -78,7 +78,7 @@ else
 fi
 
 echo -e "${GREEN}Step 6: Building frontend...${NC}"
-cd stylehome_new
+# Files are in repository root, not in stylehome_new/
 if ! command -v node &> /dev/null; then
     echo -e "${YELLOW}Node.js not found. Installing Node.js 18...${NC}"
     curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
