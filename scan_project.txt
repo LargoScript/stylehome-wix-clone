@@ -1,0 +1,24 @@
+import os
+
+def list_files(startpath):
+    # Папки, які ми ігноруємо, щоб не забивати вивід
+    exclude = {'.git', 'node_modules', 'target', '.idea', 'venv', '__pycache__'}
+    
+    print(f"Структура проекту в: {os.path.abspath(startpath)}\n")
+    
+    for root, dirs, files in os.walk(startpath):
+        # Фільтруємо папки
+        dirs[:] = [d for d in dirs if d not in exclude]
+        
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        print(f"{indent}📂 {os.path.basename(root)}/")
+        
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            # Показуємо лише цікаві нам типи файлів
+            if f.endswith(('.xml', '.sh', '.json', '.env', '.properties', '.java', '.js', '.ts', '.html')):
+                print(f"{subindent}📄 {f}")
+
+if __name__ == "__main__":
+    list_files('.')
