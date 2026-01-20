@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style Homes - Kitchen & Bath Remodeling | Portland OR & Vancouver WA</title>
 
+    <!-- Backend API URL Configuration -->
+    <!-- For VPS with Nginx proxy: leave empty or remove this script -->
+    <!-- For local development: uncomment the line below -->
+    <script>
+      // window.BACKEND_URL = 'http://localhost:8080';  // Uncomment for local dev
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="js/libs/aos.css">
     <script src="js/libs/aos.js"></script>
     <script src="js/libs/anime.min.js"></script>
     <!-- Wait for scripts to load before initializing main module -->
@@ -24,14 +30,15 @@
         }
       });
     </script>
-    <script type="module" src="/src/entry.tsx"></script>
+  <script type="module" crossorigin src="/assets/entry-DpKuLwvj.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/entry-Crwp0Vq0.css">
 </head>
 
 <body>
     <!-- Loading Screen -->
     <div class="page-loader" id="pageLoader">
         <div class="page-loader__content">
-            <img src="img/logo-red.svg" alt="Style Homes" class="page-loader__logo">
+            <img src="/assets/logo-red-DbcrsiaN.svg" alt="Style Homes" class="page-loader__logo">
             <div class="page-loader__spinner"></div>
         </div>
     </div>
@@ -96,7 +103,7 @@
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
-                <img src="img/logo-red.svg" alt="Style Homes Logo" class="header__logo-img" />
+                <img src="/assets/logo-red-DbcrsiaN.svg" alt="Style Homes Logo" class="header__logo-img" />
             </a>
             <nav class="header__nav">
                 <button class="header__nav-close" aria-label="Close menu">
@@ -114,14 +121,14 @@
             </nav>
             <div class="header__actions">
                 <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="header__icon">
-                    <img src="img/instagram.avif" alt="Instagram" />
+                    <img src="/assets/instagram-D5gAnHpx.avif" alt="Instagram" />
                 </a>
                 <a href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" class="header__icon">
                     <img src="img/facebook.svg" alt="Facebook" />
                 </a>
                 <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
                     target="_blank" class="header__icon">
-                    <img src="img/thumbtack.avif" alt="Thumbtack" />
+                    <img src="/assets/thumbtack-Hh49meIn.avif" alt="Thumbtack" />
                 </a>
                 <a href="tel:+13608596482" class="header__phone">+1 (360) 859 6482</a>
             </div>
@@ -138,7 +145,7 @@
         <section class="hero" id="hero">
             <div class="hero__video-wrapper">
                 <video class="hero__video" autoplay muted loop playsinline>
-                    <source src="video/hero.mp4" type="video/mp4" />
+                    <source src="/assets/hero-D9mZ6myc.mp4" type="video/mp4" />
                 </video>
                 <div class="hero__overlay"></div>
             </div>
@@ -163,7 +170,7 @@
             <div class="services-hero__container">
                 <a href="kitchen-renovation.html" class="services-hero__card">
                     <div class="services-hero__card-image">
-                        <img src="img/kitchen-renovation.jpg" alt="Kitchen Renovation">
+                        <img src="/assets/kitchen-renovation-BWcSL8B-.jpg" alt="Kitchen Renovation">
                     </div>
                     <div class="services-hero__card-overlay">
                         <h2 class="services-hero__card-title">Kitchen Renovation</h2>
@@ -172,7 +179,7 @@
 
                 <a href="bathroom-renovation.html" class="services-hero__card">
                     <div class="services-hero__card-image">
-                        <img src="img/bathroom-renovation.jpg" alt="Bathroom Renovation">
+                        <img src="/assets/bathroom-renovation-CODz3xTF.jpg" alt="Bathroom Renovation">
                     </div>
                     <div class="services-hero__card-overlay">
                         <h2 class="services-hero__card-title">Bathroom Renovation</h2>
@@ -328,7 +335,7 @@
                 <div class="services__list">
                     <a href="wood-and-panel-wall-decor.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                         <div class="service-card__image">
-                            <img src="img/panel.jpg" alt="Wood and Panel Wall Decor">
+                            <img src="/assets/panel-8gwYLN7u.jpg" alt="Wood and Panel Wall Decor">
                         </div>
                         <div class="service-card__content">
                             <h3 class="service-card__title">
@@ -345,7 +352,7 @@
 
                     <a href="kitchen-renovation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                         <div class="service-card__image">
-                            <img src="img/kitchen.jpg" alt="Kitchen Renovation">
+                            <img src="/assets/kitchen-C5bsFziF.jpg" alt="Kitchen Renovation">
                         </div>
                         <div class="service-card__content">
                             <h3 class="service-card__title">
@@ -364,7 +371,7 @@
 
                     <a href="bathroom-renovation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                         <div class="service-card__image">
-                            <img src="img/bathroom.jpg" alt="Bathroom Renovation">
+                            <img src="/assets/bathroom-DHo7dyqQ.jpg" alt="Bathroom Renovation">
                         </div>
                         <div class="service-card__content">
                             <h3 class="service-card__title">
@@ -384,7 +391,7 @@
 
                     <a href="whole-home-transformation.html" class="service-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
                         <div class="service-card__image">
-                            <img src="img/home.jpg" alt="Whole-Home Transformation">
+                            <img src="/assets/home-BN1LOMfw.jpg" alt="Whole-Home Transformation">
                         </div>
                         <div class="service-card__content">
                             <h3 class="service-card__title">
@@ -416,47 +423,47 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects1/project1_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project1_1-Z66aWJvs.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project1_2-CmqYmLiC.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project1_3-bwx3HSXn.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project1_4-DUtxHs3w.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project1_5-CIwZn0z0.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_6.jpg" alt="Project Image 6" loading="lazy"
+                                <img src="/assets/project1_6-Bg4j9OiO.jpg" alt="Project Image 6" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_7.jpg" alt="Project Image 7" loading="lazy"
+                                <img src="/assets/project1_7-dCPxe9xE.jpg" alt="Project Image 7" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_8.jpg" alt="Project Image 8" loading="lazy"
+                                <img src="/assets/project1_8-jRWlQOQ4.jpg" alt="Project Image 8" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_9.jpg" alt="Project Image 9" loading="lazy"
+                                <img src="/assets/project1_9-Up6HzVZK.jpg" alt="Project Image 9" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_10.jpg" alt="Project Image 10" loading="lazy"
+                                <img src="/assets/project1_10-CfTdjz8h.jpg" alt="Project Image 10" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_11.jpg" alt="Project Image 11" loading="lazy"
+                                <img src="/assets/project1_11-CWbDdqsy.jpg" alt="Project Image 11" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_12.jpg" alt="Project Image 12" loading="lazy"
+                                <img src="/assets/project1_12-BN1l7pds.jpg" alt="Project Image 12" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_13.jpg" alt="Project Image 13" loading="lazy"
+                                <img src="/assets/project1_13-1zWCMPXe.jpg" alt="Project Image 13" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_14.jpg" alt="Project Image 14" loading="lazy"
+                                <img src="/assets/project1_14-O5RVjq2k.jpg" alt="Project Image 14" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_15.jpg" alt="Project Image 15" loading="lazy"
+                                <img src="/assets/project1_15-BXFwOcSd.jpg" alt="Project Image 15" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_16.jpg" alt="Project Image 16" loading="lazy"
+                                <img src="/assets/project1_16-EUtADvej.jpg" alt="Project Image 16" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_17.jpg" alt="Project Image 17" loading="lazy"
+                                <img src="/assets/project1_17-BizqqCRP.jpg" alt="Project Image 17" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_18.jpg" alt="Project Image 18" loading="lazy"
+                                <img src="/assets/project1_18-CNCG7Z3s.jpg" alt="Project Image 18" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_19.jpg" alt="Project Image 19" loading="lazy"
+                                <img src="/assets/project1_19-D9rXdlQE.jpg" alt="Project Image 19" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_20.jpg" alt="Project Image 20" loading="lazy"
+                                <img src="/assets/project1_20-CNjSItTg.jpg" alt="Project Image 20" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects1/project1_21.jpg" alt="Project Image 21" loading="lazy"
+                                <img src="/assets/project1_21-DW0D80Qj.jpg" alt="Project Image 21" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -474,49 +481,49 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects2/project2_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project2_1-B7PQv_Yj.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project2_2-CEddUgul.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project2_3-C1DFYIAA.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project2_4-CgxI9ZCM.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project2_5-D4glWVp8.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_6.jpg" alt="Project Image 6" loading="lazy"
+                                <img src="/assets/project2_6-D9z6GdYu.jpg" alt="Project Image 6" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_7.jpg" alt="Project Image 7" loading="lazy"
+                                <img src="/assets/project2_7-BQwJbiFA.jpg" alt="Project Image 7" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_8.jpg" alt="Project Image 8" loading="lazy"
+                                <img src="/assets/project2_8-DOL_Xowx.jpg" alt="Project Image 8" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_9.jpg" alt="Project Image 9" loading="lazy"
+                                <img src="/assets/project2_9-1TZMwz92.jpg" alt="Project Image 9" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_10.jpg" alt="Project Image 10" loading="lazy"
+                                <img src="/assets/project2_10-BLmR-Xl4.jpg" alt="Project Image 10" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_11.jpg" alt="Project Image 11" loading="lazy"
+                                <img src="/assets/project2_11-DTU8I1ax.jpg" alt="Project Image 11" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_12.jpg" alt="Project Image 12" loading="lazy"
+                                <img src="/assets/project2_12-DQuHCjOg.jpg" alt="Project Image 12" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_13.jpg" alt="Project Image 13" loading="lazy"
+                                <img src="/assets/project2_13-Wg8tANbg.jpg" alt="Project Image 13" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_14.jpg" alt="Project Image 14" loading="lazy"
+                                <img src="/assets/project2_14-ZvBxBZNh.jpg" alt="Project Image 14" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_15.jpg" alt="Project Image 15" loading="lazy"
+                                <img src="/assets/project2_15-DzKwfbGl.jpg" alt="Project Image 15" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_16.jpg" alt="Project Image 16" loading="lazy"
+                                <img src="/assets/project2_16-CpneX5iO.jpg" alt="Project Image 16" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_17.jpg" alt="Project Image 17" loading="lazy"
+                                <img src="/assets/project2_17-EESF0Jno.jpg" alt="Project Image 17" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_18.jpg" alt="Project Image 18" loading="lazy"
+                                <img src="/assets/project2_18-U__fp1aI.jpg" alt="Project Image 18" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_19.jpg" alt="Project Image 19" loading="lazy"
+                                <img src="/assets/project2_19--vH6_Hvh.jpg" alt="Project Image 19" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_20.jpg" alt="Project Image 20" loading="lazy"
+                                <img src="/assets/project2_20-D3UK2Dh-.jpg" alt="Project Image 20" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_21.jpg" alt="Project Image 21" loading="lazy"
+                                <img src="/assets/project2_21-GpB70nWV.jpg" alt="Project Image 21" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects2/project2_22.jpg" alt="Project Image 22" loading="lazy"
+                                <img src="/assets/project2_22-DTUjpGzp.jpg" alt="Project Image 22" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -534,15 +541,15 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects3/project3_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project3_1-CgYKaSnT.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects3/project3_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project3_2-DJWwcKAI.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects3/project3_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project3_3-7jZE0NMz.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects3/project3_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project3_4-5B-y1tH0.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects3/project3_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project3_5-AkcVJAq5.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -562,33 +569,33 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects4/project4_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project4_1-B9rX--LQ.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project4_2-DlAtNnuy.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project4_3-BLjCJIMy.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project4_4-D3CbohgI.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project4_5-BJNIh7Jy.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_6.jpg" alt="Project Image 6" loading="lazy"
+                                <img src="/assets/project4_6-CMMAwhN2.jpg" alt="Project Image 6" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_7.jpg" alt="Project Image 7" loading="lazy"
+                                <img src="/assets/project4_7-BZQYuzqI.jpg" alt="Project Image 7" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_8.jpg" alt="Project Image 8" loading="lazy"
+                                <img src="/assets/project4_8-Ce8vpxDr.jpg" alt="Project Image 8" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_9.jpg" alt="Project Image 9" loading="lazy"
+                                <img src="/assets/project4_9-C3dQ1l_-.jpg" alt="Project Image 9" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_10.jpg" alt="Project Image 10" loading="lazy"
+                                <img src="/assets/project4_10-B8qjIeNt.jpg" alt="Project Image 10" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_11.jpg" alt="Project Image 11" loading="lazy"
+                                <img src="/assets/project4_11-wnyAwaDY.jpg" alt="Project Image 11" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_12.jpg" alt="Project Image 12" loading="lazy"
+                                <img src="/assets/project4_12-BS0YHr6k.jpg" alt="Project Image 12" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_13.jpg" alt="Project Image 13" loading="lazy"
+                                <img src="/assets/project4_13-noMQQLD8.jpg" alt="Project Image 13" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects4/project4_14.jpg" alt="Project Image 14" loading="lazy"
+                                <img src="/assets/project4_14-CAXMuLaQ.jpg" alt="Project Image 14" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -608,41 +615,41 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="500">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects5/project5_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project5_1-srsY2Y1m.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project5_2-DhQSSl7e.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project5_3-BBUvo08T.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project5_4-CgOlQDQW.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project5_5-DccaHoDs.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_6.jpg" alt="Project Image 6" loading="lazy"
+                                <img src="/assets/project5_6-Bg_Mabh6.jpg" alt="Project Image 6" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_7.jpg" alt="Project Image 7" loading="lazy"
+                                <img src="/assets/project5_7-_XmLIaJY.jpg" alt="Project Image 7" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_8.jpg" alt="Project Image 8" loading="lazy"
+                                <img src="/assets/project5_8-bYLw6XM4.jpg" alt="Project Image 8" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_9.jpg" alt="Project Image 9" loading="lazy"
+                                <img src="/assets/project5_9-C9tWoCo7.jpg" alt="Project Image 9" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_10.jpg" alt="Project Image 10" loading="lazy"
+                                <img src="/assets/project5_10-BgsCSaeq.jpg" alt="Project Image 10" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_11.jpg" alt="Project Image 11" loading="lazy"
+                                <img src="/assets/project5_11-lMvuu4g7.jpg" alt="Project Image 11" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_12.jpg" alt="Project Image 12" loading="lazy"
+                                <img src="/assets/project5_12-DLNLNOjK.jpg" alt="Project Image 12" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_13.jpg" alt="Project Image 13" loading="lazy"
+                                <img src="/assets/project5_13-BWPn-r8o.jpg" alt="Project Image 13" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_14.jpg" alt="Project Image 14" loading="lazy"
+                                <img src="/assets/project5_14-CBU0B5eq.jpg" alt="Project Image 14" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_15.jpg" alt="Project Image 15" loading="lazy"
+                                <img src="/assets/project5_15-BEJilINA.jpg" alt="Project Image 15" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_16.jpg" alt="Project Image 16" loading="lazy"
+                                <img src="/assets/project5_16-BLrny8x7.jpg" alt="Project Image 16" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_17.jpg" alt="Project Image 17" loading="lazy"
+                                <img src="/assets/project5_17-BXGrLq4x.jpg" alt="Project Image 17" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects5/project5_18.jpg" alt="Project Image 18" loading="lazy"
+                                <img src="/assets/project5_18-De4hVCej.jpg" alt="Project Image 18" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -664,19 +671,19 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects6/project6_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project6_1-BTMt3rhf.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project6_2-CY0N_j3a.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project6_3-DTQpD9cd.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project6_4-QfKRSBFh.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_5.jpg" alt="Project Image 5" loading="lazy"
+                                <img src="/assets/project6_5-BxwwokHK.jpg" alt="Project Image 5" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_6.jpg" alt="Project Image 6" loading="lazy"
+                                <img src="/assets/project6_6-CnZE5A5X.jpg" alt="Project Image 6" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects6/project6_7.jpg" alt="Project Image 7" loading="lazy"
+                                <img src="/assets/project6_7-DRstBi8h.jpg" alt="Project Image 7" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -698,13 +705,13 @@
                     <div class="project-card" data-aos="fade-up" data-aos-delay="700">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="img/projects/projects7/project7_1.jpg" alt="Project Image 1" loading="lazy"
+                                <img src="/assets/project7_1-B61x8SiZ.jpg" alt="Project Image 1" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects7/project7_2.jpg" alt="Project Image 2" loading="lazy"
+                                <img src="/assets/project7_2-Cl25K7eV.jpg" alt="Project Image 2" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects7/project7_3.jpg" alt="Project Image 3" loading="lazy"
+                                <img src="/assets/project7_3-DcMyP0Pp.jpg" alt="Project Image 3" loading="lazy"
                                     decoding="async">
-                                <img src="img/projects/projects7/project7_4.jpg" alt="Project Image 4" loading="lazy"
+                                <img src="/assets/project7_4-CJl1042j.jpg" alt="Project Image 4" loading="lazy"
                                     decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
@@ -754,7 +761,7 @@
 
                 <!-- RIGHT -->
                 <div class="start__media" data-aos="fade-left" data-aos-delay="200">
-                    <img src="img/photo.jpg" alt="Founder" loading="lazy" decoding="async" />
+                    <img src="/assets/photo-CW9VdwEk.jpg" alt="Founder" loading="lazy" decoding="async" />
 
                     <div class="start__quote" data-aos="zoom-in" data-aos-delay="300">
                         <p>
@@ -851,7 +858,7 @@
                 <!-- Brand / Contacts -->
                 <div class="footer__col footer__brand">
                     <div class="footer__logo">
-                        <img src="img/logo-red.svg" alt="Style Homes Logo" loading="lazy" decoding="async">
+                        <img src="/assets/logo-red-DbcrsiaN.svg" alt="Style Homes Logo" loading="lazy" decoding="async">
                     </div>
 
                     <a class="footer__link"
@@ -875,14 +882,14 @@
 
                     <div class="footer__socials">
                         <a href="https://www.instagram.com/style_homes_usa" target="_blank" class="footer__icon">
-                            <img src="img/social_ico/instagram.avif" alt="Instagram" loading="lazy" decoding="async">
+                            <img src="/assets/instagram-D5gAnHpx.avif" alt="Instagram" loading="lazy" decoding="async">
                         </a>
                         <a href="https://www.facebook.com/share/1ByVWrAJbJ/?mibextid=wwXIfr" target="_blank" class="footer__icon">
                             <img src="img/social_ico/facebook.svg" alt="Facebook" loading="lazy" decoding="async">
                         </a>
                         <a href="https://www.thumbtack.com/wa/vancouver/general-contractors/style-homes-llc/service/542227943368220678"
                             target="_blank" class="footer__icon">
-                            <img src="img/social_ico/thumbtack.avif" alt="Thumbtack" loading="lazy" decoding="async">
+                            <img src="/assets/thumbtack-Hh49meIn.avif" alt="Thumbtack" loading="lazy" decoding="async">
                         </a>
                     </div>
                 </div>
@@ -927,7 +934,7 @@
 
             <div class="footer__bottom">
                 <div class="footer__bottom-logo">
-                    <img src="img/logo-red.svg" alt="Style Homes Logo" loading="lazy" decoding="async">
+                    <img src="/assets/logo-red-DbcrsiaN.svg" alt="Style Homes Logo" loading="lazy" decoding="async">
                 </div>
                 <p>© Style Homes 2025</p>
             </div>
