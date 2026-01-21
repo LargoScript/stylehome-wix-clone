@@ -12,6 +12,70 @@
     <script type="module" src="/src/entry.tsx"></script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__content">
+            <img src="img/logo-red.svg" alt="Style Homes" class="page-loader__logo">
+            <div class="page-loader__spinner"></div>
+        </div>
+    </div>
+    <!-- Inline styles for loader (prevents FOUC) -->
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .page-loader__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        .page-loader__logo {
+            height: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .page-loader__spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #c8102e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
+        }
+    </style>
+    <!-- Fallback: hide loader after 5s even if script fails -->
+    <script>
+        setTimeout(function() {
+            var loader = document.getElementById('pageLoader');
+            if (loader && !loader.classList.contains('hidden')) {
+                loader.classList.add('hidden');
+            }
+        }, 5000);
+    </script>
+
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
@@ -102,10 +166,10 @@
                         <p class="project-card__description">
                             This bathroom is part of an ocean-view home completed for BTN Homes. The combination of natural brown cabinetry and warm tile tones creates a cozy, relaxing atmosphere that fits perfectly with the coastal surroundings.
 
-This bathroom is part of an ocean-view home completed for BTN Homes. The combination of natural brown cabinetry and warm tile tones creates a cozy, relaxing atmosphere that fits perfectly with the coastal surroundings.
+                            This bathroom is part of an ocean-view home completed for BTN Homes. The combination of natural brown cabinetry and warm tile tones creates a cozy, relaxing atmosphere that fits perfectly with the coastal surroundings.
 
-The gentle lighting and woven pendant fixture add a soft, welcoming feel to the space.
-These bathrooms were beautifully finished by the StyleHomes team, bringing warmth and elegance to modern coastal living.
+                            The gentle lighting and woven pendant fixture add a soft, welcoming feel to the space.
+                            These bathrooms were beautifully finished by the StyleHomes team, bringing warmth and elegance to modern coastal living.
                         </p>
                     </div>
 
@@ -124,8 +188,8 @@ These bathrooms were beautifully finished by the StyleHomes team, bringing warmt
                         <p class="project-card__description">
                             This project was completed for Elite Homes in collaboration with DreamCabinets and StyleHomes.
                             
-Here you can see examples of how modern bathroom and powder room cabinets can look — elegant, clean, and designed to match the style of the entire home.
-These photos show different layouts and finishes to help you imagine how your own spaces could look and feel.
+                            Here you can see examples of how modern bathroom and powder room cabinets can look — elegant, clean, and designed to match the style of the entire home.
+                            These photos show different layouts and finishes to help you imagine how your own spaces could look and feel.
                         </p>
                     </div>
 
@@ -143,12 +207,10 @@ These photos show different layouts and finishes to help you imagine how your ow
                         </div>
                         <h3 class="project-card__name">Bathroom & Laundry Inspiration — Custom Design Project</h3>
                         <p class="project-card__description">
-                            This home was built for clients who wanted everything made to match their personal taste, and our StyleHomes team helped bring their ideas to life.
+                            This home was built for clients who wanted every detail to match their personal taste, and our StyleHomes team helped bring their vision to life.
 
-Here you can see examples of custom cabinets for bathrooms and laundry rooms, created to combine comfort, simplicity, and style.
-We’ve shared a few photos so you can see how your cabinets could
-
-look — maybe you’ll find something that fits your design and taste.
+                            Here, you can see examples of custom cabinetry for bathrooms and laundry rooms, created to perfectly combine comfort, simplicity, and style. 
+                            We’ve shared these photos so you can see the quality and craftsmanship we offer—perhaps you’ll find the perfect inspiration for your own dream home.
                         </p>
                     </div>
 
@@ -209,36 +271,12 @@ look — maybe you’ll find something that fits your design and taste.
                         <h3 class="project-card__name">Bathroom & Vanity Project</h3>
                         <p class="project-card__description">
                             Modern bathrooms and custom vanities designed and built by StyleHomes.
-Each space was created with a clean and elegant aesthetic — marble-patterned walls, wood-tone cabinets, and matte-black fixtures perfectly combine style and functionality.
-Every detail, from the shower design to the cabinet layout, was carefully planned to achieve a refined and contemporary look.
+                            Each space was created with a clean and elegant aesthetic — marble-patterned walls, wood-tone cabinets, and matte-black fixtures perfectly combine style and functionality.
+                            Every detail, from the shower design to the cabinet layout, was carefully planned to achieve a refined and contemporary look.
 
-Project by StyleHomes LLC
+                            Project by StyleHomes.
                         </p>
                     </div>
-
-                    <!-- Project 7: Bathroom & Vanity Project — BTN Home -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="img/projects/bathroom/bathroom7/bathroom7_1.jpg" alt="Bathroom & Vanity Project — BTN Home" loading="lazy" decoding="async">
-                                <img src="img/projects/bathroom/bathroom7/bathroom7_2.jpg" alt="Bathroom & Vanity Project — BTN Home" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Bathroom & Vanity Project — BTN Home</h3>
-                        <p class="project-card__description">
-                            Modern bathrooms and custom vanities designed and built by StyleHomes for BTN Home.
-Each space was created with an individual approach — combining natural wood textures, elegant lighting, and matte black fixtures for a warm and sophisticated look.
-The cabinetry design provides a clean floating effect, while every
-
-detail — from tile layout to faucet choice — was carefully planned to achieve both beauty and practicality.
-
-Project for BTN Home, completed by StyleHomes LLC
-                        </p>
-                    </div>
-
-                </div>
                 </div>
             </div>
         </section>

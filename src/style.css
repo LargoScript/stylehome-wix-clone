@@ -127,8 +127,8 @@ body {
     /* Allows shrinking below minimum content size */
     max-width: 100%;
     /* Prevents navigation from going beyond boundaries */
-    overflow: hidden;
-    /* Hides overflow */
+    overflow: visible;
+    /* Allow nav-link::after indicator to show */
     transition: none;
     /* No transition for instant show/hide */
 }
