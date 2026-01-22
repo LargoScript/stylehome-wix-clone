@@ -8,10 +8,74 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="js/libs/aos.js"></script>
     <script src="js/libs/anime.min.js"></script>
-  <script type="module" crossorigin src="/assets/entry-DpKuLwvj.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/entry-Crwp0Vq0.css">
+  <script type="module" crossorigin src="/assets/entry-BVOnqvQ4.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/entry-qmL3WU29.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__content">
+            <img src="/assets/logo-red-DbcrsiaN.svg" alt="Style Homes" class="page-loader__logo">
+            <div class="page-loader__spinner"></div>
+        </div>
+    </div>
+    <!-- Inline styles for loader (prevents FOUC) -->
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .page-loader__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        .page-loader__logo {
+            height: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .page-loader__spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #c8102e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
+        }
+    </style>
+    <!-- Fallback: hide loader after 5s even if script fails -->
+    <script>
+        setTimeout(function() {
+            var loader = document.getElementById('pageLoader');
+            if (loader && !loader.classList.contains('hidden')) {
+                loader.classList.add('hidden');
+            }
+        }, 5000);
+    </script>
+
     <header class="header">
         <div class="header__container">
             <a href="index.html" class="header__logo">
@@ -82,114 +146,114 @@
                 <h5 class="projects__subtitle" data-aos="fade-up" data-aos-delay="50">Our Whole-Home Transformations</h5>
 
                 <div class="projects__grid">
-                    <!-- Project 1: Project 1 -->
+                    <!-- Project 1: Project 1 — by StyleHomes-->
                     <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="/assets/wholehome1_1-lgXrqppe.jpg" alt="photo_2025-09-19_06-35-58" loading="lazy" decoding="async">
+                                <img src="img/projects/whole-home/wholehome1/wholehome1_1.jpg" alt="photo_2025-09-19_06-35-58" loading="lazy" decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
                         </div>
                         <h3 class="project-card__name">Project 1</h3>
                         <p class="project-card__description">
-                            No description available.
+                            By StyleHomes.
                         </p>
                     </div>
 
-                    <!-- Project 3: Project 3 -->
+                    <!-- Project 2: Project 2 — by StyleHomes-->
                     <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="/assets/wholehome2_1-BQLuMPIZ.jpg" alt="photo_2025-09-19_06-35-59" loading="lazy" decoding="async">
+                                <img src="img/projects/whole-home/wholehome2/wholehome2_1.jpg" alt="photo_2025-09-19_06-35-59" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Project 2</h3>
+                        <p class="project-card__description">
+                            By StyleHomes.
+                        </p>
+                    </div>
+
+                    <!-- Project 3: Project 3 — by StyleHomes-->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="img/projects/whole-home/wholehome3/wholehome3_1.jpg" alt="photo_2025-09-19_06-35-57" loading="lazy" decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
                         </div>
                         <h3 class="project-card__name">Project 3</h3>
                         <p class="project-card__description">
-                            No description available.
+                            By StyleHomes.
                         </p>
                     </div>
 
-                    <!-- Project 5: Project 5 -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <!-- Project 4: Project 4 — by StyleHomes-->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="/assets/wholehome3_1-o45aq3lu.jpg" alt="photo_2025-09-19_06-35-57" loading="lazy" decoding="async">
+                                <img src="img/projects/whole-home/wholehome4/wholehome4_1.jpg" alt="photo_2025-10-12_03-54-14" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Project 4</h3>
+                        <p class="project-card__description">
+                            By StyleHomes.
+                        </p>
+                    </div>
+
+                    <!-- Project 5: Project 5 — by StyleHomes-->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="img/projects/whole-home/wholehome5/wholehome5_1.jpg" alt="photo_2025-09-19_06-35-54" loading="lazy" decoding="async">
+                                <img src="img/projects/whole-home/wholehome5/wholehome5_2.jpg" alt="photo_2025-09-19_06-35-53" loading="lazy" decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
                         </div>
                         <h3 class="project-card__name">Project 5</h3>
                         <p class="project-card__description">
-                            No description available.
+                                By StyleHomes.
                         </p>
                     </div>
 
-                    <!-- Project 7: Project 7 -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <!-- Project 6: Project 6 — by StyleHomes-->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
-                                <img src="/assets/wholehome4_1-Cf1rj2IT.jpg" alt="photo_2025-09-19_06-35-56" loading="lazy" decoding="async">
+                                <img src="img/projects/whole-home/wholehome6/wholehome6_1.jpg" alt="photo_2025-09-19_06-35-55" loading="lazy" decoding="async">
+                            </div>
+                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+                        </div>
+                        <h3 class="project-card__name">Project 6</h3>
+                        <p class="project-card__description">
+                            By StyleHomes.
+                        </p>
+                    </div>
+
+                    <!-- Project 7: Project 7 — by StyleHomes-->
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="project-card__carousel">
+                            <div class="carousel-track">
+                                <img src="/assets/bathroom2_1-BraaJJ5a.jpg" alt="photo_2025-09-19_06-35-51" loading="lazy" decoding="async">
+                                <img src="/assets/wholehome7_2-CAMujNHX.jpg" alt="photo_2025-09-19_06-35-52" loading="lazy" decoding="async">
                             </div>
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
                         </div>
                         <h3 class="project-card__name">Project 7</h3>
                         <p class="project-card__description">
-                            No description available.
+                            By StyleHomes.
                         </p>
                     </div>
 
-                    <!-- Project 9: Project 9 -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="/assets/wholehome5_1-BLr8OMnu.jpg" alt="photo_2025-09-19_06-35-54" loading="lazy" decoding="async">
-                                <img src="/assets/wholehome5_2-Bv1QQAau.jpg" alt="photo_2025-09-19_06-35-53" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Project 9</h3>
-                        <p class="project-card__description">
-                            No description available.
-                        </p>
-                    </div>
-
-                    <!-- Project 11: Project 11 -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="/assets/wholehome6_1-mSLgWwog.jpg" alt="photo_2025-09-19_06-35-55" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Project 11</h3>
-                        <p class="project-card__description">
-                            No description available.
-                        </p>
-                    </div>
-
-                    <!-- Project 13: Project 13 -->
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
-                        <div class="project-card__carousel">
-                            <div class="carousel-track">
-                                <img src="/assets/wholehome7_1-BraaJJ5a.jpg" alt="photo_2025-09-19_06-35-51" loading="lazy" decoding="async">
-                                <img src="/assets/wholehome7_2-CAMujNHX.jpg" alt="photo_2025-09-19_06-35-52" loading="lazy" decoding="async">
-                            </div>
-                            <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-                            <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-                        </div>
-                        <h3 class="project-card__name">Project 13</h3>
-                        <p class="project-card__description">
-                            No description available.
-                        </p>
-                    </div>
-
-                    <!-- Project 15: Project 15 -->
+                    <!-- Project 8: Project 8 — by StyleHomes-->
                     <div class="project-card" data-aos="fade-up" data-aos-delay="800">
                         <div class="project-card__carousel">
                             <div class="carousel-track">
@@ -198,9 +262,9 @@
                             <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
                             <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
                         </div>
-                        <h3 class="project-card__name">Project 15</h3>
+                        <h3 class="project-card__name">Project 8</h3>
                         <p class="project-card__description">
-                            No description available.
+                            By StyleHomes.
                         </p>
                     </div>
 
