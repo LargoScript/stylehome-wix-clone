@@ -1,7 +1,8 @@
 spring:
   datasource:
     # For Render.com - use DATABASE_URL environment variable
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/stylehomes}
+    # Add currentSchema=public to specify schema for PostgreSQL
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/stylehomes?currentSchema=public}
     driver-class-name: org.postgresql.Driver
   
   jpa:
@@ -11,10 +12,13 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
   
   flyway:
     enabled: true
     baseline-on-migrate: true
+    schemas: public
+    default-schema: public
   
   # Mail configuration for production
   mail:
