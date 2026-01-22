@@ -24,3 +24,9 @@ export {
   type FAQConfig,
   type FAQItem
 } from './FAQ';
+export {
+  Lightbox,
+  getLightbox,
+  initCarouselLightbox,
+  type LightboxOptions
+} from './Lightbox';

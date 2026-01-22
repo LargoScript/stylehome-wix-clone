@@ -19,6 +19,8 @@ import { initForm } from './modules/form';
 import { initBackgroundEffects } from './modules/background-effects';
 import { initHero } from './modules/hero';
 import { initFooter } from './modules/footer';
+import { initCarouselLightbox } from './components/Lightbox';
+import { initPhoneDropdown } from './modules/phone-dropdown';
 
 console.log('Style Homes website loaded');
 
@@ -124,6 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize carousels
   safeInit('carousels', initCarousels);
+  
+  // Initialize carousel lightbox (fullscreen image view)
+  safeInit('carouselLightbox', initCarouselLightbox);
+  
+  // Initialize phone dropdown for mobile
+  safeInit('phoneDropdown', initPhoneDropdown);
   
   // Testimonials now handled by Elfsight widget
   // safeInit('testimonials', initTestimonials);
